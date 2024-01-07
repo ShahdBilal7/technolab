@@ -13,7 +13,7 @@ import Footer from './Components/Footer/Footer';
 function App() {
   return (
     
-      <BrowserRouter>
+      <BrowserRouter basename="/technolab">
         <Header />
         <Routes>
           <Route path='/' element={<Home />} />
