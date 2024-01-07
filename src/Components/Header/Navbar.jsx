@@ -1,0 +1,46 @@
+import logo from '../Assets/logo.png'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+const Navbar = () => {
+  const [state, setState] = useState(false);
+const handleClick=()=>{
+setState(!state);
+}
+  return (
+    <header className={state ? 'mobile-header' : ''}>
+      <div className='nav container'>
+        <div className='nav-logo'>
+          <img src={logo} alt="logo" />
+          <div className='info'>
+            <p>Technolab</p>
+            <span>Electronics</span>
+          </div>
+        </div>
+        <div onClick={handleClick} className='mobile'>
+          <FontAwesomeIcon id="bar" icon={state?"fa-x":"fa-bars-staggered"}/>
+        
+        </div>
+        <div className={`nav-change ${state ? 'mobile-menu-visible' : ''}`}>
+          <div className='nav-menu'>
+            <ul>
+              <li ><NavLink className="link" activeclassname="active" to='/'>Home</NavLink> </li>
+              <li ><NavLink className="link" activeclassname="active" to='/about'>About</NavLink></li>
+              <li ><NavLink className="link" activeclassname="active" to='/shop'>Shop</NavLink></li>
+              <li ><NavLink className="link" activeclassname="active" to='/contact'>Contact</NavLink></li>
+            </ul>
+          </div>
+          <div className='nav-login'>
+            <NavLink className="link" activeclassname="active" to='/login'><div>Login</div></NavLink>
+            <FontAwesomeIcon icon="fa-user" />
+            <div className="cart-count">
+              <FontAwesomeIcon className="icon" icon="fa fa-shopping-cart" />
+              <span className="count">0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+  )
+}
+export default Navbar;
