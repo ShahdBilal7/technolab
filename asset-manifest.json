@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/technolab/static/css/main.8fea81be.css",
+    "main.js": "/technolab/static/js/main.b9c76d9f.js",
+    "static/media/h3.png": "/technolab/static/media/h3.28b918b9574c418c4472.png",
+    "static/media/logo.png": "/technolab/static/media/logo.672e22c5f8b48950cb7d.png",
+    "index.html": "/technolab/index.html",
+    "main.8fea81be.css.map": "/technolab/static/css/main.8fea81be.css.map",
+    "main.b9c76d9f.js.map": "/technolab/static/js/main.b9c76d9f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8fea81be.css",
+    "static/js/main.b9c76d9f.js"
+  ]
+}
