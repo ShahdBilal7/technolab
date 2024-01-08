@@ -20,8 +20,8 @@ const Navbar = () => {
           <div className='nav-menu'>
             <ul>
               <li ><NavLink className="link" activeclassname="active" to='/'>Home</NavLink> </li>
-              <li ><NavLink className="link" activeclassname="active" to='/about'>About</NavLink></li>
               <li ><NavLink className="link" activeclassname="active" to='/shop'>Shop</NavLink></li>
+              <li ><NavLink className="link" activeclassname="active" to='/about'>About</NavLink></li>
               <li ><NavLink className="link" activeclassname="active" to='/contact'>Contact</NavLink></li>
             </ul>
           </div>
