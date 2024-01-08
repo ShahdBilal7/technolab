@@ -25,15 +25,13 @@ const Navbar = () => {
               <li ><NavLink className="link" activeclassname="active" to='/contact'>Contact</NavLink></li>
             </ul>
           </div>
-          <div className='nav-login'>
-            <NavLink className="link" activeclassname="active" to='/login'><div>Login</div>
-            <FontAwesomeIcon icon="fa-user" />
-            <div className="cart-count">
-              <FontAwesomeIcon className="icon" icon="fa fa-shopping-cart" />
-              <span className="count">0</span>
+            <NavLink className="nav-login link" activeclassname="active" to='/login'><div>Login</div>
+              <FontAwesomeIcon icon="fa-user" />
+              <div className="cart-count">
+                <FontAwesomeIcon className="icon" icon="fa fa-shopping-cart" />
+                <span className="count">0</span>
               </div>
-              </NavLink>
-          </div>
+            </NavLink>
         </div>
       </div>
     </header>
