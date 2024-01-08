@@ -26,12 +26,13 @@ const Navbar = () => {
             </ul>
           </div>
           <div className='nav-login'>
-            <NavLink className="link" activeclassname="active" to='/login'><div>Login</div></NavLink>
+            <NavLink className="link" activeclassname="active" to='/login'><div>Login</div>
             <FontAwesomeIcon icon="fa-user" />
             <div className="cart-count">
               <FontAwesomeIcon className="icon" icon="fa fa-shopping-cart" />
               <span className="count">0</span>
-            </div>
+              </div>
+              </NavLink>
           </div>
         </div>
       </div>
