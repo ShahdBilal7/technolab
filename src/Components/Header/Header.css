@@ -1,7 +1,8 @@
 /* Start Navbar */
-p{
+p {
   margin: 0 !important;
 }
+
 .nav {
   display: flex;
   align-items: center;
@@ -47,15 +48,17 @@ p{
   justify-content: center;
   gap: 50px;
   font-size: 20px;
-  
+
 }
-.link{
+
+.link {
   color: var(--dark-color) !important;
   text-decoration: none !important;
 }
+
 .nav .nav-menu li {
   cursor: pointer;
-position: relative;
+  position: relative;
 }
 
 
@@ -63,15 +66,17 @@ position: relative;
 .nav .nav-menu .link.active {
   color: var(--main-color) !important;
 }
+
 .nav .nav-menu .link.active::after {
-content: "";
-position: absolute;
-height: 3px;
-background-color: var(--main-color);
-width: 80%;
-bottom: 0;
-left: 0;
+  content: "";
+  position: absolute;
+  height: 3px;
+  background-color: var(--main-color);
+  width: 80%;
+  bottom: 0;
+  left: 0;
 }
+
 .nav .nav-login {
   cursor: pointer;
   color: var(--main-color);
@@ -170,14 +175,17 @@ left: 0;
     font-size: 30px;
     color: var(--main-color);
   }
+
   .mobile-header {
     height: 400px;
     background-color: var(--second-color);
     position: relative;
   }
+
   .nav {
     position: relative;
   }
+
   .nav .nav-menu ul {
     flex-direction: column;
     gap: 10px;
@@ -191,6 +199,7 @@ left: 0;
   .nav .nav-login {
     margin-top: 20px;
   }
+
   .nav .nav-change {
     width: 100%;
     flex-direction: column;
@@ -201,9 +210,11 @@ left: 0;
     left: 0;
     display: none;
   }
+
   .mobile-menu-visible {
-    display: flex !important; 
+    display: flex !important;
   }
+
   .search .categories {
     width: unset;
   }

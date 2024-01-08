@@ -1,3 +1,5 @@
+/*  */
+
 /* start logIn */
 .loginCont {
   padding: 30px;
@@ -6,6 +8,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.loginCont .lin {
+  color: var(--main-color) !important;
+}
+
+.loginCont .lin:hover {
+  color: var(--main-color);
+  font-weight: bold;
 }
 
 .loginCont .form-box {
@@ -118,17 +129,6 @@
   -ms-transition: background-color 1s;
   -o-transition: background-color 1s;
 }
-
-/* Tablet (768px - 1024px) */
-@media screen and (min-width: 600px) {
-  /* .cont {
-    width: 100%;
-  }
-  .form-box {
-    width: unset;
-  } */
-}
-
 /* end logIn */
 /* start error404 */
 .errorCont {
@@ -165,7 +165,6 @@
   padding: 15px 30px;
   border-radius: 10px;
   color: white;
-
 }
 
 .error p {

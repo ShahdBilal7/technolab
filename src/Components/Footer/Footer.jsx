@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Footer.css";
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import Logo from "../Logo/Logo";
 
 const Footer = () => {
@@ -42,22 +42,22 @@ const Footer = () => {
               </div>
               <div className="col-md-4 mb-5">
                 <h4 className=" mb-4">Follow Us</h4>
-                <div className="row text-footer-details">
-                  <FontAwesomeIcon icon={"fa-user"} />
-                  <FontAwesomeIcon icon={"fa-user"} />
-                  <FontAwesomeIcon icon={"fa-user"} />
-                  <FontAwesomeIcon icon={"fa-user"} />
+                <div className="d-flex gap-3 ">
+                  <FontAwesomeIcon className="icon fac" icon={['fab', 'facebook']} />
+                  <FontAwesomeIcon className="icon what" icon={['fab', 'whatsapp']} />
+                  <FontAwesomeIcon className="icon yout" icon={['fab', 'youtube']} />
+                  <FontAwesomeIcon className="icon inst" icon={['fab', 'instagram']} />
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="row border-top border-light mx-xl-5 py-4">
+        <div className="d-flex border-top border-light mx-xl-5 py-4">
           <p className="small text-footer-details m-auto pt-3 mb-0">
             &copy; Copyrights.All rights reserved.
-            <a className="text-primary" href="https://technolab.ps">
+            <Link className="linkT" to="https://technolab.ps">
               Technolab.ps
-            </a>
+            </Link>
           </p>
         </div>
       </div>

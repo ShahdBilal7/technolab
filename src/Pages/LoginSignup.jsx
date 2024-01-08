@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import logo from '../Components/Assets/logo.png'
+import { Link } from 'react-router-dom';
 const LoginSignup = () => {
   return (
     <div className="loginCont">
@@ -23,15 +24,15 @@ const LoginSignup = () => {
               </p>
             </div>
             <p id="lostPass">
-              Lost password <a>Click Here!</a>
+              Lost password <Link className="lin">Click Here!</Link>
             </p>
-          
+
           </div>
-        
-            <button className="mt-4" type="button" id="signinBtn" >
-              Log in
-            </button>
-          
+
+          <button className="mt-4" type="button" id="signinBtn" >
+            Log in
+          </button>
+
         </form>
       </div>
 

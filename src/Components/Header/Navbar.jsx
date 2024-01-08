@@ -5,16 +5,16 @@ import { NavLink } from 'react-router-dom';
 import Logo from "../Logo/Logo";
 const Navbar = () => {
   const [state, setState] = useState(false);
-const handleClick=()=>{
-setState(!state);
-}
+  const handleClick = () => {
+    setState(!state);
+  }
   return (
     <header className={state ? 'mobile-header' : ''}>
       <div className='nav container'>
-        <Logo/>
+        <Logo />
         <div onClick={handleClick} className='mobile'>
-          <FontAwesomeIcon id="bar" icon={state?"fa-x":"fa-bars-staggered"}/>
-        
+          <FontAwesomeIcon id="bar" icon={state ? "fa-x" : "fa-bars-staggered"} />
+
         </div>
         <div className={`nav-change ${state ? 'mobile-menu-visible' : ''}`}>
           <div className='nav-menu'>

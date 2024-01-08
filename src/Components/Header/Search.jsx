@@ -20,7 +20,7 @@ const Search = () => {
           <FontAwesomeIcon icon="fa fa-search" />
         </button>
       </div>
-      
+
     </div>
   );
 };
