@@ -1,8 +1,9 @@
 /* start about page */
-.about{
+.about {
   margin-top: 50px;
   margin-bottom: 70px;
 }
+
 .headline {
   display: block;
   margin: 10px 0 25px;
@@ -11,8 +12,8 @@
 
 
 .headline h2 {
-  font-size: 30px; 
-   margin: 0 0 -2px;
+  font-size: 30px;
+  margin: 0 0 -2px;
   padding-bottom: 5px;
   display: inline-block;
   border-bottom: 3px solid #fe5e00;
@@ -164,6 +165,22 @@
 }
 
 /* end logIn */
+/* start contact */
+.contact{
+  margin-top: 50px;
+  margin-bottom: 70px;
+}
+.contact .icon{
+  color: var(--main-color);
+}
+.contact img{
+border: 2px solid var(--dark-color);
+}
+.contact .link:hover {
+  color: var(--main-color) !important;
+}
+.contact
+/* end contact */
 /* start error404 */
 .errorCont {
   padding: 30px;

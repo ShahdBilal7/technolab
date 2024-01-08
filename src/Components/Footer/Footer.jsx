@@ -33,8 +33,8 @@ const Footer = () => {
               </div>
               <div className="col-md-4 mb-5">
                 <h4 className="mb-4">Contact</h4>
-                <div className="d-flex flex-column justify-content-start">
-                  <i className="link mb-2"  > <FontAwesomeIcon icon="fa-map-location-dot" /> Go to map</i>
+                <div className="d-flex flex-column justify-content-start"> 
+                <Link target="_blank"  className="link mb-2" to="http://www.google.com/maps/place/32.226673,35.222009" > <FontAwesomeIcon icon="fa-map-location-dot" /> Go to map</Link>
                   <i className="link mb-2"  ><FontAwesomeIcon icon="fa-phone" /> (+972) 92 355 329</i>
                   <i className="link mb-2"  > <FontAwesomeIcon icon="fa-mobile" /> (+972) 568 182 180</i>
                   <i className="link mb-2 email" > <FontAwesomeIcon icon="fa-envelope" /> Technolab.Electronics @gmail.com</i>
@@ -43,7 +43,7 @@ const Footer = () => {
               <div className="col-md-4 mb-5">
                 <h4 className=" mb-4">Follow Us</h4>
                 <div className="d-flex gap-3 ">
-                  <FontAwesomeIcon className="icon fac" icon={['fab', 'facebook']} />
+                <Link className="link" to="https://www.facebook.com/technolab.electronics" target="_blank" > <FontAwesomeIcon className="icon fac" icon={['fab', 'facebook']} /></Link> 
                   <FontAwesomeIcon className="icon what" icon={['fab', 'whatsapp']} />
                   <FontAwesomeIcon className="icon yout" icon={['fab', 'youtube']} />
                   <FontAwesomeIcon className="icon inst" icon={['fab', 'instagram']} />

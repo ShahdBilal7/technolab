@@ -4,23 +4,24 @@ import { Link } from 'react-router-dom';
 const LoginSignup = () => {
   return (
     <div className="loginCont">
-      <div class="form-box">
+      <div className="form-box">
         <h2 id="title">Log in</h2>
         <form>
-          <div class="logo-login">
+          <div className="logo-login">
             <img src={logo} alt="logo" />
           </div>
-          <div class="input-group">
-            <div class="input-field validate-input" data-validate="" id="emailField">
+          <div className="input-group">
+            <div className="input-field validate-input" data-validate="" id="emailField">
               <FontAwesomeIcon icon={"fa-envelope"} />
               <input id="email" type="email" placeholder="Email" />
             </div>
-            <div class="input-field validate-input " data-validate="" id="passwordField">
-              <FontAwesomeIcon icon={"fa-lock"} />
+            <div className="input-field validate-input " data-validate="" id="passwordField">
+              <FontAwesomeIcon icon="fa-lock" />
               <input id="password" type="password" placeholder="Password" />
               <p id="toggle-password">
-                <i id="eye" class="fa fa-eye disable"></i>
-                <i id="eye-slash" class="fa fa-eye-slash"></i>
+                {//              <FontAwesomeIcon id="eye" icon="fa-eye" />
+                }
+                <FontAwesomeIcon id="eye-slash" icon="fa-eye-slash" />
               </p>
             </div>
             <p id="lostPass">
