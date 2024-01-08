@@ -1,4 +1,7 @@
 /* Start Navbar */
+p{
+  margin: 0 !important;
+}
 .nav {
   display: flex;
   align-items: center;
@@ -18,23 +21,23 @@
   align-items: center;
 }
 
-.nav .nav-logo {
+.nav-logo {
   display: flex;
   align-items: center;
   gap: 15px;
 }
 
-.nav .nav-logo img {
+.nav-logo img {
   width: 100px;
 }
 
-.nav .nav-logo p {
+.nav-logo h4 {
   color: var(--main-color);
   font-weight: bold;
   font-size: 30px;
 }
 
-.nav .nav-logo span {
+.nav-logo span {
   color: var(--dark-color);
 }
 

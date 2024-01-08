@@ -1,9 +1,25 @@
 footer{
-  background-color: var(--dark-color);
+  background-color: #eee;
   position: relative;
   bottom: 0;
 }
-footer .row{
-  display: flex;
-  flex-wrap: wrap;
+footer  .nav-logo{
+  align-items: flex-start;
+}
+footer h4{
+  font-weight: bold;
+}
+footer .link{
+  font-weight: bold;
+
+}
+footer svg{
+  margin-right: 5px;
+}
+footer .link:hover,
+footer .link.active {
+  color: var(--main-color) !important;
+}
+footer .email{
+  font-size: smaller;
 }

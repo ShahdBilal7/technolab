@@ -1,52 +1,68 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import './Footer.css'
-import { NavLink } from 'react-router-dom/dist';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "./Footer.css";
+import { NavLink } from 'react-router-dom';
+import Logo from "../Logo/Logo";
+
 const Footer = () => {
   return (
-    <footer>
+    <footer className="w-100 p-5 shadow-lg">
       <div className="container">
-        <div className='row'>
-          <div className='col-lg-4'>
-            <h5>TECHNOLAB </h5>
-            <p class="small text-footer-details">Since 2015, <strong>Technolab </strong>has been helping turn ideas into reality.Whether you're exploring electronic world, building a robot for school or prototyping your first product. No matter your vision or skill level, our team are on guard. We are here to help you start
-              <strong>something</strong>.</p></div>
-          <div>
-            <h5>Quick links</h5>
-
-            <ul>
-              <li ><NavLink className="" activeclassname="active" to='/'>Home</NavLink> </li>
-              <li ><NavLink className="" activeclassname="active" to='/about'>About</NavLink></li>
-              <li ><NavLink className="" activeclassname="active" to='/shop'>Shop</NavLink></li>
-              <li ><NavLink className="" activeclassname="active" to='/contact'>Contact</NavLink></li>
-            </ul>
-
+        <div className="row px-xl-5 pt-5">
+          <div className="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
+            <Logo className="mt-0" />
+            <p className="mt-3 small text-footer-details">
+              Since 2015, <strong>Technolab </strong>has been helping turn ideas
+              into reality.Whether you're exploring electronic world, building a
+              robot for school or prototyping your first product. No matter your
+              vision or skill level, our team are on guard. We are here to help
+              you start
+              <strong> something</strong>.
+            </p>
           </div>
-          <div>
-            <h5>Contact</h5>
-            <ul class="list-unstyled text-footer-details">
-              <li>Go to map</li>
-              <li>(+972) 92 355 329</li>
-              <li>(+972) 568 182 180</li>
-              <li>Technolab.Electronics @gmail.com</li>
-            </ul>
-          </div>
-          <div>
-            <h5>Follow Us</h5>
-            <FontAwesomeIcon icon={"fa-user"} />
-            <FontAwesomeIcon icon={"fa-user"} />
-            <FontAwesomeIcon icon={"fa-user"} />
-            <FontAwesomeIcon icon={"fa-user"} />
+          <div className="col-lg-8 col-md-12">
+            <div className="row">
+              <div className="col-md-4 mb-5">
+                <h4 className="mb-4">Quick links</h4>
+                <div className="d-flex flex-column justify-content-start">
+                  <NavLink className="link mb-2" activeclassname="active" to='/'> <FontAwesomeIcon icon="fa-angle-right" />Home</NavLink>
+                  <NavLink className="link mb-2" activeclassname="active" to='/about'><FontAwesomeIcon icon="fa-angle-right" /> About</NavLink>
+                  <NavLink className="link mb-2" activeclassname="active" to='/shop'> <FontAwesomeIcon icon="fa-angle-right" /> Shop</NavLink>
+                  <NavLink className="link mb-2" activeclassname="active" to='/contact'> <FontAwesomeIcon icon="fa-angle-right" /> Contact</NavLink>
+                </div>
+
+              </div>
+              <div className="col-md-4 mb-5">
+                <h4 className="mb-4">Contact</h4>
+                <div className="d-flex flex-column justify-content-start">
+                  <i className="link mb-2"  > <FontAwesomeIcon icon="fa-map-location-dot" /> Go to map</i>
+                  <i className="link mb-2"  ><FontAwesomeIcon icon="fa-phone" /> (+972) 92 355 329</i>
+                  <i className="link mb-2"  > <FontAwesomeIcon icon="fa-mobile" /> (+972) 568 182 180</i>
+                  <i className="link mb-2 email" > <FontAwesomeIcon icon="fa-envelope" /> Technolab.Electronics @gmail.com</i>
+                </div>
+              </div>
+              <div className="col-md-4 mb-5">
+                <h4 className=" mb-4">Follow Us</h4>
+                <div className="row text-footer-details">
+                  <FontAwesomeIcon icon={"fa-user"} />
+                  <FontAwesomeIcon icon={"fa-user"} />
+                  <FontAwesomeIcon icon={"fa-user"} />
+                  <FontAwesomeIcon icon={"fa-user"} />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <hr></hr>
-        <div className='row'>
-        <p class="small text-footer-details m-auto pt-3 mb-0">
-        © Copyrights.All rights reserved.<a class="text-primary" href="https://technolab.ps">Technolab.ps</a></p>
+        <div className="row border-top border-light mx-xl-5 py-4">
+          <p className="small text-footer-details m-auto pt-3 mb-0">
+            &copy; Copyrights.All rights reserved.
+            <a className="text-primary" href="https://technolab.ps">
+              Technolab.ps
+            </a>
+          </p>
         </div>
       </div>
-
     </footer>
-  )
-}
+  );
+};
 
 export default Footer;

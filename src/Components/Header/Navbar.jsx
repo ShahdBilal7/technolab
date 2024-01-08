@@ -1,7 +1,8 @@
-import logo from '../Assets/logo.png'
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import Logo from "../Logo/Logo";
 const Navbar = () => {
   const [state, setState] = useState(false);
 const handleClick=()=>{
@@ -10,13 +11,7 @@ setState(!state);
   return (
     <header className={state ? 'mobile-header' : ''}>
       <div className='nav container'>
-        <div className='nav-logo'>
-          <img src={logo} alt="logo" />
-          <div className='info'>
-            <p>Technolab</p>
-            <span>Electronics</span>
-          </div>
-        </div>
+        <Logo/>
         <div onClick={handleClick} className='mobile'>
           <FontAwesomeIcon id="bar" icon={state?"fa-x":"fa-bars-staggered"}/>
         
