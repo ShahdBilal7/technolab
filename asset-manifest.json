@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/technolab/static/css/main.f33ab78a.css",
-    "main.js": "/technolab/static/js/main.91b07192.js",
+    "main.css": "/technolab/static/css/main.33982bfb.css",
+    "main.js": "/technolab/static/js/main.0b5c86bd.js",
     "static/media/h3.png": "/technolab/static/media/h3.28b918b9574c418c4472.png",
     "static/media/logo.png": "/technolab/static/media/logo.672e22c5f8b48950cb7d.png",
     "index.html": "/technolab/index.html",
-    "main.f33ab78a.css.map": "/technolab/static/css/main.f33ab78a.css.map",
-    "main.91b07192.js.map": "/technolab/static/js/main.91b07192.js.map"
+    "main.33982bfb.css.map": "/technolab/static/css/main.33982bfb.css.map",
+    "main.0b5c86bd.js.map": "/technolab/static/js/main.0b5c86bd.js.map"
   },
   "entrypoints": [
-    "static/css/main.f33ab78a.css",
-    "static/js/main.91b07192.js"
+    "static/css/main.33982bfb.css",
+    "static/js/main.0b5c86bd.js"
   ]
 }
