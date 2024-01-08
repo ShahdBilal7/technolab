@@ -5,7 +5,7 @@ const Contact = () => {
   return (
     <div className="container contact">
       <div className="row">
-        <div className="col-md-6" >
+        <div className="col-md-6 mb-5" >
           <div className="headline">
             <h2>Contact Us</h2>
           </div>
@@ -16,7 +16,7 @@ const Contact = () => {
             <i className="d-flex gap-3 link" > <FontAwesomeIcon className="icon" icon="fa-location" />Near "Jorf" super Market , An Najah National Unversiity street , Rafydia, Nablus, Plasetine</i>
             </div>
         </div>
-        <div className="col-md-6">
+        <div className="col-md-6 mb-5">
           <Link target="_blank" to="http://www.google.com/maps/place/32.226673,35.222009" >
             <img src={map} alt="map" />
           </Link>
