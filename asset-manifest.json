@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/technolab/static/css/main.47a2902c.css",
+    "main.css": "/technolab/static/css/main.d3828b62.css",
     "main.js": "/technolab/static/js/main.cd58c31f.js",
     "static/media/h1.png": "/technolab/static/media/h1.90bf9986a36ced1ba970.png",
     "static/media/h3.png": "/technolab/static/media/h3.28b918b9574c418c4472.png",
@@ -8,11 +8,11 @@
     "static/media/logo.png": "/technolab/static/media/logo.672e22c5f8b48950cb7d.png",
     "static/media/h2.jpg": "/technolab/static/media/h2.9574f0d842019b6a8c2c.jpg",
     "index.html": "/technolab/index.html",
-    "main.47a2902c.css.map": "/technolab/static/css/main.47a2902c.css.map",
+    "main.d3828b62.css.map": "/technolab/static/css/main.d3828b62.css.map",
     "main.cd58c31f.js.map": "/technolab/static/js/main.cd58c31f.js.map"
   },
   "entrypoints": [
-    "static/css/main.47a2902c.css",
+    "static/css/main.d3828b62.css",
     "static/js/main.cd58c31f.js"
   ]
 }
