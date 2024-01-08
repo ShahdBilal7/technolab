@@ -184,8 +184,11 @@ p {
 
   .nav {
     position: relative;
+    gap:0;
   }
-
+.nav .info h4{
+  font-size: 20px;
+}
   .nav .nav-menu ul {
     flex-direction: column;
     gap: 10px;
@@ -218,4 +221,5 @@ p {
   .search .categories {
     width: unset;
   }
+
 }
