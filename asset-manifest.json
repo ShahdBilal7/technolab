@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/technolab/static/css/main.01e68dbb.css",
-    "main.js": "/technolab/static/js/main.3a2059fa.js",
+    "main.css": "/technolab/static/css/main.21e3b22f.css",
+    "main.js": "/technolab/static/js/main.cae852f0.js",
     "static/media/h1.png": "/technolab/static/media/h1.90bf9986a36ced1ba970.png",
     "static/media/h3.png": "/technolab/static/media/h3.28b918b9574c418c4472.png",
     "static/media/map.PNG": "/technolab/static/media/map.767ddb69070b0dd8897e.PNG",
     "static/media/logo.png": "/technolab/static/media/logo.672e22c5f8b48950cb7d.png",
     "static/media/h2.jpg": "/technolab/static/media/h2.9574f0d842019b6a8c2c.jpg",
     "index.html": "/technolab/index.html",
-    "main.01e68dbb.css.map": "/technolab/static/css/main.01e68dbb.css.map",
-    "main.3a2059fa.js.map": "/technolab/static/js/main.3a2059fa.js.map"
+    "main.21e3b22f.css.map": "/technolab/static/css/main.21e3b22f.css.map",
+    "main.cae852f0.js.map": "/technolab/static/js/main.cae852f0.js.map"
   },
   "entrypoints": [
-    "static/css/main.01e68dbb.css",
-    "static/js/main.3a2059fa.js"
+    "static/css/main.21e3b22f.css",
+    "static/js/main.cae852f0.js"
   ]
 }
