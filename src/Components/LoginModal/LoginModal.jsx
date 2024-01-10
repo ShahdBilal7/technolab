@@ -5,11 +5,14 @@ import { useState } from 'react';
 import logo from '../Assets/logo.png';
 import "./loginModal.css";
 import { Link } from 'react-router-dom';
-const LoginModal = ({ error }) => {
+const LoginModal = ({ error , handleClick  }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShow = () =>{
+    handleClick();
+    setShow(true);
+  }
   const handleSubmit = () => setShow(false);
   const handlePasswordToggle = () => {
     setPasswordVisible(!passwordVisible);

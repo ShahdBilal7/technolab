@@ -28,7 +28,7 @@ const Navbar = () => {
               <li ><NavLink className="link" activeclassname="active" to='/contact' onClick={handleClick}>Contact</NavLink></li>
             </ul>
           </div>
-          <LoginModal />
+          <LoginModal handleClick={handleClick}/>
         </div>
       </div>
     </header>
