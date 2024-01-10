@@ -22,10 +22,10 @@ const Navbar = () => {
         <div className={`nav-change ${state ? 'mobile-menu-visible' : ''}`}>
           <div className='nav-menu'>
             <ul>
-              <li ><NavLink className="link" activeclassname="active" to='/'>Home</NavLink> </li>
-              <li ><NavLink className="link" activeclassname="active" to='/shop'>Shop</NavLink></li>
-              <li ><NavLink className="link" activeclassname="active" to='/about'>About</NavLink></li>
-              <li ><NavLink className="link" activeclassname="active" to='/contact'>Contact</NavLink></li>
+              <li ><NavLink className="link" activeclassname="active" to='/' onClick={handleClick}>Home</NavLink> </li>
+              <li ><NavLink className="link" activeclassname="active" to='/shop' onClick={handleClick}>Shop</NavLink></li>
+              <li ><NavLink className="link" activeclassname="active" to='/about' onClick={handleClick}>About</NavLink></li>
+              <li ><NavLink className="link" activeclassname="active" to='/contact' onClick={handleClick}>Contact</NavLink></li>
             </ul>
           </div>
           <LoginModal />
