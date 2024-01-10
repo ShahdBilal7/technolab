@@ -5,7 +5,7 @@ import Logo from "../Logo/Logo";
 
 const Footer = () => {
   return (
-    <footer className="w-100 p-5 shadow-lg">
+    <footer className="w-100 shadow-lg">
       <div className="container">
         <div className="row px-xl-5 pt-5">
           <div className="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
@@ -52,8 +52,8 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="d-flex border-top border-light mx-xl-5 py-4">
-          <p className="small text-footer-details m-auto pt-3 mb-0">
+        <div className="d-flex border-top border-light  py-3 mb-2">
+          <p className="small text-footer-details m-auto pt-2 mb-0">
             &copy; Copyrights.All rights reserved.
             <Link className="linkT" to="https://technolab.ps">
               Technolab.ps

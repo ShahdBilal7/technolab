@@ -13,7 +13,7 @@ const images = [
 
 const Hero = () => {
   return (
-    <div className='hero'>
+    <div className='hero container'>
       <Carousel>
         {images.map((image, index) => (
           <Carousel.Item key={index}>
