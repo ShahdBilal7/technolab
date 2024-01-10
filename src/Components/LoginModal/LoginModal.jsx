@@ -1,11 +1,11 @@
 import React from 'react'
-import { Modal, Button, Form } from "react-bootstrap";
+import { Modal} from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from 'react';
 import logo from '../Assets/logo.png';
 import "./loginModal.css";
 import { Link } from 'react-router-dom';
-const LoginModal = () => {
+const LoginModal = ({error}) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -48,7 +48,7 @@ const LoginModal = () => {
               </p>
     
               </div>
-          
+              {error && <p className="text-danger error-message">{error}</p>}
             </div>
             <button className='mt-2' type="submit" id="signinBtn" >
               Submit
