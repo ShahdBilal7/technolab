@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/technolab/static/css/main.21e3b22f.css",
-    "main.js": "/technolab/static/js/main.cae852f0.js",
+    "main.js": "/technolab/static/js/main.a958358a.js",
     "static/media/h1.png": "/technolab/static/media/h1.90bf9986a36ced1ba970.png",
     "static/media/h3.png": "/technolab/static/media/h3.28b918b9574c418c4472.png",
     "static/media/map.PNG": "/technolab/static/media/map.767ddb69070b0dd8897e.PNG",
@@ -9,10 +9,10 @@
     "static/media/h2.jpg": "/technolab/static/media/h2.9574f0d842019b6a8c2c.jpg",
     "index.html": "/technolab/index.html",
     "main.21e3b22f.css.map": "/technolab/static/css/main.21e3b22f.css.map",
-    "main.cae852f0.js.map": "/technolab/static/js/main.cae852f0.js.map"
+    "main.a958358a.js.map": "/technolab/static/js/main.a958358a.js.map"
   },
   "entrypoints": [
     "static/css/main.21e3b22f.css",
-    "static/js/main.cae852f0.js"
+    "static/js/main.a958358a.js"
   ]
 }
