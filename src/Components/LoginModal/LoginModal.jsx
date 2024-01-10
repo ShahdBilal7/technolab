@@ -48,16 +48,17 @@ const LoginModal = () => {
               </p>
     
               </div>
+          
             </div>
-            <button type="submit" id="signinBtn" >
+            <button className='mt-2' type="submit" id="signinBtn" >
               Submit
             </button>
           </form>
-          <div className="px-4">
-            <p id="lostPass">
-              Lost password
-              <Link className="lin"> Click Here</Link>
-            </p>
+          <div className="mod-footer px-4">
+          <p id="lostPass">
+               
+          <Link className="lin"> Forgot your password?</Link>
+        </p> 
             <p id="lostPass">
               No account?
               <Link className="lin"> Register</Link>

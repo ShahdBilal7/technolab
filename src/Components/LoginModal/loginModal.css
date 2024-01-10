@@ -1,4 +1,7 @@
 /* start logIn */
+.loginCont .mod-footer{
+  font-size: 14px;
+}
  .loginCont .lin {
   color: var(--main-color) !important;
   text-decoration: none;
