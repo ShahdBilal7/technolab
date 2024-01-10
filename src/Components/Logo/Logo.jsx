@@ -1,4 +1,4 @@
-import { NavLink } from 'react-bootstrap'
+import { NavLink } from 'react-router-dom';
 import logo from '../Assets/logo.png'
 const Logo = () => {
   return (
@@ -8,7 +8,8 @@ const Logo = () => {
         <h4>Technolab</h4>
         <span>Electronics</span>
       </div>
-    </div></NavLink>
+    </div>
+    </NavLink>
 
   )
 }
