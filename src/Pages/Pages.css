@@ -1,3 +1,9 @@
+/* start register page */
+.reg{
+  margin-top: 20px;
+}
+
+/* end register page */
 /* start about page */
 .about {
   margin-top: 50px;
@@ -49,7 +55,6 @@ border: 2px solid var(--dark-color);
 .contact .link:hover {
   color: var(--main-color) !important;
 }
-.contact
 /* end contact */
 /* start error404 */
 .errorCont {

@@ -8,6 +8,7 @@ import Cart from './Pages/Cart';
 import Shop from './Pages/Shop';
 import Error404 from './Pages/Error404';
 import Footer from './Components/Footer/Footer';
+import Register from './Pages/Register';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path='/contact' element={<Contact />} />
           <Route path='/cart' element={<Cart />} />
           <Route path='/shop' element={<Shop />} />
+          <Route path='/register' element={<Register />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
         <Footer/>

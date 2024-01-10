@@ -1,11 +1,11 @@
 import React from 'react'
-import { Modal} from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from 'react';
 import logo from '../Assets/logo.png';
 import "./loginModal.css";
 import { Link } from 'react-router-dom';
-const LoginModal = ({error}) => {
+const LoginModal = ({ error }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -41,27 +41,26 @@ const LoginModal = ({error}) => {
               <div className="input-field validate-input " data-validate="" id="passwordField">
                 <FontAwesomeIcon icon="fa-lock" />
                 <input id="password" name="password"
-                type={passwordVisible ? 'text' : 'password'}
-                placeholder="Password" />
+                  type={passwordVisible ? 'text' : 'password'}
+                  placeholder="Password" />
                 <p id="toggle-password" onClick={handlePasswordToggle}>
-                <FontAwesomeIcon id="eye-slash" icon={passwordVisible ? 'eye' : 'eye-slash'} />
-              </p>
-    
+                  <FontAwesomeIcon id="eye-slash" icon={passwordVisible ? 'eye' : 'eye-slash'} />
+                </p>
+
               </div>
               {error && <p className="text-danger error-message">{error}</p>}
             </div>
-            <button className='mt-2' type="submit" id="signinBtn" >
+            <button className='sub mt-2' type="submit" id="signinBtn" >
               Submit
             </button>
           </form>
           <div className="mod-footer px-4">
-          <p id="lostPass">
-               
-          <Link className="lin"> Forgot your password?</Link>
-        </p> 
             <p id="lostPass">
+              <Link className="lin"> Forgot your password?</Link>
+            </p>
+            <p >
               No account?
-              <Link className="lin"> Register</Link>
+              <Link className="lin" onClick={handleClose} to="/register" > Register</Link>
             </p>
           </div>
 
