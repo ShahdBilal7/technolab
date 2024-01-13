@@ -49,9 +49,12 @@
 .contact .icon{
   color: var(--main-color);
 }
-.contact img{
+.contact iframe{
+  width: 100%;
+  height: 100%;
 border: 2px solid var(--dark-color);
 }
+.contact iframe:hover{border:2px solid var(--main-color);}
 .contact .link:hover {
   color: var(--main-color) !important;
 }
