@@ -1,4 +1,3 @@
-import './App.css';
 import Header from './Components/Header/Header';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './Pages/Home';
@@ -9,11 +8,12 @@ import Shop from './Pages/Shop';
 import Error404 from './Pages/Error404';
 import Footer from './Components/Footer/Footer';
 import Register from './Pages/Register';
+import ScrollToTop from "react-scroll-to-top";
 
 function App() {
   return (
-    
       <BrowserRouter basename="/technolab">
+      <ScrollToTop smooth  />
         <Header />
         <Routes>
           <Route path='/' element={<Home />} />

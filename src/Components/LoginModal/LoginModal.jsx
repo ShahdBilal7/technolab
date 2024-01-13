@@ -53,7 +53,7 @@ const LoginModal = ({ error , handleClick  }) => {
               </div>
               {error && <p className="text-danger error-message">{error}</p>}
             </div>
-            <button className='sub mt-2' type="submit" id="signinBtn" >
+            <button className='submit mt-2' type="submit" id="signinBtn" >
               Submit
             </button>
           </form>

@@ -74,7 +74,7 @@ const Register = () => {
                 <Form.Label>Password</Form.Label>
                 <Form.Control type="password" required />
               </Form.Group>
-              <button className='sub mt-2' type="submit" id="register">
+              <button className='submit mt-2' type="submit" id="register">
                 Register
               </button>
             </Form>
