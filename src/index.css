@@ -49,6 +49,17 @@ img{
 .scroll-to-top:hover{
 background-color: var(--main-color);
 }
+.scroll-to-top-button {
+  background-color: transparent; 
+  border: none;
+  cursor: pointer;
+}
+
+.scroll-to-top-button::before {
+  content: '\f077'; /* Unicode for chevron-up icon */
+  font-family: FontAwesome; /* Use Font Awesome font */
+}
+
 .container {
   padding-left: 15px;
   padding-right: 15px;
