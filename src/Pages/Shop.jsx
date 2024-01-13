@@ -1,6 +1,6 @@
 const Shop = () => {
   return (
-    <div>
+    <div style={{marginTop:"200px"}}>
       
     </div>
   )

@@ -44,7 +44,7 @@ img{
 }
 .form-control:focus {
   border-color: var(--main-color); 
-  box-shadow: 0 0 0 0.25rem rgba(76, 175, 80, 0.25); /* Change this to your desired focus box-shadow */
+  box-shadow: 0 0 0 0.25rem rgba(76, 175, 80, 0.25); 
 }
 .scroll-to-top:hover{
 background-color: var(--main-color);
