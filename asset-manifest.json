@@ -1,17 +1,24 @@
 {
   "files": {
-    "main.css": "/technolab/static/css/main.e5e841c2.css",
-    "main.js": "/technolab/static/js/main.19314eea.js",
-    "static/media/h1.png": "/technolab/static/media/h1.90bf9986a36ced1ba970.png",
-    "static/media/h3.png": "/technolab/static/media/h3.28b918b9574c418c4472.png",
+    "main.css": "/technolab/static/css/main.7c3fddc0.css",
+    "main.js": "/technolab/static/js/main.2ee7ef99.js",
+    "static/media/h3.jpg": "/technolab/static/media/h3.e676898374f2cdad3537.jpg",
+    "static/media/h2.jpg": "/technolab/static/media/h2.321bd9e8ad9150c29830.jpg",
+    "static/media/h4.jpg": "/technolab/static/media/h4.7bc819170809dcd7d33f.jpg",
+    "static/media/h1.jpg": "/technolab/static/media/h1.360f1fd74935e36c8d9b.jpg",
+    "static/media/h5.jpg": "/technolab/static/media/h5.986209d16e5a0fade0f2.jpg",
+    "static/media/p1.jpg": "/technolab/static/media/p1.71160c3cf526bd42c747.jpg",
     "static/media/logo.png": "/technolab/static/media/logo.672e22c5f8b48950cb7d.png",
-    "static/media/h2.jpg": "/technolab/static/media/h2.9574f0d842019b6a8c2c.jpg",
+    "static/media/slick.svg": "/technolab/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/technolab/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/technolab/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/technolab/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/technolab/index.html",
-    "main.e5e841c2.css.map": "/technolab/static/css/main.e5e841c2.css.map",
-    "main.19314eea.js.map": "/technolab/static/js/main.19314eea.js.map"
+    "main.7c3fddc0.css.map": "/technolab/static/css/main.7c3fddc0.css.map",
+    "main.2ee7ef99.js.map": "/technolab/static/js/main.2ee7ef99.js.map"
   },
   "entrypoints": [
-    "static/css/main.e5e841c2.css",
-    "static/js/main.19314eea.js"
+    "static/css/main.7c3fddc0.css",
+    "static/js/main.2ee7ef99.js"
   ]
 }
