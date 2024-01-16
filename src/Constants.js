@@ -187,102 +187,145 @@ const products = [
     name: "MacBook Air 13.6\" M2 (8-CPU Core/ 8-GPU Core)",
     price: 4999.00,
     image: logoImage,
+    onSale: true,
+    salePrice:888.8,
   },
   {
     id: 2,
     name: "MacBook Air ",
     price: 4999.00,
     image: logoImage,
+    onSale: false,
   },  {
     id: 3,
     name: "MacBook Air Air 13.6\" M2 (8-CPU Core/ 8-GPU Core)13.6\" M2 (8-CPU Core/ 8-GPU Core)",
     price: 4999.00,
     image: logoImage,
+    onSale: false,
   },
   {
     id: 4,
     name: "MacBook Air 13.6\" M2 (8-CPU Core/ 8-GPU Core)",
     price: 4999.00,
     image: logoImage,
+    onSale: false,
+    onNew: true,
+    onMost:true,
   },
   {
     id: 5,
     name: "MacBook Air 13.6\" M2 (8-CPU Core/ 8-GPU Core)",
     price: 4999.00,
     image: logoImage,
+    onSale: true,
+    salePrice:888.8,
+    onNew: true,
   },  {
     id: 6,
     name: "MacBook Air 13.6\" M2 (8-CPU Core/ 8-GPU Core)",
     price: 4999.00,
     image: logoImage,
+    onSale: false,
+    
   },
   {
     id: 7,
     name: "MacBook Air 13.6\" M2 (8-CPU Core/ 8-GPU Core)",
     price: 4999.00,
     image: logoImage,
+    onSale: false,
+    onMost:true
   },
   {
     id: 8,
     name: "MacBook Air 13.6\" M2 (8-CPU Core/ 8-GPU Core)",
     price: 4999.00,
     image: logoImage,
+    onSale: false,
+    onNew: true,
+    onMost:true
   },  {
     id: 9,
     name: "MacBook Air 13.6\" M2 (8-CPU Core/ 8-GPU Core)",
     price: 4999.00,
     image: logoImage,
+    onSale: false,
+    onNew: true,
   },
   {
     id: 10,
     name: "MacBook Air 13.6\" M2 (8-CPU Core/ 8-GPU Core)",
     price: 4999.00,
     image: logoImage,
+    onSale: true,
+    salePrice:888.8,
+    onNew: true,
+    onMost:true
   },
   {
     id: 11,
     name: "MacBook Air 13.6\" M2 (8-CPU Core/ 8-GPU Core)",
     price: 4999.00,
     image: logoImage,
+    onSale: true,
+    salePrice:888.8,
   },  {
     id: 12,
     name: "MacBook Air 13.6\" M2 (8-CPU Core/ 8-GPU Core)",
     price: 4999.00,
     image: logoImage,
+    onSale: false,
   },
   {
     id: 13,
     name: "MacBook Air 13.6\" M2 (8-CPU Core/ 8-GPU Core)",
     price: 4999.00,
     image: logoImage,
+    onSale: true,
+    salePrice:888.8888,
   },
   {
     id: 14,
     name: "MacBook Air 13.6\" M2 (8-CPU Core/ 8-GPU Core)",
     price: 4999.00,
     image: logoImage,
+    onNew: true,
+    onMost:true
   },  {
     id: 15,
     name: "MacBook Air 13.6\" M2 (8-CPU Core/ 8-GPU Core)",
     price: 4999.00,
     image: logoImage,
+    onSale: false,
   },
   {
     id: 16,
     name: "MacBook Air 13.6\" M2 (8-CPU Core/ 8-GPU Core)",
     price: 4999.00,
     image :logoImage,
+    onSale: true,
+    salePrice:888.8,
   },
   {
     id: 17,
     name: "MacBook Air 13.6\" M2 (8-CPU Core/ 8-GPU Core)",
     price: 4999.00,
     image: logoImage,
+    onSale: true,
+    onNew: true,
+    onMost:false,
+    salePrice:888.8,
   },  {
     id: 18,
     name: "MacBook Air 13.6\" M2 (8-CPU Core/ 8-GPU Core)",
     price: 4999.00,
     image: logoImage,
+    onSale: false,
+    onNew: true,
+    onMost:true
   },
 ];
-export {useRef,categories,products, FontAwesomeIcon, contactInfo, NavLink, Link, routes, navLinks, CarouselImages, logoImage, useState, useEffect, Footer, NavbarHeader, Register }
+const saleItems = products.filter(product => product.onSale);
+const NewProducts = products.filter(product => product.onNew);
+const MostPopular = products.filter(product => product.onMost);
+export {saleItems,NewProducts,MostPopular,useRef,categories,products, FontAwesomeIcon, contactInfo, NavLink, Link, routes, navLinks, CarouselImages, logoImage, useState, useEffect, Footer, NavbarHeader, Register }

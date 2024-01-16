@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import ProductCard from "../ProductCard/ProductCard";
 import Slider from "react-slick";
 
-const ElasticCarsoul = ({heading,products,color,rowCount}) => {
+const ElasticCarsoul = ({heading,products,color,rowCount,flagSale}) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -42,7 +42,7 @@ const ElasticCarsoul = ({heading,products,color,rowCount}) => {
   <Slider {...settings}>
   {products.map((product) => (
     <div key={product.id} className="p-4">
-      <ProductCard product={product} />
+      <ProductCard product={product} flagSale={flagSale} />
     </div>
   ))}
   </Slider>

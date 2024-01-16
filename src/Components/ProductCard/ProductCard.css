@@ -1,3 +1,7 @@
+.product-card {
+  box-shadow: 0 2px 7px #dfdfdf;
+}
+
 .product-card .border-right {
   border-right: 1px solid #DEE2E6 !important;
 
@@ -5,8 +9,8 @@
 
 .product-card .truncated-text {
   height: 50px;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  box-orient: vertical;
+  line-clamp: 2;
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 18px;
@@ -39,4 +43,35 @@
 
 .product-card .link:hover {
   color: var(--main-color) !important;
+}
+
+.product-card .heart:hover {
+  color: #b71540 !important;
+}
+.product-image .sale {
+  background: #b71540;
+  color: #fff;
+  font-size: 13px;
+  padding: 2px 6px 2px 18px;
+  border-radius: 1px 3px 3px 1px;
+  position: absolute;
+  top: 13px;
+  left: -15px;
+  clip-path: polygon(10% 0, 100% 0, 100% 100%, 10% 100%, 0 50%);
+}
+
+.product-image .sale:before {
+  content: "";
+  background: #fff;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  position: absolute;
+  top: 8px;
+  left: 7px;
+}
+.product-card .salePrice{
+  margin-right: 20px;
+  color: gray;
+
 }

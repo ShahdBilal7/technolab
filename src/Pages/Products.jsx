@@ -61,7 +61,7 @@ const Product = () => {
             <div className='row'>
               {products.map((product) => (
                 <div key={product.id} className=" col-lg-4 col-md-6 col-sm-12 mb-3">
-                  <ProductCard product={product} />
+                  <ProductCard product={product} flagSale={true} />
                 </div>
               ))}
             </div>
