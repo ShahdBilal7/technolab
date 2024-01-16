@@ -1,7 +1,13 @@
 
 import { Form } from 'react-bootstrap';
-import logo from "../Components/Assets/logo.png";
-const Register = () => {
+import {useEffect} from "../Constants.js";
+const Register = ({ setShowSearch }) => {
+  useEffect(() => {
+    setShowSearch(false);
+    return () => {
+        setShowSearch(true); 
+    };
+}, [setShowSearch]);
   const Universitys = ["  An-Najah National University",
     "Al-Quds University",
     "Bethlehem University",

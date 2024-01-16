@@ -1,0 +1,19 @@
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo img {
+  width: 100px;
+}
+
+.logo h4 {
+  color: var(--main-color);
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.logo span {
+  color: var(--dark-color);
+}

@@ -1,16 +1,12 @@
-import React from 'react'
+import { logoImage,FontAwesomeIcon,useState ,Link} from "../../Constants.js";
 import { Modal } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from 'react';
-import logo from '../Assets/logo.png';
 import "./loginModal.css";
-import { Link } from 'react-router-dom';
-const LoginModal = ({ error , handleClick  }) => {
+const LoginModal = ({ error,handleNavLinkClick}) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () =>{
-    handleClick();
+    handleNavLinkClick();
     setShow(true);
   }
   const handleSubmit = () => setShow(false);
@@ -19,10 +15,9 @@ const LoginModal = ({ error , handleClick  }) => {
   };
   return (
     <>
-      <div className="nav-login link" onClick={handleShow} >
-        <div>Login</div>
-        <FontAwesomeIcon icon="fa-user" />
-        <div className="cart-count">
+      <div className="nav-login "  >
+        <div className='link' onClick={handleShow}>Login</div>
+        <div className="cart-count link">
           <FontAwesomeIcon className="icon" icon="fa fa-shopping-cart" />
           <span className="count">0</span>
         </div>
@@ -30,7 +25,7 @@ const LoginModal = ({ error , handleClick  }) => {
       <Modal className="loginCont" show={show} onHide={handleClose} centered>
         <Modal.Header className='flex-column-reverse' closeButton>
           <div className="logo-login">
-            <img src={logo} alt="logo" />
+            <img src={logoImage} alt="logo" />
           </div>
           <h2 id="title">Log in</h2>
         </Modal.Header>
@@ -38,14 +33,14 @@ const LoginModal = ({ error , handleClick  }) => {
           <form onSubmit={handleSubmit} className='d-flex flex-column align-items-center p-4'>
             <div className="input-group">
               <div className="input-field validate-input" data-validate="" id="emailField">
-                <FontAwesomeIcon icon={"fa-user"} />
-                <input id="name" name="username" type="text" placeholder="Name" />
+                <FontAwesomeIcon icon={"fa-envelope"} />
+                <input id="name" name="username" type="email" placeholder="Email" required />
               </div>
               <div className="input-field validate-input " data-validate="" id="passwordField">
                 <FontAwesomeIcon icon="fa-lock" />
                 <input id="password" name="password"
                   type={passwordVisible ? 'text' : 'password'}
-                  placeholder="Password" />
+                  placeholder="Password" required />
                 <p id="toggle-password" onClick={handlePasswordToggle}>
                   <FontAwesomeIcon id="eye-slash" icon={passwordVisible ? 'eye' : 'eye-slash'} />
                 </p>
@@ -61,7 +56,7 @@ const LoginModal = ({ error , handleClick  }) => {
             <p id="lostPass">
               <Link className="lin"> Forgot your password?</Link>
             </p>
-            <p >
+            <p className='reg' >
               No account?
               <Link className="lin" onClick={handleClose} to="/register" > Register</Link>
             </p>

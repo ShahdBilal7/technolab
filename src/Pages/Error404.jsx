@@ -1,5 +1,4 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { NavLink } from "react-router-dom";
+import {FontAwesomeIcon,NavLink} from "../Constants.js";
 const Error404 = () => {
   return (
     <div className="errorCont container">

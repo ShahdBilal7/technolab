@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { contactInfo } from "../Constants.js";
 const Contact = () => {
   return (
     <div className="container contact">
@@ -7,12 +8,13 @@ const Contact = () => {
           <h2>Contact Us</h2>
         </div>
         <div className="col-md-6 mb-5" >
-
           <div className="d-flex flex-column gap-4 ">
-            <i className=" d-flex gap-3 link "  ><FontAwesomeIcon className="icon" icon="fa-phone" />(+972) 92 355 329</i>
-            <i className="d-flex gap-3 link "  > <FontAwesomeIcon className="icon" icon="fa-mobile" />(+972) 568 182 180</i>
-            <i className="d-flex gap-3 link" > <FontAwesomeIcon className="icon" icon="fa-envelope" />Technolab.Electronics@gmail.com</i>
-            <i className="d-flex gap-3 link" > <FontAwesomeIcon className="icon" icon="fa-location" />Near "Jorf" super Market , An Najah National Unversiity street , Rafydia, Nablus, Plasetine</i>
+            {contactInfo.map((info, index) => (
+              <i key={index} className="d-flex gap-3 link" >
+                <FontAwesomeIcon className="icon" icon={info.icon} />
+                {info.value}
+              </i>
+            ))}
             <br /><br /><br />
           </div>
         </div>

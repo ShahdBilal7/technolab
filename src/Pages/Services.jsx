@@ -1,4 +1,4 @@
-const Shop = () => {
+const Services = () => {
   return (
     <div style={{marginTop:"200px"}}>
       
@@ -6,4 +6,4 @@ const Shop = () => {
   )
 }
 
-export default Shop
+export default Services
