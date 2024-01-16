@@ -1,0 +1,9 @@
+.ElasticCarsoul{
+  padding: var(--section-padding) 0;
+  position: relative;
+  
+}
+.ElasticCarsoul .slick-arrow::before{
+ color: #000;
+
+}

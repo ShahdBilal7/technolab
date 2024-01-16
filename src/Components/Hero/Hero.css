@@ -1,17 +1,14 @@
-.hero
-{
-  margin-bottom: 200px;
-}
+
 img{
 height: 100%;
 }
 
-/* Customizing the color of the Carousel arrows */
 .carousel-control-prev-icon,
-.carousel-control-next-icon {
+.carousel-control-next-icon {  background-color: #000;
   filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(100deg) brightness(100%) contrast(100%);
   }
   .carousel-indicators button {
     background-color: black !important;
+  
   }
 

@@ -5,7 +5,8 @@
   --main-color: #A1C542;
   --second-color: #F8F9FA;
   --dark-color: #494F57;
-  --section-padding: 100px;
+  --orange-color:#fe5e00;
+  --section-padding: 70px;
 }
 
 /* End Variables */
@@ -27,12 +28,13 @@ html {
 }
 
 body {
-  font-family: "Open Sans", sans-serif !important;
+  font-family: "Mukta", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
   margin: 0;
 }
 
 ul {
   list-style: none;
+  padding: 0;
 }
 
 button {
@@ -71,7 +73,39 @@ img {
 .scroll-to-top:hover {
   background-color: var(--dark-color);
 }
-
+.main-heading {
+  text-align: center;
+}
+.main-heading h2 {
+  font-weight: normal;
+  font-size: 40px;
+  position: relative;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+  color: var(--dark-color);
+}
+.main-heading h2::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 2px;
+  background-color: var(--dark-color);
+  bottom: -18px;
+  width: 140px;
+}
+.main-heading h2::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 3px solid var(--dark-color);
+  bottom: -25px;
+  background-color: white;
+}
 .container {
   padding-left: 15px;
   padding-right: 15px;
@@ -82,14 +116,14 @@ img {
 /* Small */
 @media (min-width: 768px) {
   .container {
-    width: 750px;
+    width: 760px;
   }
 }
 
 /* Medium */
 @media (min-width: 992px) {
   .container {
-    width: 970px;
+    width: 980px;
   }
 }
 

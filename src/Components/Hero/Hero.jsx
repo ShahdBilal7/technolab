@@ -3,7 +3,7 @@ import { CarouselImages } from "../../Constants.js";
 import './Hero.css';
 const Hero = () => {
   return (
-    <div className='hero container'>
+    <div className='hero '>
       <Carousel>
         {CarouselImages.map((image, index) => (
           <Carousel.Item key={index}>

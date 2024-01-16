@@ -1,9 +1,77 @@
+/* start products page */
+.products {
+  margin-top: 30px;
+  /* background-color: #777; */
+}
+
+.products .coll {
+  border: 1px solid #dee2e6;
+  padding: 1.5rem;
+  border-radius: 0.25rem;
+  margin-bottom: 1.5rem;
+  -webkit-border-radius: 0.25rem;
+  -moz-border-radius: 0.25rem;
+  -ms-border-radius: 0.25rem;
+  -o-border-radius: 0.25rem;
+}
+
+.products h3 {
+  margin-bottom: 1.5rem;
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: var(--orange-color)
+}
+
+.products li {
+  cursor: pointer;
+}
+
+.products .cat:hover {
+  color: var(--main-color);
+  font-weight: bold;
+}
+
+.products label {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.25rem;
+  margin-left: 0.5rem;
+}
+
+.products label input {
+  margin-right: 0.25rem;
+}
+
+.products #dropdown-item-button {
+  font-weight: bold;
+  background-color: #777;
+  border-radius: 0;
+  border: 0;
+
+}
+
+.products .dropdown-menu {
+  width: 100%;
+  border-radius: 0;
+  border: 2px solid #000;
+  background-color: #eee;
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.5);
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+}
+
+/* end products page */
 /* start register page */
 .reg {
   margin-top: 20px;
 }
 
 /* end register page */
+
 /* start about page */
 .about {
   margin-top: 20px;
@@ -21,7 +89,7 @@
   margin: 0 0 -2px;
   padding-bottom: 5px;
   display: inline-block;
-  border-bottom: 3px solid #fe5e00;
+  border-bottom: 3px solid var(--orange-color);
 }
 
 .headline p {
