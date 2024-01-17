@@ -1,8 +1,4 @@
-import { categories, useState, products, FontAwesomeIcon } from '../Constants.js';
-import Hero from '../Components/Hero/Hero.jsx';
-import ProductCard from '../Components/ProductCard/ProductCard.js';
-import { Dropdown, DropdownButton } from 'react-bootstrap';
-
+import { categories, useState, products, FontAwesomeIcon,Breadcrum ,ProductCard,Hero,Dropdown,DropdownButton} from '../Constants.js';
 const Product = () => {
   const [openSubcategories, setOpenSubcategories] = useState({});
 
@@ -45,11 +41,7 @@ const Product = () => {
           </div>
           <div className="col-lg-9 col-md-8 col-sm-12  products-list coll">
             <div className='mb-3 d-flex justify-content-between'>
-              <ul className="breadcrumb">
-                <li> Categories<span className="divider p-1">/ </span></li>
-                <li> SupCategory<span className="divider p-1">/ </span></li>
-                <li className="active"> Data</li>
-              </ul>
+              <Breadcrum Category={"Shop"} SubCategory={"All"} Data={"All"} />
               <DropdownButton id="dropdown-item-button" title="Sort By : Best Sales ">
                 <Dropdown.Item as="button">&gt; Best Sales</Dropdown.Item>
                 <Dropdown.Item as="button">&gt; New Item</Dropdown.Item>

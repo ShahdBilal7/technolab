@@ -1,12 +1,11 @@
 import Slider from "react-slick";
 import "./CustomPaging.css";
 const CustomPaging = ({detailImage}) => {
-  console.log(detailImage);
   const settings = {
     customPaging: function(i) {
       return (
         <a>
-          <img src={detailImage[i]} alt="imageDetail" />
+          <img style={{borderRadius:"10px"}} src={detailImage[i]} alt="imageDetail" />
         </a>
       );
     },
@@ -22,8 +21,8 @@ const CustomPaging = ({detailImage}) => {
     <div>
     <Slider {...settings}>
     {detailImage.map((image,index)=>
-      <div key={index}>
-      <img src={image} alt="imageDetail" />
+      <div  key={index}>
+      <img style={{borderRadius:"10px"}} src={image} alt="imageDetail" />
     </div>
       )
 

@@ -1,28 +1,32 @@
-import NavbarHeader from './Components/NavbarHeader/Navbar.jsx';
-import Footer from './Components/Footer/Footer';
+import NavbarHeader    from './Components/NavbarHeader/Navbar.jsx';
+import Footer          from './Components/Footer/Footer';
+import Breadcrum       from "./Components/Breadcrumb/Breadcrum";
+import ElasticCarousel from "./Components/ElasticCarousel/ElasticCarousel";
+import ProductCard     from './Components/ProductCard/ProductCard.js';
+import Hero            from './Components/Hero/Hero.jsx';
 import Register from './Pages/Register';
 import Products from './Pages/Products.jsx';
 import Services from './Pages/Services';
 import Error404 from './Pages/Error404';
-import Cart from './Pages/Cart';
-import Detail from './Pages/ProductDetail';
-import About from './Pages/About';
-import Home from './Pages/Home';
-import Contact from './Pages/Contact';
+import Cart     from './Pages/Cart';
+import Detail   from './Pages/ProductDetail';
+import About    from './Pages/About';
+import Home     from './Pages/Home';
+import Contact  from './Pages/Contact';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useParams } from 'react-router-dom';
+import { Form,Dropdown,DropdownButton } from 'react-bootstrap';
 import { useState, useEffect, useRef } from 'react';
 import logoImage from "./assets/logo.png";
-import h1 from './assets/h1.jpg';
-import h2 from './assets/h2.jpg';
-import h3 from './assets/h3.jpg';
-import h4 from './assets/h4.jpg';
-import h5 from './assets/h5.jpg';
-
-import p11 from './assets/p11.jpg';
-import p12 from './assets/p12.jpg';
-import p13 from './assets/p13.jpg';
-import p14 from './assets/p14.jpg';
+import h1        from './assets/h1.jpg';
+import h2        from './assets/h2.jpg';
+import h3        from './assets/h3.jpg';
+import h4        from './assets/h4.jpg';
+import h5        from './assets/h5.jpg';
+import p11       from './assets/p11.jpg';
+import p12       from './assets/p12.jpg';
+import p13       from './assets/p13.jpg';
+import p14       from './assets/p14.jpg';
 
 const contactInfo = [
   {
@@ -55,7 +59,7 @@ const CarouselImages = [
 
 const routes = [
   { path: '/cart', element: <Cart /> },
-  { path: "/detail/:id",element: <Detail />},
+  { path: "/detail/:id", element: <Detail /> },
   { path: '*', element: <Error404 /> },
 ];
 
@@ -195,9 +199,9 @@ const products = [
     image: logoImage,
     onSale: true,
     salePrice: 888.8,
-    detailImage:[p11,p12,p13,p14,
+    detailImage: [p11, p12, p13, p14,
     ],
-    category:categories[1].name
+    category: categories[1].name
   },
   {
     id: 2,
@@ -337,4 +341,4 @@ const products = [
 const saleItems = products.filter(product => product.onSale);
 const NewProducts = products.filter(product => product.onNew);
 const MostPopular = products.filter(product => product.onMost);
-export { saleItems, NewProducts, MostPopular, useRef, categories, products, FontAwesomeIcon, contactInfo, NavLink, Link, routes, navLinks, CarouselImages, logoImage, useState, useEffect, Footer, NavbarHeader, Register }
+export { saleItems, NewProducts, MostPopular,ProductCard, Breadcrum,Form,Dropdown,DropdownButton, ElasticCarousel,Hero, useRef, categories, products, FontAwesomeIcon, contactInfo, NavLink, Link, useParams, routes, navLinks, CarouselImages, logoImage, useState, useEffect, Footer, NavbarHeader, Register }

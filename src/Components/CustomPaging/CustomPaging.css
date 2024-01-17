@@ -17,3 +17,6 @@
   border: none;
   position: relative;
 }
+.product-detail .slick-dots li.slick-active img{
+  border: 4px solid var(--main-color);
+}

@@ -1,6 +1,4 @@
-import Hero from '../Components/Hero/Hero'
-import ElasticCarousel from '../Components/ElasticCarousel/ElasticCarousel'
-import { saleItems, NewProducts, MostPopular } from '../Constants'
+import { saleItems, NewProducts, MostPopular,Hero,ElasticCarousel } from '../Constants'
 const Home = () => {
   return (
     <div>

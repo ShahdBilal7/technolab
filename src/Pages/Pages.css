@@ -1,67 +1,5 @@
 /* start product-detail page */
-.product-detail{
-  margin-top: 30px;
-  margin-bottom: 70px;
-}
-.product-detail .title{
-  color: var(--main-color);
-}
-.productQuantityDiscounts {
-  margin-top: 25px;
-  font-weight: 400;
-  font-size: 15px;
-}
-.discount-row {
-  color: #666;
-  font-weight: 400;
-}
-.discount-row td {
-  padding: 3px;
-}
-.product-detail .buttons {
-  align-items: center;
-  display: flex;
-  gap: 20px;
-  width: 100%;
-}
-.product-detail .buttons .amount {
-  align-items: center;
-  background-color: #f0f2f9;
-  border-radius: 7px;
-  display: flex;
-  justify-content: space-between;
-  padding: 15px;
-  width: 180px;
-}
-.product-detail .buttons .amount .minus {
-  display: flex;
-}
-.product-detail .buttons .amount p {
-  font-weight: 700;
-  margin: 0;
-}
-.product-detail button {
-  background-color: unset;
-  border: none;
-  cursor: pointer;
-  font-family: inherit;
-}
-.product-detail .buttons .add-to-cart {
-  align-items: center;
-  background-color: var(--orange-color);
-  border-radius: 5px;
-  color: #fff;
-  display: flex;
-  font-weight: 700;
-  gap: 15px;
-  justify-content: center;
-  padding: 15px;
-  text-transform: capitalize;
-  transition: .3s;
-}
-.product-detail .plus,.product-detail .minus{
-  color: var(--orange-color);
-}
+
 /* end product-detail page */
 /* start products page */
 .products {
@@ -129,35 +67,12 @@
 }
 
 /* end products page */
-/* start register page */
-.reg {
-  margin-top: 20px;
-}
 
-/* end register page */
 
 /* start about page */
 .about {
   margin-top: 20px;
   margin-bottom: 70px;
-}
-
-.headline {
-  display: block;
-  margin: 10px 0 25px;
-  border-bottom: 1px dotted #e4e9f0;
-}
-
-.headline h2 {
-  font-size: 30px;
-  margin: 0 0 -2px;
-  padding-bottom: 5px;
-  display: inline-block;
-  border-bottom: 3px solid var(--orange-color);
-}
-
-.headline p {
-  color: #333;
 }
 
 .about img {
@@ -246,4 +161,3 @@
 }
 
 /* end   error404 */
-

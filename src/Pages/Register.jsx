@@ -1,6 +1,5 @@
 
-import { Form } from 'react-bootstrap';
-import {useEffect} from "../Constants.js";
+import {useEffect,Form} from "../Constants.js";
 const Register = ({ setShowSearch }) => {
   useEffect(() => {
     setShowSearch(false);
@@ -14,7 +13,7 @@ const Register = ({ setShowSearch }) => {
     "Birzeit University",
     "Palestine Polytechnic University (PPU)"]
   return (
-    <div className="container reg">
+    <div className="container mt-4">
       <div className="col-xs-12">
         <div className="row mb-2">
           <div className="mb-2 col-md-12">
@@ -53,7 +52,7 @@ const Register = ({ setShowSearch }) => {
               </Form.Group>
               <Form.Group className="mb-3">
                 <Form.Label>Phone Number</Form.Label>
-                <Form.Control type="tel" placeholder="059-24-56-951" required />
+                <Form.Control type="tel" placeholder="0592456951" required />
               </Form.Group>
               <Form.Group className="mb-3">
                 <Form.Label>Address</Form.Label>

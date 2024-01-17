@@ -1,0 +1,10 @@
+.breadcrumb-item+.breadcrumb-item::before {
+content: ">" !important;
+}
+.breadcrumb-item a{
+color: blue !important;
+font-weight: bold;
+}
+.breadcrumb-item a:hover{
+  color: var(--main-color) !important;
+}
