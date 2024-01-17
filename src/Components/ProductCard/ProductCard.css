@@ -7,14 +7,12 @@
 
 }
 
-.product-card .truncated-text {
-  height: 50px;
-  box-orient: vertical;
-  line-clamp: 2;
+.product-card .product-name {
+  display: -webkit-box;
+  max-width: 100%;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
   overflow: hidden;
-  text-overflow: ellipsis;
-  font-size: 18px;
-  font-weight: 400;
 }
 
 .product-image {
@@ -48,6 +46,7 @@
 .product-card .heart:hover {
   color: #b71540 !important;
 }
+
 .product-image .sale {
   background: #b71540;
   color: #fff;
@@ -70,7 +69,8 @@
   top: 8px;
   left: 7px;
 }
-.product-card .salePrice{
+
+.product-card .salePrice {
   margin-right: 20px;
   color: gray;
 
