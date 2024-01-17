@@ -1,0 +1,19 @@
+.product-detail .slick-dots {
+  position: static;
+  display: flex !important;
+  flex-flow: row wrap;
+  justify-content: center;
+  list-style-type: none;
+  order: 3;
+  padding: 0;
+  z-index: 10;
+}
+
+.product-detail .slick-dots li {
+  width: 100px;
+  height: 100px;
+  padding: 5px;
+  background: 0 0;
+  border: none;
+  position: relative;
+}

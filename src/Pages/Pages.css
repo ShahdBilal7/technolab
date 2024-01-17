@@ -1,7 +1,71 @@
+/* start product-detail page */
+.product-detail{
+  margin-top: 30px;
+  margin-bottom: 70px;
+}
+.product-detail .title{
+  color: var(--main-color);
+}
+.productQuantityDiscounts {
+  margin-top: 25px;
+  font-weight: 400;
+  font-size: 15px;
+}
+.discount-row {
+  color: #666;
+  font-weight: 400;
+}
+.discount-row td {
+  padding: 3px;
+}
+.product-detail .buttons {
+  align-items: center;
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+.product-detail .buttons .amount {
+  align-items: center;
+  background-color: #f0f2f9;
+  border-radius: 7px;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  width: 180px;
+}
+.product-detail .buttons .amount .minus {
+  display: flex;
+}
+.product-detail .buttons .amount p {
+  font-weight: 700;
+  margin: 0;
+}
+.product-detail button {
+  background-color: unset;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+.product-detail .buttons .add-to-cart {
+  align-items: center;
+  background-color: var(--orange-color);
+  border-radius: 5px;
+  color: #fff;
+  display: flex;
+  font-weight: 700;
+  gap: 15px;
+  justify-content: center;
+  padding: 15px;
+  text-transform: capitalize;
+  transition: .3s;
+}
+.product-detail .plus,.product-detail .minus{
+  color: var(--orange-color);
+}
+/* end product-detail page */
 /* start products page */
 .products {
   margin-top: 30px;
-  /* background-color: #777; */
 }
 
 .products .coll {
@@ -182,3 +246,4 @@
 }
 
 /* end   error404 */
+

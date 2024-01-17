@@ -5,6 +5,7 @@ import Products from './Pages/Products.jsx';
 import Services from './Pages/Services';
 import Error404 from './Pages/Error404';
 import Cart from './Pages/Cart';
+import Detail from './Pages/ProductDetail';
 import About from './Pages/About';
 import Home from './Pages/Home';
 import Contact from './Pages/Contact';
@@ -18,6 +19,10 @@ import h3 from './assets/h3.jpg';
 import h4 from './assets/h4.jpg';
 import h5 from './assets/h5.jpg';
 
+import p11 from './assets/p11.jpg';
+import p12 from './assets/p12.jpg';
+import p13 from './assets/p13.jpg';
+import p14 from './assets/p14.jpg';
 
 const contactInfo = [
   {
@@ -50,6 +55,7 @@ const CarouselImages = [
 
 const routes = [
   { path: '/cart', element: <Cart /> },
+  { path: "/detail/:id",element: <Detail />},
   { path: '*', element: <Error404 /> },
 ];
 
@@ -189,6 +195,9 @@ const products = [
     image: logoImage,
     onSale: true,
     salePrice: 888.8,
+    detailImage:[p11,p12,p13,p14,
+    ],
+    category:categories[1].name
   },
   {
     id: 2,
