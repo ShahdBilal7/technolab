@@ -1,5 +1,22 @@
 /* start product-detail page */
-
+.relatedProduct .ElasticCarousel h2{
+  display: none ;
+}
+.relatedProduct .ElasticCarousel{
+  padding-top: 20px;
+  padding-bottom: 100px;
+}
+.product-detail .description li{
+list-style: decimal;
+margin-left: 30px;
+}
+.product-detail .description a{
+color: var(--main-color) !important;
+font-size: large;
+}
+.product-detail .description a:hover{
+  color: var(--dark-color) !important;
+  }
 /* end product-detail page */
 /* start products page */
 .products {

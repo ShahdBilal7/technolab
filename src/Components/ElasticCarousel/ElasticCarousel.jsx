@@ -5,13 +5,13 @@ import "slick-carousel/slick/slick-theme.css";
 import ProductCard from "../ProductCard/ProductCard";
 import Slider from "react-slick";
 
-const ElasticCarousel = ({ heading, products, color, rowCount, flagSale }) => {
+const ElasticCarousel = ({ slidesToShow=3,heading, products, color, rowCount, flagSale }) => {
   const settings = {
     dots: true,
     infinite: true,
     speed: 400,
-    slidesToShow: 3,
-    slidesToScroll: 3,
+    slidesToShow: slidesToShow,
+    slidesToScroll: slidesToShow,
     initialSlide: 0,
     rows: rowCount,
 
@@ -19,15 +19,15 @@ const ElasticCarousel = ({ heading, products, color, rowCount, flagSale }) => {
       {
         breakpoint: 992,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToShow: slidesToShow-1,
+          slidesToScroll: slidesToShow-1,
         }
       },
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
+          slidesToShow: slidesToShow-2,
+          slidesToScroll: slidesToShow-2,
         }
       },
 

@@ -1,6 +1,6 @@
 import CustomPaging from "../Components/CustomPaging/CustomPaging"
 import DetailCard from "../Components/DetialCard/DetailCard";
-import { products,Breadcrum,ElasticCarousel,useParams } from "../Constants";
+import { products, Breadcrum, ElasticCarousel, useParams } from "../Constants";
 
 const Detail = () => {
   const { id } = useParams();
@@ -14,13 +14,33 @@ const Detail = () => {
             <section className="image-detail">
               <CustomPaging detailImage={product.detailImage} />
             </section>
+            <section className="description mt-5">
+              <div className="headline">
+                <h2>Description</h2>
+              </div>
+              <div dangerouslySetInnerHTML={{ __html: product.description }} />
+            </section>
+            <section className="technicalDetails mt-5">
+              <div className="headline">
+                <h2>Technical Details</h2>
+
+              </div>
+              <p>Product Dimensions: {product.technicalDetails.productDimensions}</p>
+              <p>Product Weight: {product.technicalDetails.productWeight}</p>
+            </section>
           </div>
           <div className="col-lg-4 hidden-sm hidden-xs">
             <DetailCard product={product} />
           </div>
         </div>
       </div>
-      <ElasticCarousel heading="Related Product" products={products} color="white" rowCount={1} flagSale={true} />
+      <section className="relatedProduct">
+        <div className="headline">
+          <h2>Related Product</h2>
+        </div>
+        <ElasticCarousel  products={products} color="white" rowCount={1} flagSale={true} />
+      </section>
+
     </div>
   )
 }

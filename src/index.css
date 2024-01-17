@@ -135,6 +135,9 @@ img {
   .container {
     width: 760px;
   }
+  .product-detail .details{
+    margin-top: 30px;
+  }
 }
 
 /* Medium */
@@ -142,6 +145,7 @@ img {
   .container {
     width: 980px;
   }
+  
 }
 
 /* Large */
@@ -149,6 +153,7 @@ img {
   .container {
     width: 1170px;
   }
+
 }
 
 /* End Global Rules */
