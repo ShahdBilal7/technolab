@@ -71,7 +71,7 @@ img {
 }
 
 .scroll-to-top:hover {
-  background-color: var(--dark-color);
+  background-color: var(--dark-color) !important;
 }
 .main-heading {
   text-align: center;
