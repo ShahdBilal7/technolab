@@ -1,17 +1,29 @@
 
-import {useEffect,Form} from "../Constants.js";
+import DropdownSelector from "../Components/DropdownSelector.jsx";
+import { useEffect, Form, useState } from "../Constants.js";
 const Register = ({ setShowSearch }) => {
+  const [jobType, setJobType] = useState("");
+  const [selectedUniversity, setSelectedUniversity] = useState("");
+  const [selectedSpecialty, setSelectedSpecialty] = useState("");
+
+  const Specialties = ["Computer", "Electrician", "Industrial", "Mechanical", "Civil", "Biomedical", "Other"];
+  const Universitys = ["An-Najah National University", "Al-Quds University", "Bethlehem University", "Birzeit University", "Palestine Polytechnic University (PPU)", "Other"]
+
   useEffect(() => {
     setShowSearch(false);
     return () => {
-        setShowSearch(true); 
+      setShowSearch(true);
     };
-}, [setShowSearch]);
-  const Universitys = ["  An-Najah National University",
-    "Al-Quds University",
-    "Bethlehem University",
-    "Birzeit University",
-    "Palestine Polytechnic University (PPU)"]
+  }, [setShowSearch]);
+
+  const handleJobTypeChange = (event) => {
+    setJobType(event.target.value);
+    // Reset specialties and selected university when job type changes
+    setSelectedSpecialty("");
+    setSelectedUniversity("");
+  };
+
+
   return (
     <div className="container mt-4">
       <div className="col-xs-12">
@@ -60,24 +72,66 @@ const Register = ({ setShowSearch }) => {
               </Form.Group>
               <div className='row'>
                 <Form.Group className="mb-3 col-md-6">
-                  <Form.Label>Job</Form.Label>
-                  <Form.Control type="text" placeholder="Computer Engineering" required />
-                </Form.Group>
-                <Form.Group className="mb-3 col-md-6">
-                  <Form.Label>Are you a student ? </Form.Label>
-                  <Form.Control as="select" required>
-                    <option value="najah" disabled >Select your university</option>
-                    {Universitys.map((university, index) => (
-                      <option key={index} value={university}>
-                        {university}
-                      </option>
-                    ))}
+                  <Form.Label>Select Job Type</Form.Label>
+                  <Form.Control as="select" onChange={handleJobTypeChange} required>
+                    <option value="" disabled selected>Select Job Type</option>
+                    <option value="Student">Student</option>
+                    <option value="Engineer">Engineer</option>
+                    <option value="Technician">Technician</option>
+                    <option value="Instructor">Instructor</option>
+                    <option value="Hopy">Hopy</option>
+                    <option value="Other">Other</option>
                   </Form.Control>
                 </Form.Group>
+
+
+                {jobType === "Student" && (
+                  <div className="col-md-12 row">
+                    <DropdownSelector label="Your University" options={Universitys} setSelectedValue={setSelectedUniversity} />
+                    <DropdownSelector label="Your Specialty" options={Specialties} setSelectedValue={setSelectedSpecialty} />
+                  </div>
+                )}
+
+
+                {(jobType === "Engineer" || jobType === "Technician") && (
+                  <DropdownSelector label="Your Specialty" options={Specialties} setSelectedValue={setSelectedSpecialty} />
+                )}
+
+
+                {jobType === "Instructor" && (
+                  <DropdownSelector label="Your University" options={Universitys} setSelectedValue={setSelectedUniversity} />
+                )}
+
+
+                {jobType === "Other" && (
+                  <Form.Group className="mb-3 col-md-6">
+                    <Form.Label>Whats Your Jop?</Form.Label>
+                    <Form.Control type="text" placeholder="My Jop Is ..." required />
+                  </Form.Group>
+                )}
+
+                {selectedUniversity === "Other" && (
+                  <Form.Group className="mb-3 col-md-12">
+                    <Form.Label>Whats Your University?</Form.Label>
+                    <Form.Control type="text" placeholder="My University Is ..." required />
+                  </Form.Group>
+                )}
+
+                {selectedSpecialty === "Other" && (
+                  <Form.Group className="mb-3 col-md-12">
+                    <Form.Label>Whats Your Specialty?</Form.Label>
+                    <Form.Control type="text" placeholder="My Specialty Is ..." required />
+                  </Form.Group>
+                )}
+
               </div>
               <Form.Group className="mb-3">
                 <Form.Label>Password</Form.Label>
                 <Form.Control type="password" required />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>Confirm Password</Form.Label>
+                <Form.Control type="password" placeholder="Confirm Password" required />
               </Form.Group>
               <button className='submit mt-2' type="submit" id="register">
                 Register
