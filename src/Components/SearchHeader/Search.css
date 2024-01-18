@@ -1,4 +1,7 @@
 /* Start Search */
+.searchOut{
+  background-color: var(--second-color);
+}
 p {
   margin: 0 !important;
 }
@@ -8,6 +11,7 @@ p {
   align-items: center;
   gap: 80px;
   padding: 20px;
+
 }
 
 .search .categories {
@@ -72,7 +76,7 @@ p {
 .btnSearch {
   padding: 15px;
   font-size: large;
-  border: 1px solid #EDF1FF;
+  border: 2px solid #eee;
 }
 
 .search .input-group .form-control {
@@ -80,9 +84,10 @@ p {
 }
 
 .search .input-group .btnSearch {
-  background-color: transparent;
+  background-color: #fff;
   color: var(--main-color);
   font-weight: bold;
+  border-radius: 5px;
   cursor: pointer;
 }
 
@@ -91,6 +96,9 @@ p {
 @media (max-width: 992px) {
   .search .categories {
     width: unset;
+  }
+  .search{
+    gap:5px;
   }
 
 }

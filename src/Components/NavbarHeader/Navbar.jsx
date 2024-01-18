@@ -12,7 +12,7 @@ const NavbarHeader = () => {
 
   return (
     <header>
-      <div className="container">
+      <div className="NavbarHeader container">
         <Navbar expand="lg" expanded={expanded} onToggle={() => setExpanded(!expanded)}>
           <Logo />
           <Navbar.Toggle aria-controls="basic-navbar-nav" />

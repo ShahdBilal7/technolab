@@ -3,9 +3,12 @@ header {
   background-color: var(--second-color);
   padding-top: 10px;
 }
-
+.NavbarHeader{
+border-bottom: 1px solid #eee;
+}
 .navbar {
   gap: 90px;
+  
 }
 
 .navbar-toggler:focus {
@@ -16,6 +19,7 @@ header {
 .navbar-nav {
   gap: 30px;
   font-size: 18px;
+  text-transform: uppercase;
 }
 
 .navbar-nav .link:hover,

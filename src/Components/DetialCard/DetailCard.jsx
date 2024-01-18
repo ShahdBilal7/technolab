@@ -1,5 +1,5 @@
-import "./DetailCard.css";
 import { FontAwesomeIcon,useState} from "../../Constants";
+import "./DetailCard.css";
 const DetailCard = ({product}) => {
   const [quant, setQuant] = useState(0);
 
@@ -14,7 +14,7 @@ const DetailCard = ({product}) => {
   return (
     <div className="details ">
     <h1 className="title">{product.name}</h1>
-    <div className="Category">Category: {product.category}</div>
+    <div className="Category"><strong>Category: </strong> {product.category}</div>
     <div className="price">
       <h6 className="d-inline-block mb-0 text-primary">
         {product.onSale ? (

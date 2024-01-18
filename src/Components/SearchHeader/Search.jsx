@@ -9,8 +9,8 @@ const Search = () => {
   };
 
   return (
-    <div className={`${isMenuOpen ? 'opened-menu' : ''}`}>
-      <div className="search container">
+    <div className={`${isMenuOpen ? 'searchOut opened-menu' : 'searchOut'}`}>
+      <div className="search container ">
         <div className="categories aria-expanded={isMenuOpen}" onClick={toggleMenu}>
           <FontAwesomeIcon icon="fa-solid fa-table-cells-large" />
           <p>Product Menu</p>
