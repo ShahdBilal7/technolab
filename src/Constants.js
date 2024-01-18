@@ -68,7 +68,7 @@ const navLinks = [
   { path: '/about', element: <About />, label: "About" },
   { path: '/contact', element: <Contact />, label: "Contact" },
   { path: '/products', element: <Products />, label: "Products" },
-  { path: '/services', element: <Services />, label: "Services" },
+  // { path: '/services', element: <Services />, label: "Services" },
 ];
 
 const categories = [
