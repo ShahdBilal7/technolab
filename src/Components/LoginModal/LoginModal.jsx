@@ -42,7 +42,7 @@ const LoginModal = ({ error,handleNavLinkClick}) => {
                   type={passwordVisible ? 'text' : 'password'}
                   placeholder="Password" required />
                 <p id="toggle-password" onClick={handlePasswordToggle}>
-                  <FontAwesomeIcon id="eye-slash" icon={passwordVisible ? 'eye' : 'eye-slash'} />
+                  <FontAwesomeIcon  id="eye-slash" icon={passwordVisible ? 'eye' : 'eye-slash'} />
                 </p>
 
               </div>
