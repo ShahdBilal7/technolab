@@ -54,7 +54,7 @@
   padding: 2px 6px 2px 18px;
   border-radius: 1px 3px 3px 1px;
   position: absolute;
-  top: 13px;
+  top: 30px;
   left: -15px;
   clip-path: polygon(10% 0, 100% 0, 100% 100%, 10% 100%, 0 50%);
 }
