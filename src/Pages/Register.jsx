@@ -99,7 +99,7 @@ const Register = ({ setShowSearch }) => {
 
 
                 {jobType === "Instructor" && (
-                  <DropdownSelector label="Your University" options={Universitys} setSelectedValue={setSelectedUniversity} />
+                  <DropdownSelector label=" the university where you are employed" options={Universitys} setSelectedValue={setSelectedUniversity} />
                 )}
 
 
