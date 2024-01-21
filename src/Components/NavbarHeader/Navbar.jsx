@@ -18,22 +18,39 @@ const NavbarHeader = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse className="justify-content-between" id="basic-navbar-nav">
             <Nav>
-              {navLinks.map((link, index) => (
-                <NavLink
-                  key={index}
-                  className="link"
-                  activeclassname="active"
-                  to={link.path}
-                  onClick={handleNavLinkClick}
-                >
-                  {link.label}
-                </NavLink>
-              ))}
+              <NavLink
+                className="link"
+                activeclassname="active"
+                to="/"
+                onClick={handleNavLinkClick}>
+                Home
+              </NavLink>
+              <NavLink
+                className="link"
+                activeclassname="active"
+                to="/products"
+                onClick={handleNavLinkClick}>
+                Products
+              </NavLink>
               <NavDropdown activeclassname="active" className='link ' title="Services" id="basic-nav-dropdown">
                 <NavDropdown.Item >&gt; PCB Services</NavDropdown.Item>
                 <NavDropdown.Item>&gt;  Projects Idea</NavDropdown.Item>
                 <NavDropdown.Item>&gt; 3D Printing</NavDropdown.Item>
               </NavDropdown>
+              <NavLink
+              className="link"
+              activeclassname="active"
+              to="/about"
+              onClick={handleNavLinkClick}>
+              About
+            </NavLink><NavLink
+            className="link"
+            activeclassname="active"
+            to="/contact"
+            onClick={handleNavLinkClick}>
+        Contact    
+          </NavLink>
+
             </Nav>
 
             <LoginModal handleNavLinkClick={handleNavLinkClick} />

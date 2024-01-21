@@ -1,5 +1,6 @@
 
 import DropdownSelector from "../Components/DropdownSelector.jsx";
+
 import { useEffect, Form, useState } from "../Constants.js";
 const Register = ({ setShowSearch }) => {
   const [jobType, setJobType] = useState("");
@@ -51,20 +52,20 @@ const Register = ({ setShowSearch }) => {
               <div className='row'>
                 <Form.Group className="mb-3 col-md-6">
                   <Form.Label>First Name</Form.Label>
-                  <Form.Control type="text" placeholder="Jane" required />
+                  <Form.Control type="text" placeholder="ahmad" required />
                 </Form.Group>
                 <Form.Group className="mb-3 col-md-6">
                   <Form.Label>Last Name</Form.Label>
-                  <Form.Control type="text" placeholder="Doe" required />
+                  <Form.Control type="text" placeholder="mohammad" required />
                 </Form.Group>
               </div>
               <Form.Group className="mb-3">
                 <Form.Label>Email</Form.Label>
-                <Form.Control type="email" placeholder="jane.doe@example.com" required />
+                <Form.Control type="email" placeholder="ahmad.mohammad@example.com" required />
               </Form.Group>
               <Form.Group className="mb-3">
                 <Form.Label>Phone Number</Form.Label>
-                <Form.Control type="tel" placeholder="0592456951" required />
+                <Form.Control type="tel" placeholder="0123456789" required />
               </Form.Group>
               <Form.Group className="mb-3">
                 <Form.Label>Address</Form.Label>
@@ -99,7 +100,7 @@ const Register = ({ setShowSearch }) => {
 
 
                 {jobType === "Instructor" && (
-                  <DropdownSelector label=" the university where you are employed" options={Universitys} setSelectedValue={setSelectedUniversity} />
+                  <DropdownSelector label=" the university you are working with" options={Universitys} setSelectedValue={setSelectedUniversity} />
                 )}
 
 

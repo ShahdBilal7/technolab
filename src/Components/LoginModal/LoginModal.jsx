@@ -1,11 +1,11 @@
-import { logoImage,FontAwesomeIcon,useState ,Link} from "../../Constants.js";
+import { logoImage, FontAwesomeIcon, useState, Link } from "../../Constants.js";
 import { Modal } from "react-bootstrap";
 import "./loginModal.css";
-const LoginModal = ({ error,handleNavLinkClick}) => {
+const LoginModal = ({ error, handleNavLinkClick }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
-  const handleShow = () =>{
+  const handleShow = () => {
     handleNavLinkClick();
     setShow(true);
   }
@@ -17,10 +17,11 @@ const LoginModal = ({ error,handleNavLinkClick}) => {
     <>
       <div className="nav-login "  >
         <div className='link' onClick={handleShow}>Login</div>
-        <div className="cart-count link">
+        <Link to={"/cart"} className="cart-count link">  
           <FontAwesomeIcon className="icon" icon="fa fa-shopping-cart" />
           <span className="count">0</span>
-        </div>
+    
+        </Link>
       </div>
       <Modal className="loginCont" show={show} onHide={handleClose} centered>
         <Modal.Header className='flex-column-reverse' closeButton>
@@ -42,7 +43,7 @@ const LoginModal = ({ error,handleNavLinkClick}) => {
                   type={passwordVisible ? 'text' : 'password'}
                   placeholder="Password" required />
                 <p id="toggle-password" onClick={handlePasswordToggle}>
-                  <FontAwesomeIcon  id="eye-slash" icon={passwordVisible ? 'eye' : 'eye-slash'} />
+                  <FontAwesomeIcon id="eye-slash" icon={passwordVisible ? 'eye' : 'eye-slash'} />
                 </p>
 
               </div>

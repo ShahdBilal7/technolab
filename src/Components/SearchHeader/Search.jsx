@@ -13,7 +13,7 @@ const Search = () => {
       <div className="search container ">
         <div className="categories aria-expanded={isMenuOpen}" onClick={toggleMenu}>
           <FontAwesomeIcon icon="fa-solid fa-table-cells-large" />
-          <p>Product Menu</p>
+          <p>CATEGORIES</p>
           <FontAwesomeIcon icon="fa-solid fa-chevron-down" />
         </div>
         <div className="input-group">

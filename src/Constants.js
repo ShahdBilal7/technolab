@@ -1,18 +1,17 @@
 import NavbarHeader from './Components/NavbarHeader/Navbar.jsx';
-import Footer from './Components/Footer/Footer';
-import Breadcrum from "./Components/Breadcrumb/Breadcrum";
-import ElasticCarousel from "./Components/ElasticCarousel/ElasticCarousel";
-import ProductCard from './Components/ProductCard/ProductCard.js';
+import Footer from './Components/Footer/Footer.jsx';
+import Breadcrum from "./Components/Breadcrumb/Breadcrum.jsx";
+import ElasticCarousel from "./Components/ElasticCarousel/ElasticCarousel.jsx";
+import ProductCard from './Components/ProductCard/ProductCard.jsx';
 import Hero from './Components/Hero/Hero.jsx';
-import Register from './Pages/Register';
+import Register from './Pages/Register.jsx';
 import Products from './Pages/Products.jsx';
-import Services from './Pages/Services';
-import Error404 from './Pages/Error404';
-import Cart from './Pages/Cart';
-import Detail from './Pages/ProductDetail';
-import About from './Pages/About';
-import Home from './Pages/Home';
-import Contact from './Pages/Contact';
+import Error404 from './Pages/Error404.jsx';
+import Cart from './Pages/Cart.jsx';
+import Detail from './Pages/ProductDetail.jsx';
+import About from './Pages/About.jsx';
+import Home from './Pages/Home.jsx';
+import Contact from './Pages/Contact.jsx';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink, Link, useParams } from 'react-router-dom';
 import { Form, Dropdown, DropdownButton } from 'react-bootstrap';
@@ -27,6 +26,20 @@ import p11 from './assets/p11.jpg';
 import p12 from './assets/p12.jpg';
 import p13 from './assets/p13.jpg';
 import p14 from './assets/p14.jpg';
+
+import pp1 from './assets/pp1.jpeg';
+import pp3 from './assets/pp3.jpg';
+import pp4 from './assets/pp4.jpg';
+import pp5 from './assets/pp5.jpg';
+import pp6 from './assets/pp6.jpeg';
+import pp7 from './assets/pp7.jpg';
+import pp8 from './assets/pp8.jpeg';
+import pp9 from './assets/pp9.jpg';
+import rr1 from './assets/rr1.jpg';
+import rr2 from './assets/rr2.jpg';
+import rr3 from './assets/rr3.jpg';
+import rr4 from './assets/rr4.jpg';
+import rr5 from './assets/rr5.jpg';
 
 const contactInfo = [
   {
@@ -65,9 +78,9 @@ const routes = [
 
 const navLinks = [
   { path: '/', element: <Home />, label: "Home" },
+  { path: '/products', element: <Products />, label: "Products" },
   { path: '/about', element: <About />, label: "About" },
   { path: '/contact', element: <Contact />, label: "Contact" },
-  { path: '/products', element: <Products />, label: "Products" },
   // { path: '/services', element: <Services />, label: "Services" },
 ];
 
@@ -76,7 +89,7 @@ const categories = [
     "name": "FEATURED",
     "subcategories": [
       "New Products",
-      "Top Sellers",
+      "Sale Products",
       "Most Popular",
     ]
   },
@@ -168,6 +181,7 @@ const categories = [
       "all Sensors",
     ]
   },
+
   {
     "name": "COMPONENTS",
     "subcategories": [
@@ -194,11 +208,50 @@ const categories = [
 const products = [
   {
     id: 1,
-    name: "MacBook Air 13.6\" M2 (8-CPU Core/ 8-GPU Core)",
+    name: "Power Resistor 5W 0.5ohm",
+    price: 50.00,
+    image: pp1,
+    onSale: true,
+    salePrice: 25.8,
+    state: 2,
+    detailImage: [p11, p12, p13, p14,
+    ],
+    category: categories[1].name,
+    technicalDetails: {
+      productDimensions: "50.7mm x 23.0mm x 9.9mm / 2.0 x 0.9 x 0.4",
+      productWeight: "6.4g / 0.2oz",
+    },
+    description: "<div><!--block-->This is the new Arduino Uno R3. In addition to all the features of the previous board, the Uno now uses an ATmega16U2 instead of the 8U2 found on the Uno (or the FTDI found on previous generations). This allows for faster transfer rates and more memory. No drivers needed for Linux or Mac (inf file for Windows is needed and included in the Arduino IDE), and the ability to have the Uno show up as a keyboard, mouse, joystick, etc.<br><br><\/div><div><!--block-->The Uno R3 also adds SDA and SCL pins next to the AREF. In addition, there are two new pins placed near the RESET pin. One is the IOREF that allow the shields to adapt to the voltage provided from the board. The other is a not connected and is reserved for future purposes. The Uno R3 works with all existing shields but can adapt to new shields which use these additional pins.<br><br><\/div><div><!--block-->Arduino is an open-source physical computing platform based on a simple i\/o board and a development environment that implements the&nbsp;<a href=\"http:\/\/www.processing.org\/\">Processing<\/a>\/<a href=\"http:\/\/wiring.org.co\/\">Wiring<\/a>&nbsp;language. Arduino can be used to develop stand-alone interactive objects or can be connected to software on your computer (e.g. Flash, Processing, MaxMSP). The open-source IDE can be downloaded for free (currently for Mac OS X, Windows, and Linux).<br><br><\/div><div><!--block--><strong>Note:<\/strong>&nbsp;The Arduino Uno R3 requires the&nbsp;<a href=\"http:\/\/arduino.cc\/en\/Main\/Software\">Arduino 1.0<\/a>&nbsp;drivers folder in order to install properly on some computers. We have tested and confirmed that the R3 can be programmed in older versions of the IDE. However, the first time using the R3 on a new computer, you will need to have Arduino 1.0 installed on that machine. If you are interested in reading more about the changes to the IDE, check out the official&nbsp;<a href=\"http:\/\/arduino.cc\/en\/Main\/ReleaseNotes\">Arduino 1.0 Release notes<\/a>!<br><br><\/div><div><!--block-->Not sure which Arduino or Arduino-compatible board is right for you? Check out our&nbsp;<a href=\"https:\/\/www.sparkfun.com\/arduino_guide\">Arduino Buying Guide<\/a>!<br><br><\/div><strong>Features:<br><\/strong><div><!--block-->\t<\/div><ul><li><!--block-->ATmega328 microcontroller\t<\/li><li><!--block-->Input voltage - 7-12V\t<\/li><li><!--block-->14 Digital I\/O Pins (6 PWM outputs)\t<\/li><li><!--block-->6 Analog Inputs\t<\/li><li><!--block-->32k Flash Memory\t<\/li><li><!--block-->16Mhz Clock Speed<\/li><\/ul><div><!--block--><strong>Documents:<\/strong><br><\/div><div><ul><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/uploads\/Main\/Arduino_Uno_Rev3-schematic.pdf\">Schematic<\/a>\t<\/li><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/uploads\/Main\/arduino_Uno_Rev3-02-TH.zip\">Eagle Files<\/a>\t<\/li><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/Main\/ArduinoBoardUno\">Product Page<\/a>\t<\/li><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/Main\/Software\">Arduino IDE Download<\/a><\/li><\/ul>"
+
+  },
+  {
+    id: 2,
+    name: "0.5Ω Carbon Film Resistor 1/8W ±1%",
     price: 4999.00,
-    image: logoImage,
+    image: rr1,
     onSale: true,
     salePrice: 888.8,
+    state: 1,
+
+    detailImage: [p11, p12, p13, p14,
+
+    ],
+    category: categories[1].name,
+    technicalDetails: {
+      productDimensions: "50.7mm x 23.0mm x 9.9mm / 2.0 x 0.9 x 0.4",
+      productWeight: "6.4g / 0.2oz",
+    },
+    description: "<div><!--block-->This is the new Arduino Uno R3. In addition to all the features of the previous board, the Uno now uses an ATmega16U2 instead of the 8U2 found on the Uno (or the FTDI found on previous generations). This allows for faster transfer rates and more memory. No drivers needed for Linux or Mac (inf file for Windows is needed and included in the Arduino IDE), and the ability to have the Uno show up as a keyboard, mouse, joystick, etc.<br><br><\/div><div><!--block-->The Uno R3 also adds SDA and SCL pins next to the AREF. In addition, there are two new pins placed near the RESET pin. One is the IOREF that allow the shields to adapt to the voltage provided from the board. The other is a not connected and is reserved for future purposes. The Uno R3 works with all existing shields but can adapt to new shields which use these additional pins.<br><br><\/div><div><!--block-->Arduino is an open-source physical computing platform based on a simple i\/o board and a development environment that implements the&nbsp;<a href=\"http:\/\/www.processing.org\/\">Processing<\/a>\/<a href=\"http:\/\/wiring.org.co\/\">Wiring<\/a>&nbsp;language. Arduino can be used to develop stand-alone interactive objects or can be connected to software on your computer (e.g. Flash, Processing, MaxMSP). The open-source IDE can be downloaded for free (currently for Mac OS X, Windows, and Linux).<br><br><\/div><div><!--block--><strong>Note:<\/strong>&nbsp;The Arduino Uno R3 requires the&nbsp;<a href=\"http:\/\/arduino.cc\/en\/Main\/Software\">Arduino 1.0<\/a>&nbsp;drivers folder in order to install properly on some computers. We have tested and confirmed that the R3 can be programmed in older versions of the IDE. However, the first time using the R3 on a new computer, you will need to have Arduino 1.0 installed on that machine. If you are interested in reading more about the changes to the IDE, check out the official&nbsp;<a href=\"http:\/\/arduino.cc\/en\/Main\/ReleaseNotes\">Arduino 1.0 Release notes<\/a>!<br><br><\/div><div><!--block-->Not sure which Arduino or Arduino-compatible board is right for you? Check out our&nbsp;<a href=\"https:\/\/www.sparkfun.com\/arduino_guide\">Arduino Buying Guide<\/a>!<br><br><\/div><strong>Features:<br><\/strong><div><!--block-->\t<\/div><ul><li><!--block-->ATmega328 microcontroller\t<\/li><li><!--block-->Input voltage - 7-12V\t<\/li><li><!--block-->14 Digital I\/O Pins (6 PWM outputs)\t<\/li><li><!--block-->6 Analog Inputs\t<\/li><li><!--block-->32k Flash Memory\t<\/li><li><!--block-->16Mhz Clock Speed<\/li><\/ul><div><!--block--><strong>Documents:<\/strong><br><\/div><div><ul><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/uploads\/Main\/Arduino_Uno_Rev3-schematic.pdf\">Schematic<\/a>\t<\/li><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/uploads\/Main\/arduino_Uno_Rev3-02-TH.zip\">Eagle Files<\/a>\t<\/li><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/Main\/ArduinoBoardUno\">Product Page<\/a>\t<\/li><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/Main\/Software\">Arduino IDE Download<\/a><\/li><\/ul>"
+  },
+  {
+    id: 3,
+    name: "Power Resistor 5W 1ohm",
+    price: 70.00,
+    image: pp3,
+    onSale: true,
+    salePrice: 30.8,
+    state: 2,
+
     detailImage: [p11, p12, p13, p14,
     ],
     category: categories[1].name,
@@ -209,141 +262,182 @@ const products = [
     description: "<div><!--block-->This is the new Arduino Uno R3. In addition to all the features of the previous board, the Uno now uses an ATmega16U2 instead of the 8U2 found on the Uno (or the FTDI found on previous generations). This allows for faster transfer rates and more memory. No drivers needed for Linux or Mac (inf file for Windows is needed and included in the Arduino IDE), and the ability to have the Uno show up as a keyboard, mouse, joystick, etc.<br><br><\/div><div><!--block-->The Uno R3 also adds SDA and SCL pins next to the AREF. In addition, there are two new pins placed near the RESET pin. One is the IOREF that allow the shields to adapt to the voltage provided from the board. The other is a not connected and is reserved for future purposes. The Uno R3 works with all existing shields but can adapt to new shields which use these additional pins.<br><br><\/div><div><!--block-->Arduino is an open-source physical computing platform based on a simple i\/o board and a development environment that implements the&nbsp;<a href=\"http:\/\/www.processing.org\/\">Processing<\/a>\/<a href=\"http:\/\/wiring.org.co\/\">Wiring<\/a>&nbsp;language. Arduino can be used to develop stand-alone interactive objects or can be connected to software on your computer (e.g. Flash, Processing, MaxMSP). The open-source IDE can be downloaded for free (currently for Mac OS X, Windows, and Linux).<br><br><\/div><div><!--block--><strong>Note:<\/strong>&nbsp;The Arduino Uno R3 requires the&nbsp;<a href=\"http:\/\/arduino.cc\/en\/Main\/Software\">Arduino 1.0<\/a>&nbsp;drivers folder in order to install properly on some computers. We have tested and confirmed that the R3 can be programmed in older versions of the IDE. However, the first time using the R3 on a new computer, you will need to have Arduino 1.0 installed on that machine. If you are interested in reading more about the changes to the IDE, check out the official&nbsp;<a href=\"http:\/\/arduino.cc\/en\/Main\/ReleaseNotes\">Arduino 1.0 Release notes<\/a>!<br><br><\/div><div><!--block-->Not sure which Arduino or Arduino-compatible board is right for you? Check out our&nbsp;<a href=\"https:\/\/www.sparkfun.com\/arduino_guide\">Arduino Buying Guide<\/a>!<br><br><\/div><strong>Features:<br><\/strong><div><!--block-->\t<\/div><ul><li><!--block-->ATmega328 microcontroller\t<\/li><li><!--block-->Input voltage - 7-12V\t<\/li><li><!--block-->14 Digital I\/O Pins (6 PWM outputs)\t<\/li><li><!--block-->6 Analog Inputs\t<\/li><li><!--block-->32k Flash Memory\t<\/li><li><!--block-->16Mhz Clock Speed<\/li><\/ul><div><!--block--><strong>Documents:<\/strong><br><\/div><div><ul><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/uploads\/Main\/Arduino_Uno_Rev3-schematic.pdf\">Schematic<\/a>\t<\/li><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/uploads\/Main\/arduino_Uno_Rev3-02-TH.zip\">Eagle Files<\/a>\t<\/li><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/Main\/ArduinoBoardUno\">Product Page<\/a>\t<\/li><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/Main\/Software\">Arduino IDE Download<\/a><\/li><\/ul>"
   },
   {
-    id: 2,
-    name: "MacBook Air ",
-    price: 4999.00,
-    image: logoImage,
-    onSale: false,
-  }, {
-    id: 3,
-    name: "MacBook Air Air 13.6\" M2 (8-CPU Core/ 8-GPU Core)13.6\" M2 (8-CPU Core/ 8-GPU Core)",
-    price: 4999.00,
-    image: logoImage,
-    onSale: false,
-  },
-  {
     id: 4,
-    name: "MacBook Air 13.6\" M2 (8-CPU Core/ 8-GPU Core)",
+    name: "1.1Ω Carbon Film Resistor 1/8W ±1%",
     price: 4999.00,
-    image: logoImage,
-    onSale: false,
-    onNew: true,
-    onMost: true,
+    image: rr2,
+    onSale: true,
+    salePrice: 888.8,
+    state: 2,
+    detailImage: [p11, p12, p13, p14,
+    ],
+    category: categories[1].name,
+    technicalDetails: {
+      productDimensions: "50.7mm x 23.0mm x 9.9mm / 2.0 x 0.9 x 0.4",
+      productWeight: "6.4g / 0.2oz",
+    },
+    description: "<div><!--block-->This is the new Arduino Uno R3. In addition to all the features of the previous board, the Uno now uses an ATmega16U2 instead of the 8U2 found on the Uno (or the FTDI found on previous generations). This allows for faster transfer rates and more memory. No drivers needed for Linux or Mac (inf file for Windows is needed and included in the Arduino IDE), and the ability to have the Uno show up as a keyboard, mouse, joystick, etc.<br><br><\/div><div><!--block-->The Uno R3 also adds SDA and SCL pins next to the AREF. In addition, there are two new pins placed near the RESET pin. One is the IOREF that allow the shields to adapt to the voltage provided from the board. The other is a not connected and is reserved for future purposes. The Uno R3 works with all existing shields but can adapt to new shields which use these additional pins.<br><br><\/div><div><!--block-->Arduino is an open-source physical computing platform based on a simple i\/o board and a development environment that implements the&nbsp;<a href=\"http:\/\/www.processing.org\/\">Processing<\/a>\/<a href=\"http:\/\/wiring.org.co\/\">Wiring<\/a>&nbsp;language. Arduino can be used to develop stand-alone interactive objects or can be connected to software on your computer (e.g. Flash, Processing, MaxMSP). The open-source IDE can be downloaded for free (currently for Mac OS X, Windows, and Linux).<br><br><\/div><div><!--block--><strong>Note:<\/strong>&nbsp;The Arduino Uno R3 requires the&nbsp;<a href=\"http:\/\/arduino.cc\/en\/Main\/Software\">Arduino 1.0<\/a>&nbsp;drivers folder in order to install properly on some computers. We have tested and confirmed that the R3 can be programmed in older versions of the IDE. However, the first time using the R3 on a new computer, you will need to have Arduino 1.0 installed on that machine. If you are interested in reading more about the changes to the IDE, check out the official&nbsp;<a href=\"http:\/\/arduino.cc\/en\/Main\/ReleaseNotes\">Arduino 1.0 Release notes<\/a>!<br><br><\/div><div><!--block-->Not sure which Arduino or Arduino-compatible board is right for you? Check out our&nbsp;<a href=\"https:\/\/www.sparkfun.com\/arduino_guide\">Arduino Buying Guide<\/a>!<br><br><\/div><strong>Features:<br><\/strong><div><!--block-->\t<\/div><ul><li><!--block-->ATmega328 microcontroller\t<\/li><li><!--block-->Input voltage - 7-12V\t<\/li><li><!--block-->14 Digital I\/O Pins (6 PWM outputs)\t<\/li><li><!--block-->6 Analog Inputs\t<\/li><li><!--block-->32k Flash Memory\t<\/li><li><!--block-->16Mhz Clock Speed<\/li><\/ul><div><!--block--><strong>Documents:<\/strong><br><\/div><div><ul><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/uploads\/Main\/Arduino_Uno_Rev3-schematic.pdf\">Schematic<\/a>\t<\/li><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/uploads\/Main\/arduino_Uno_Rev3-02-TH.zip\">Eagle Files<\/a>\t<\/li><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/Main\/ArduinoBoardUno\">Product Page<\/a>\t<\/li><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/Main\/Software\">Arduino IDE Download<\/a><\/li><\/ul>"
   },
   {
     id: 5,
-    name: "MacBook Air 13.6\" M2 (8-CPU Core/ 8-GPU Core)",
-    price: 4999.00,
-    image: logoImage,
+    name: "Power Resistor 5W 3ohm",
+    price: 90.00,
+    image: pp4,
     onSale: true,
-    salePrice: 888.8,
-    onNew: true,
-  }, {
-    id: 6,
-    name: "MacBook Air 13.6\" M2 (8-CPU Core/ 8-GPU Core)",
-    price: 4999.00,
-    image: logoImage,
-    onSale: false,
+    salePrice: 40.8,
+    state: 0,
 
+    detailImage: [p11, p12, p13, p14,
+    ],
+    category: categories[1].name,
+    technicalDetails: {
+      productDimensions: "50.7mm x 23.0mm x 9.9mm / 2.0 x 0.9 x 0.4",
+      productWeight: "6.4g / 0.2oz",
+    },
+    description: "<div><!--block-->This is the new Arduino Uno R3. In addition to all the features of the previous board, the Uno now uses an ATmega16U2 instead of the 8U2 found on the Uno (or the FTDI found on previous generations). This allows for faster transfer rates and more memory. No drivers needed for Linux or Mac (inf file for Windows is needed and included in the Arduino IDE), and the ability to have the Uno show up as a keyboard, mouse, joystick, etc.<br><br><\/div><div><!--block-->The Uno R3 also adds SDA and SCL pins next to the AREF. In addition, there are two new pins placed near the RESET pin. One is the IOREF that allow the shields to adapt to the voltage provided from the board. The other is a not connected and is reserved for future purposes. The Uno R3 works with all existing shields but can adapt to new shields which use these additional pins.<br><br><\/div><div><!--block-->Arduino is an open-source physical computing platform based on a simple i\/o board and a development environment that implements the&nbsp;<a href=\"http:\/\/www.processing.org\/\">Processing<\/a>\/<a href=\"http:\/\/wiring.org.co\/\">Wiring<\/a>&nbsp;language. Arduino can be used to develop stand-alone interactive objects or can be connected to software on your computer (e.g. Flash, Processing, MaxMSP). The open-source IDE can be downloaded for free (currently for Mac OS X, Windows, and Linux).<br><br><\/div><div><!--block--><strong>Note:<\/strong>&nbsp;The Arduino Uno R3 requires the&nbsp;<a href=\"http:\/\/arduino.cc\/en\/Main\/Software\">Arduino 1.0<\/a>&nbsp;drivers folder in order to install properly on some computers. We have tested and confirmed that the R3 can be programmed in older versions of the IDE. However, the first time using the R3 on a new computer, you will need to have Arduino 1.0 installed on that machine. If you are interested in reading more about the changes to the IDE, check out the official&nbsp;<a href=\"http:\/\/arduino.cc\/en\/Main\/ReleaseNotes\">Arduino 1.0 Release notes<\/a>!<br><br><\/div><div><!--block-->Not sure which Arduino or Arduino-compatible board is right for you? Check out our&nbsp;<a href=\"https:\/\/www.sparkfun.com\/arduino_guide\">Arduino Buying Guide<\/a>!<br><br><\/div><strong>Features:<br><\/strong><div><!--block-->\t<\/div><ul><li><!--block-->ATmega328 microcontroller\t<\/li><li><!--block-->Input voltage - 7-12V\t<\/li><li><!--block-->14 Digital I\/O Pins (6 PWM outputs)\t<\/li><li><!--block-->6 Analog Inputs\t<\/li><li><!--block-->32k Flash Memory\t<\/li><li><!--block-->16Mhz Clock Speed<\/li><\/ul><div><!--block--><strong>Documents:<\/strong><br><\/div><div><ul><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/uploads\/Main\/Arduino_Uno_Rev3-schematic.pdf\">Schematic<\/a>\t<\/li><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/uploads\/Main\/arduino_Uno_Rev3-02-TH.zip\">Eagle Files<\/a>\t<\/li><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/Main\/ArduinoBoardUno\">Product Page<\/a>\t<\/li><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/Main\/Software\">Arduino IDE Download<\/a><\/li><\/ul>"
   },
   {
-    id: 7,
-    name: "MacBook Air 13.6\" M2 (8-CPU Core/ 8-GPU Core)",
+    id: 6,
+    name: "1.5Ω Carbon Film Resistor 1/8W ±1%",
     price: 4999.00,
-    image: logoImage,
-    onSale: false,
-    onMost: true
+    image: rr3,
+    state: 0,
+    isRetired: true,
+    detailImage: [p11, p12, p13, p14,
+    ],
+    category: categories[1].name,
+    technicalDetails: {
+      productDimensions: "50.7mm x 23.0mm x 9.9mm / 2.0 x 0.9 x 0.4",
+      productWeight: "6.4g / 0.2oz",
+    },
+    description: "<div><!--block-->This is the new Arduino Uno R3. In addition to all the features of the previous board, the Uno now uses an ATmega16U2 instead of the 8U2 found on the Uno (or the FTDI found on previous generations). This allows for faster transfer rates and more memory. No drivers needed for Linux or Mac (inf file for Windows is needed and included in the Arduino IDE), and the ability to have the Uno show up as a keyboard, mouse, joystick, etc.<br><br><\/div><div><!--block-->The Uno R3 also adds SDA and SCL pins next to the AREF. In addition, there are two new pins placed near the RESET pin. One is the IOREF that allow the shields to adapt to the voltage provided from the board. The other is a not connected and is reserved for future purposes. The Uno R3 works with all existing shields but can adapt to new shields which use these additional pins.<br><br><\/div><div><!--block-->Arduino is an open-source physical computing platform based on a simple i\/o board and a development environment that implements the&nbsp;<a href=\"http:\/\/www.processing.org\/\">Processing<\/a>\/<a href=\"http:\/\/wiring.org.co\/\">Wiring<\/a>&nbsp;language. Arduino can be used to develop stand-alone interactive objects or can be connected to software on your computer (e.g. Flash, Processing, MaxMSP). The open-source IDE can be downloaded for free (currently for Mac OS X, Windows, and Linux).<br><br><\/div><div><!--block--><strong>Note:<\/strong>&nbsp;The Arduino Uno R3 requires the&nbsp;<a href=\"http:\/\/arduino.cc\/en\/Main\/Software\">Arduino 1.0<\/a>&nbsp;drivers folder in order to install properly on some computers. We have tested and confirmed that the R3 can be programmed in older versions of the IDE. However, the first time using the R3 on a new computer, you will need to have Arduino 1.0 installed on that machine. If you are interested in reading more about the changes to the IDE, check out the official&nbsp;<a href=\"http:\/\/arduino.cc\/en\/Main\/ReleaseNotes\">Arduino 1.0 Release notes<\/a>!<br><br><\/div><div><!--block-->Not sure which Arduino or Arduino-compatible board is right for you? Check out our&nbsp;<a href=\"https:\/\/www.sparkfun.com\/arduino_guide\">Arduino Buying Guide<\/a>!<br><br><\/div><strong>Features:<br><\/strong><div><!--block-->\t<\/div><ul><li><!--block-->ATmega328 microcontroller\t<\/li><li><!--block-->Input voltage - 7-12V\t<\/li><li><!--block-->14 Digital I\/O Pins (6 PWM outputs)\t<\/li><li><!--block-->6 Analog Inputs\t<\/li><li><!--block-->32k Flash Memory\t<\/li><li><!--block-->16Mhz Clock Speed<\/li><\/ul><div><!--block--><strong>Documents:<\/strong><br><\/div><div><ul><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/uploads\/Main\/Arduino_Uno_Rev3-schematic.pdf\">Schematic<\/a>\t<\/li><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/uploads\/Main\/arduino_Uno_Rev3-02-TH.zip\">Eagle Files<\/a>\t<\/li><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/Main\/ArduinoBoardUno\">Product Page<\/a>\t<\/li><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/Main\/Software\">Arduino IDE Download<\/a><\/li><\/ul>"
+  }, {
+    id: 7,
+    name: "Power Resistor 5W 5ohm",
+    price: 20.00,
+    image: pp5,
+    onSale: true,
+    salePrice: 10.0,
+    onNew: true,
+    onMost: true,
+    state: 2,
+
+    detailImage: [p11, p12, p13, p14,
+    ],
+    category: categories[1].name,
+    technicalDetails: {
+      productDimensions: "50.7mm x 23.0mm x 9.9mm / 2.0 x 0.9 x 0.4",
+      productWeight: "6.4g / 0.2oz",
+    },
+    description: "<div><!--block-->This is the new Arduino Uno R3. In addition to all the features of the previous board, the Uno now uses an ATmega16U2 instead of the 8U2 found on the Uno (or the FTDI found on previous generations). This allows for faster transfer rates and more memory. No drivers needed for Linux or Mac (inf file for Windows is needed and included in the Arduino IDE), and the ability to have the Uno show up as a keyboard, mouse, joystick, etc.<br><br><\/div><div><!--block-->The Uno R3 also adds SDA and SCL pins next to the AREF. In addition, there are two new pins placed near the RESET pin. One is the IOREF that allow the shields to adapt to the voltage provided from the board. The other is a not connected and is reserved for future purposes. The Uno R3 works with all existing shields but can adapt to new shields which use these additional pins.<br><br><\/div><div><!--block-->Arduino is an open-source physical computing platform based on a simple i\/o board and a development environment that implements the&nbsp;<a href=\"http:\/\/www.processing.org\/\">Processing<\/a>\/<a href=\"http:\/\/wiring.org.co\/\">Wiring<\/a>&nbsp;language. Arduino can be used to develop stand-alone interactive objects or can be connected to software on your computer (e.g. Flash, Processing, MaxMSP). The open-source IDE can be downloaded for free (currently for Mac OS X, Windows, and Linux).<br><br><\/div><div><!--block--><strong>Note:<\/strong>&nbsp;The Arduino Uno R3 requires the&nbsp;<a href=\"http:\/\/arduino.cc\/en\/Main\/Software\">Arduino 1.0<\/a>&nbsp;drivers folder in order to install properly on some computers. We have tested and confirmed that the R3 can be programmed in older versions of the IDE. However, the first time using the R3 on a new computer, you will need to have Arduino 1.0 installed on that machine. If you are interested in reading more about the changes to the IDE, check out the official&nbsp;<a href=\"http:\/\/arduino.cc\/en\/Main\/ReleaseNotes\">Arduino 1.0 Release notes<\/a>!<br><br><\/div><div><!--block-->Not sure which Arduino or Arduino-compatible board is right for you? Check out our&nbsp;<a href=\"https:\/\/www.sparkfun.com\/arduino_guide\">Arduino Buying Guide<\/a>!<br><br><\/div><strong>Features:<br><\/strong><div><!--block-->\t<\/div><ul><li><!--block-->ATmega328 microcontroller\t<\/li><li><!--block-->Input voltage - 7-12V\t<\/li><li><!--block-->14 Digital I\/O Pins (6 PWM outputs)\t<\/li><li><!--block-->6 Analog Inputs\t<\/li><li><!--block-->32k Flash Memory\t<\/li><li><!--block-->16Mhz Clock Speed<\/li><\/ul><div><!--block--><strong>Documents:<\/strong><br><\/div><div><ul><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/uploads\/Main\/Arduino_Uno_Rev3-schematic.pdf\">Schematic<\/a>\t<\/li><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/uploads\/Main\/arduino_Uno_Rev3-02-TH.zip\">Eagle Files<\/a>\t<\/li><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/Main\/ArduinoBoardUno\">Product Page<\/a>\t<\/li><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/Main\/Software\">Arduino IDE Download<\/a><\/li><\/ul>"
   },
   {
     id: 8,
-    name: "MacBook Air 13.6\" M2 (8-CPU Core/ 8-GPU Core)",
+    name: "2Ω Carbon Film Resistor 1/8W ±1%",
     price: 4999.00,
-    image: logoImage,
-    onSale: false,
+    image: rr4,
     onNew: true,
-    onMost: true
-  }, {
+    state: 0,
+
+    detailImage: [p11, p12, p13, p14,
+    ],
+    category: categories[1].name,
+    technicalDetails: {
+      productDimensions: "50.7mm x 23.0mm x 9.9mm / 2.0 x 0.9 x 0.4",
+      productWeight: "6.4g / 0.2oz",
+    },
+    description: "<div><!--block-->This is the new Arduino Uno R3. In addition to all the features of the previous board, the Uno now uses an ATmega16U2 instead of the 8U2 found on the Uno (or the FTDI found on previous generations). This allows for faster transfer rates and more memory. No drivers needed for Linux or Mac (inf file for Windows is needed and included in the Arduino IDE), and the ability to have the Uno show up as a keyboard, mouse, joystick, etc.<br><br><\/div><div><!--block-->The Uno R3 also adds SDA and SCL pins next to the AREF. In addition, there are two new pins placed near the RESET pin. One is the IOREF that allow the shields to adapt to the voltage provided from the board. The other is a not connected and is reserved for future purposes. The Uno R3 works with all existing shields but can adapt to new shields which use these additional pins.<br><br><\/div><div><!--block-->Arduino is an open-source physical computing platform based on a simple i\/o board and a development environment that implements the&nbsp;<a href=\"http:\/\/www.processing.org\/\">Processing<\/a>\/<a href=\"http:\/\/wiring.org.co\/\">Wiring<\/a>&nbsp;language. Arduino can be used to develop stand-alone interactive objects or can be connected to software on your computer (e.g. Flash, Processing, MaxMSP). The open-source IDE can be downloaded for free (currently for Mac OS X, Windows, and Linux).<br><br><\/div><div><!--block--><strong>Note:<\/strong>&nbsp;The Arduino Uno R3 requires the&nbsp;<a href=\"http:\/\/arduino.cc\/en\/Main\/Software\">Arduino 1.0<\/a>&nbsp;drivers folder in order to install properly on some computers. We have tested and confirmed that the R3 can be programmed in older versions of the IDE. However, the first time using the R3 on a new computer, you will need to have Arduino 1.0 installed on that machine. If you are interested in reading more about the changes to the IDE, check out the official&nbsp;<a href=\"http:\/\/arduino.cc\/en\/Main\/ReleaseNotes\">Arduino 1.0 Release notes<\/a>!<br><br><\/div><div><!--block-->Not sure which Arduino or Arduino-compatible board is right for you? Check out our&nbsp;<a href=\"https:\/\/www.sparkfun.com\/arduino_guide\">Arduino Buying Guide<\/a>!<br><br><\/div><strong>Features:<br><\/strong><div><!--block-->\t<\/div><ul><li><!--block-->ATmega328 microcontroller\t<\/li><li><!--block-->Input voltage - 7-12V\t<\/li><li><!--block-->14 Digital I\/O Pins (6 PWM outputs)\t<\/li><li><!--block-->6 Analog Inputs\t<\/li><li><!--block-->32k Flash Memory\t<\/li><li><!--block-->16Mhz Clock Speed<\/li><\/ul><div><!--block--><strong>Documents:<\/strong><br><\/div><div><ul><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/uploads\/Main\/Arduino_Uno_Rev3-schematic.pdf\">Schematic<\/a>\t<\/li><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/uploads\/Main\/arduino_Uno_Rev3-02-TH.zip\">Eagle Files<\/a>\t<\/li><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/Main\/ArduinoBoardUno\">Product Page<\/a>\t<\/li><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/Main\/Software\">Arduino IDE Download<\/a><\/li><\/ul>"
+  },
+  {
     id: 9,
-    name: "MacBook Air 13.6\" M2 (8-CPU Core/ 8-GPU Core)",
-    price: 4999.00,
-    image: logoImage,
-    onSale: false,
-    onNew: true,
+    name: "Power Resistor 5W 10ohm",
+    price: 25.00,
+    image: pp6,
+    onSale: true,
+    state: 2,
+
+    salePrice: 13.0,
+    detailImage: [p11, p12, p13, p14,
+    ],
+    category: categories[1].name,
+    technicalDetails: {
+      productDimensions: "50.7mm x 23.0mm x 9.9mm / 2.0 x 0.9 x 0.4",
+      productWeight: "6.4g / 0.2oz",
+    },
+    description: "<div><!--block-->This is the new Arduino Uno R3. In addition to all the features of the previous board, the Uno now uses an ATmega16U2 instead of the 8U2 found on the Uno (or the FTDI found on previous generations). This allows for faster transfer rates and more memory. No drivers needed for Linux or Mac (inf file for Windows is needed and included in the Arduino IDE), and the ability to have the Uno show up as a keyboard, mouse, joystick, etc.<br><br><\/div><div><!--block-->The Uno R3 also adds SDA and SCL pins next to the AREF. In addition, there are two new pins placed near the RESET pin. One is the IOREF that allow the shields to adapt to the voltage provided from the board. The other is a not connected and is reserved for future purposes. The Uno R3 works with all existing shields but can adapt to new shields which use these additional pins.<br><br><\/div><div><!--block-->Arduino is an open-source physical computing platform based on a simple i\/o board and a development environment that implements the&nbsp;<a href=\"http:\/\/www.processing.org\/\">Processing<\/a>\/<a href=\"http:\/\/wiring.org.co\/\">Wiring<\/a>&nbsp;language. Arduino can be used to develop stand-alone interactive objects or can be connected to software on your computer (e.g. Flash, Processing, MaxMSP). The open-source IDE can be downloaded for free (currently for Mac OS X, Windows, and Linux).<br><br><\/div><div><!--block--><strong>Note:<\/strong>&nbsp;The Arduino Uno R3 requires the&nbsp;<a href=\"http:\/\/arduino.cc\/en\/Main\/Software\">Arduino 1.0<\/a>&nbsp;drivers folder in order to install properly on some computers. We have tested and confirmed that the R3 can be programmed in older versions of the IDE. However, the first time using the R3 on a new computer, you will need to have Arduino 1.0 installed on that machine. If you are interested in reading more about the changes to the IDE, check out the official&nbsp;<a href=\"http:\/\/arduino.cc\/en\/Main\/ReleaseNotes\">Arduino 1.0 Release notes<\/a>!<br><br><\/div><div><!--block-->Not sure which Arduino or Arduino-compatible board is right for you? Check out our&nbsp;<a href=\"https:\/\/www.sparkfun.com\/arduino_guide\">Arduino Buying Guide<\/a>!<br><br><\/div><strong>Features:<br><\/strong><div><!--block-->\t<\/div><ul><li><!--block-->ATmega328 microcontroller\t<\/li><li><!--block-->Input voltage - 7-12V\t<\/li><li><!--block-->14 Digital I\/O Pins (6 PWM outputs)\t<\/li><li><!--block-->6 Analog Inputs\t<\/li><li><!--block-->32k Flash Memory\t<\/li><li><!--block-->16Mhz Clock Speed<\/li><\/ul><div><!--block--><strong>Documents:<\/strong><br><\/div><div><ul><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/uploads\/Main\/Arduino_Uno_Rev3-schematic.pdf\">Schematic<\/a>\t<\/li><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/uploads\/Main\/arduino_Uno_Rev3-02-TH.zip\">Eagle Files<\/a>\t<\/li><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/Main\/ArduinoBoardUno\">Product Page<\/a>\t<\/li><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/Main\/Software\">Arduino IDE Download<\/a><\/li><\/ul>"
   },
   {
     id: 10,
-    name: "MacBook Air 13.6\" M2 (8-CPU Core/ 8-GPU Core)",
+    name: "3 Ω Carbon Film Resistor 1/8W ±1%",
     price: 4999.00,
-    image: logoImage,
-    onSale: true,
-    salePrice: 888.8,
-    onNew: true,
-    onMost: true
+    image: rr5,
+    onMost: true,
+    state: 0,
+    isRetired: true,
+    detailImage: [p11, p12, p13, p14,
+    ],
+    category: categories[1].name,
+    technicalDetails: {
+      productDimensions: "50.7mm x 23.0mm x 9.9mm / 2.0 x 0.9 x 0.4",
+      productWeight: "6.4g / 0.2oz",
+    },
+    description: "<div><!--block-->This is the new Arduino Uno R3. In addition to all the features of the previous board, the Uno now uses an ATmega16U2 instead of the 8U2 found on the Uno (or the FTDI found on previous generations). This allows for faster transfer rates and more memory. No drivers needed for Linux or Mac (inf file for Windows is needed and included in the Arduino IDE), and the ability to have the Uno show up as a keyboard, mouse, joystick, etc.<br><br><\/div><div><!--block-->The Uno R3 also adds SDA and SCL pins next to the AREF. In addition, there are two new pins placed near the RESET pin. One is the IOREF that allow the shields to adapt to the voltage provided from the board. The other is a not connected and is reserved for future purposes. The Uno R3 works with all existing shields but can adapt to new shields which use these additional pins.<br><br><\/div><div><!--block-->Arduino is an open-source physical computing platform based on a simple i\/o board and a development environment that implements the&nbsp;<a href=\"http:\/\/www.processing.org\/\">Processing<\/a>\/<a href=\"http:\/\/wiring.org.co\/\">Wiring<\/a>&nbsp;language. Arduino can be used to develop stand-alone interactive objects or can be connected to software on your computer (e.g. Flash, Processing, MaxMSP). The open-source IDE can be downloaded for free (currently for Mac OS X, Windows, and Linux).<br><br><\/div><div><!--block--><strong>Note:<\/strong>&nbsp;The Arduino Uno R3 requires the&nbsp;<a href=\"http:\/\/arduino.cc\/en\/Main\/Software\">Arduino 1.0<\/a>&nbsp;drivers folder in order to install properly on some computers. We have tested and confirmed that the R3 can be programmed in older versions of the IDE. However, the first time using the R3 on a new computer, you will need to have Arduino 1.0 installed on that machine. If you are interested in reading more about the changes to the IDE, check out the official&nbsp;<a href=\"http:\/\/arduino.cc\/en\/Main\/ReleaseNotes\">Arduino 1.0 Release notes<\/a>!<br><br><\/div><div><!--block-->Not sure which Arduino or Arduino-compatible board is right for you? Check out our&nbsp;<a href=\"https:\/\/www.sparkfun.com\/arduino_guide\">Arduino Buying Guide<\/a>!<br><br><\/div><strong>Features:<br><\/strong><div><!--block-->\t<\/div><ul><li><!--block-->ATmega328 microcontroller\t<\/li><li><!--block-->Input voltage - 7-12V\t<\/li><li><!--block-->14 Digital I\/O Pins (6 PWM outputs)\t<\/li><li><!--block-->6 Analog Inputs\t<\/li><li><!--block-->32k Flash Memory\t<\/li><li><!--block-->16Mhz Clock Speed<\/li><\/ul><div><!--block--><strong>Documents:<\/strong><br><\/div><div><ul><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/uploads\/Main\/Arduino_Uno_Rev3-schematic.pdf\">Schematic<\/a>\t<\/li><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/uploads\/Main\/arduino_Uno_Rev3-02-TH.zip\">Eagle Files<\/a>\t<\/li><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/Main\/ArduinoBoardUno\">Product Page<\/a>\t<\/li><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/Main\/Software\">Arduino IDE Download<\/a><\/li><\/ul>"
   },
   {
     id: 11,
-    name: "MacBook Air 13.6\" M2 (8-CPU Core/ 8-GPU Core)",
+    name: "Power Resistor 5W 20ohm",
     price: 4999.00,
-    image: logoImage,
+    image: pp7,
     onSale: true,
+    onNew: true,
+    state: 1,
+
     salePrice: 888.8,
+    detailImage: [p11, p12, p13, p14,
+    ],
+    category: categories[1].name,
+    technicalDetails: {
+      productDimensions: "50.7mm x 23.0mm x 9.9mm / 2.0 x 0.9 x 0.4",
+      productWeight: "6.4g / 0.2oz",
+    },
+    description: "<div><!--block-->This is the new Arduino Uno R3. In addition to all the features of the previous board, the Uno now uses an ATmega16U2 instead of the 8U2 found on the Uno (or the FTDI found on previous generations). This allows for faster transfer rates and more memory. No drivers needed for Linux or Mac (inf file for Windows is needed and included in the Arduino IDE), and the ability to have the Uno show up as a keyboard, mouse, joystick, etc.<br><br><\/div><div><!--block-->The Uno R3 also adds SDA and SCL pins next to the AREF. In addition, there are two new pins placed near the RESET pin. One is the IOREF that allow the shields to adapt to the voltage provided from the board. The other is a not connected and is reserved for future purposes. The Uno R3 works with all existing shields but can adapt to new shields which use these additional pins.<br><br><\/div><div><!--block-->Arduino is an open-source physical computing platform based on a simple i\/o board and a development environment that implements the&nbsp;<a href=\"http:\/\/www.processing.org\/\">Processing<\/a>\/<a href=\"http:\/\/wiring.org.co\/\">Wiring<\/a>&nbsp;language. Arduino can be used to develop stand-alone interactive objects or can be connected to software on your computer (e.g. Flash, Processing, MaxMSP). The open-source IDE can be downloaded for free (currently for Mac OS X, Windows, and Linux).<br><br><\/div><div><!--block--><strong>Note:<\/strong>&nbsp;The Arduino Uno R3 requires the&nbsp;<a href=\"http:\/\/arduino.cc\/en\/Main\/Software\">Arduino 1.0<\/a>&nbsp;drivers folder in order to install properly on some computers. We have tested and confirmed that the R3 can be programmed in older versions of the IDE. However, the first time using the R3 on a new computer, you will need to have Arduino 1.0 installed on that machine. If you are interested in reading more about the changes to the IDE, check out the official&nbsp;<a href=\"http:\/\/arduino.cc\/en\/Main\/ReleaseNotes\">Arduino 1.0 Release notes<\/a>!<br><br><\/div><div><!--block-->Not sure which Arduino or Arduino-compatible board is right for you? Check out our&nbsp;<a href=\"https:\/\/www.sparkfun.com\/arduino_guide\">Arduino Buying Guide<\/a>!<br><br><\/div><strong>Features:<br><\/strong><div><!--block-->\t<\/div><ul><li><!--block-->ATmega328 microcontroller\t<\/li><li><!--block-->Input voltage - 7-12V\t<\/li><li><!--block-->14 Digital I\/O Pins (6 PWM outputs)\t<\/li><li><!--block-->6 Analog Inputs\t<\/li><li><!--block-->32k Flash Memory\t<\/li><li><!--block-->16Mhz Clock Speed<\/li><\/ul><div><!--block--><strong>Documents:<\/strong><br><\/div><div><ul><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/uploads\/Main\/Arduino_Uno_Rev3-schematic.pdf\">Schematic<\/a>\t<\/li><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/uploads\/Main\/arduino_Uno_Rev3-02-TH.zip\">Eagle Files<\/a>\t<\/li><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/Main\/ArduinoBoardUno\">Product Page<\/a>\t<\/li><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/Main\/Software\">Arduino IDE Download<\/a><\/li><\/ul>"
   }, {
     id: 12,
-    name: "MacBook Air 13.6\" M2 (8-CPU Core/ 8-GPU Core)",
+    name: "Power Resistor 5W 100ohm",
     price: 4999.00,
-    image: logoImage,
-    onSale: false,
-  },
-  {
+    image: pp8,
+    onMost: true,
+    state: 1,
+
+    detailImage: [p11, p12, p13, p14,
+    ],
+    category: categories[1].name,
+    technicalDetails: {
+      productDimensions: "50.7mm x 23.0mm x 9.9mm / 2.0 x 0.9 x 0.4",
+      productWeight: "6.4g / 0.2oz",
+    },
+    description: "<div><!--block-->This is the new Arduino Uno R3. In addition to all the features of the previous board, the Uno now uses an ATmega16U2 instead of the 8U2 found on the Uno (or the FTDI found on previous generations). This allows for faster transfer rates and more memory. No drivers needed for Linux or Mac (inf file for Windows is needed and included in the Arduino IDE), and the ability to have the Uno show up as a keyboard, mouse, joystick, etc.<br><br><\/div><div><!--block-->The Uno R3 also adds SDA and SCL pins next to the AREF. In addition, there are two new pins placed near the RESET pin. One is the IOREF that allow the shields to adapt to the voltage provided from the board. The other is a not connected and is reserved for future purposes. The Uno R3 works with all existing shields but can adapt to new shields which use these additional pins.<br><br><\/div><div><!--block-->Arduino is an open-source physical computing platform based on a simple i\/o board and a development environment that implements the&nbsp;<a href=\"http:\/\/www.processing.org\/\">Processing<\/a>\/<a href=\"http:\/\/wiring.org.co\/\">Wiring<\/a>&nbsp;language. Arduino can be used to develop stand-alone interactive objects or can be connected to software on your computer (e.g. Flash, Processing, MaxMSP). The open-source IDE can be downloaded for free (currently for Mac OS X, Windows, and Linux).<br><br><\/div><div><!--block--><strong>Note:<\/strong>&nbsp;The Arduino Uno R3 requires the&nbsp;<a href=\"http:\/\/arduino.cc\/en\/Main\/Software\">Arduino 1.0<\/a>&nbsp;drivers folder in order to install properly on some computers. We have tested and confirmed that the R3 can be programmed in older versions of the IDE. However, the first time using the R3 on a new computer, you will need to have Arduino 1.0 installed on that machine. If you are interested in reading more about the changes to the IDE, check out the official&nbsp;<a href=\"http:\/\/arduino.cc\/en\/Main\/ReleaseNotes\">Arduino 1.0 Release notes<\/a>!<br><br><\/div><div><!--block-->Not sure which Arduino or Arduino-compatible board is right for you? Check out our&nbsp;<a href=\"https:\/\/www.sparkfun.com\/arduino_guide\">Arduino Buying Guide<\/a>!<br><br><\/div><strong>Features:<br><\/strong><div><!--block-->\t<\/div><ul><li><!--block-->ATmega328 microcontroller\t<\/li><li><!--block-->Input voltage - 7-12V\t<\/li><li><!--block-->14 Digital I\/O Pins (6 PWM outputs)\t<\/li><li><!--block-->6 Analog Inputs\t<\/li><li><!--block-->32k Flash Memory\t<\/li><li><!--block-->16Mhz Clock Speed<\/li><\/ul><div><!--block--><strong>Documents:<\/strong><br><\/div><div><ul><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/uploads\/Main\/Arduino_Uno_Rev3-schematic.pdf\">Schematic<\/a>\t<\/li><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/uploads\/Main\/arduino_Uno_Rev3-02-TH.zip\">Eagle Files<\/a>\t<\/li><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/Main\/ArduinoBoardUno\">Product Page<\/a>\t<\/li><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/Main\/Software\">Arduino IDE Download<\/a><\/li><\/ul>"
+  }, {
     id: 13,
-    name: "MacBook Air 13.6\" M2 (8-CPU Core/ 8-GPU Core)",
+    name: "Power Resistor 10W 51ohm",
     price: 4999.00,
-    image: logoImage,
-    onSale: true,
-    salePrice: 888.8888,
-  },
-  {
-    id: 14,
-    name: "MacBook Air 13.6\" M2 (8-CPU Core/ 8-GPU Core)",
-    price: 4999.00,
-    image: logoImage,
+    image: pp9,
     onNew: true,
-    onMost: true
-  }, {
-    id: 15,
-    name: "MacBook Air 13.6\" M2 (8-CPU Core/ 8-GPU Core)",
-    price: 4999.00,
-    image: logoImage,
-    onSale: false,
-  },
-  {
-    id: 16,
-    name: "MacBook Air 13.6\" M2 (8-CPU Core/ 8-GPU Core)",
-    price: 4999.00,
-    image: logoImage,
-    onSale: true,
-    salePrice: 888.8,
-  },
-  {
-    id: 17,
-    name: "MacBook Air 13.6\" M2 (8-CPU Core/ 8-GPU Core)",
-    price: 4999.00,
-    image: logoImage,
-    onSale: true,
-    onNew: true,
-    onMost: false,
-    salePrice: 888.8,
-  }, {
-    id: 18,
-    name: "MacBook Air 13.6\" M2 (8-CPU Core/ 8-GPU Core)",
-    price: 4999.00,
-    image: logoImage,
-    onSale: false,
-    onNew: true,
-    onMost: true
+    onMost: true,
+    state: 1,
+
+    detailImage: [p11, p12, p13, p14,
+    ],
+    category: categories[1].name,
+    technicalDetails: {
+      productDimensions: "50.7mm x 23.0mm x 9.9mm / 2.0 x 0.9 x 0.4",
+      productWeight: "6.4g / 0.2oz",
+    },
+    description: "<div><!--block-->This is the new Arduino Uno R3. In addition to all the features of the previous board, the Uno now uses an ATmega16U2 instead of the 8U2 found on the Uno (or the FTDI found on previous generations). This allows for faster transfer rates and more memory. No drivers needed for Linux or Mac (inf file for Windows is needed and included in the Arduino IDE), and the ability to have the Uno show up as a keyboard, mouse, joystick, etc.<br><br><\/div><div><!--block-->The Uno R3 also adds SDA and SCL pins next to the AREF. In addition, there are two new pins placed near the RESET pin. One is the IOREF that allow the shields to adapt to the voltage provided from the board. The other is a not connected and is reserved for future purposes. The Uno R3 works with all existing shields but can adapt to new shields which use these additional pins.<br><br><\/div><div><!--block-->Arduino is an open-source physical computing platform based on a simple i\/o board and a development environment that implements the&nbsp;<a href=\"http:\/\/www.processing.org\/\">Processing<\/a>\/<a href=\"http:\/\/wiring.org.co\/\">Wiring<\/a>&nbsp;language. Arduino can be used to develop stand-alone interactive objects or can be connected to software on your computer (e.g. Flash, Processing, MaxMSP). The open-source IDE can be downloaded for free (currently for Mac OS X, Windows, and Linux).<br><br><\/div><div><!--block--><strong>Note:<\/strong>&nbsp;The Arduino Uno R3 requires the&nbsp;<a href=\"http:\/\/arduino.cc\/en\/Main\/Software\">Arduino 1.0<\/a>&nbsp;drivers folder in order to install properly on some computers. We have tested and confirmed that the R3 can be programmed in older versions of the IDE. However, the first time using the R3 on a new computer, you will need to have Arduino 1.0 installed on that machine. If you are interested in reading more about the changes to the IDE, check out the official&nbsp;<a href=\"http:\/\/arduino.cc\/en\/Main\/ReleaseNotes\">Arduino 1.0 Release notes<\/a>!<br><br><\/div><div><!--block-->Not sure which Arduino or Arduino-compatible board is right for you? Check out our&nbsp;<a href=\"https:\/\/www.sparkfun.com\/arduino_guide\">Arduino Buying Guide<\/a>!<br><br><\/div><strong>Features:<br><\/strong><div><!--block-->\t<\/div><ul><li><!--block-->ATmega328 microcontroller\t<\/li><li><!--block-->Input voltage - 7-12V\t<\/li><li><!--block-->14 Digital I\/O Pins (6 PWM outputs)\t<\/li><li><!--block-->6 Analog Inputs\t<\/li><li><!--block-->32k Flash Memory\t<\/li><li><!--block-->16Mhz Clock Speed<\/li><\/ul><div><!--block--><strong>Documents:<\/strong><br><\/div><div><ul><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/uploads\/Main\/Arduino_Uno_Rev3-schematic.pdf\">Schematic<\/a>\t<\/li><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/uploads\/Main\/arduino_Uno_Rev3-02-TH.zip\">Eagle Files<\/a>\t<\/li><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/Main\/ArduinoBoardUno\">Product Page<\/a>\t<\/li><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/Main\/Software\">Arduino IDE Download<\/a><\/li><\/ul>"
   },
 ];
 const saleItems = products.filter(product => product.onSale);
+console.log(saleItems);
 const NewProducts = products.filter(product => product.onNew);
 const MostPopular = products.filter(product => product.onMost);
 export { saleItems, NewProducts, MostPopular, ProductCard, Breadcrum, Form, Dropdown, DropdownButton, ElasticCarousel, Hero, useRef, categories, products, FontAwesomeIcon, contactInfo, NavLink, Link, useParams, routes, navLinks, CarouselImages, logoImage, useState, useEffect, Footer, NavbarHeader, Register }

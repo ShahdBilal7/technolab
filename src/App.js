@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Search from './Components/SearchHeader/Search.jsx';
 import ScrollToTop from "react-scroll-to-top";
-import {FontAwesomeIcon,routes,navLinks,Footer,NavbarHeader,Register} from "./Constants.js";
+import { FontAwesomeIcon, routes, navLinks, Footer, NavbarHeader, Register } from "./Constants.js";
 
 function App() {
   const [showSearch, setShowSearch] = useState(true);

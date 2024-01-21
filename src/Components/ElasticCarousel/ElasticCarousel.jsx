@@ -1,4 +1,3 @@
-// import Carousel from 'react-elastic-carousel';
 import "./ElasticCarousel.css"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -7,7 +6,7 @@ import Slider from "react-slick";
 
 const ElasticCarousel = ({ slidesToShow=3,heading, products, color, rowCount, flagSale }) => {
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 400,
     slidesToShow: slidesToShow,
@@ -26,8 +25,8 @@ const ElasticCarousel = ({ slidesToShow=3,heading, products, color, rowCount, fl
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: slidesToShow-2,
-          slidesToScroll: slidesToShow-2,
+          slidesToShow: 1,
+          slidesToScroll: 1,
         }
       },
 
@@ -41,7 +40,7 @@ const ElasticCarousel = ({ slidesToShow=3,heading, products, color, rowCount, fl
       <div className="  container">
         <Slider {...settings}>
           {products.map((product) => (
-            <div key={product.id} className="p-4">
+            <div key={product.id} className="p-3">
               <ProductCard product={product} flagSale={flagSale} />
             </div>
           ))}
