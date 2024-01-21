@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/technolab/static/css/main.eebfa848.css",
-    "main.js": "/technolab/static/js/main.13eef828.js",
+    "main.css": "/technolab/static/css/main.834a836d.css",
+    "main.js": "/technolab/static/js/main.c14c268f.js",
     "static/media/p12.jpg": "/technolab/static/media/p12.b88c0768b64f606c3323.jpg",
     "static/media/p13.jpg": "/technolab/static/media/p13.6032f13c69a86dd08306.jpg",
     "static/media/p14.jpg": "/technolab/static/media/p14.02a34175c40fc0f5d8a1.jpg",
@@ -13,16 +13,24 @@
     "static/media/h5.jpg": "/technolab/static/media/h5.986209d16e5a0fade0f2.jpg",
     "static/media/p1.jpg": "/technolab/static/media/p1.71160c3cf526bd42c747.jpg",
     "static/media/logo.png": "/technolab/static/media/logo.672e22c5f8b48950cb7d.png",
+    "static/media/pp4.jpg": "/technolab/static/media/pp4.01283c11a434badaecae.jpg",
+    "static/media/pp3.jpg": "/technolab/static/media/pp3.f73b85e9ac221ca120c1.jpg",
+    "static/media/rr1.jpg": "/technolab/static/media/rr1.627d961bd1af6d38ee98.jpg",
+    "static/media/rr2.jpg": "/technolab/static/media/rr2.627d961bd1af6d38ee98.jpg",
+    "static/media/rr3.jpg": "/technolab/static/media/rr3.627d961bd1af6d38ee98.jpg",
+    "static/media/rr4.jpg": "/technolab/static/media/rr4.627d961bd1af6d38ee98.jpg",
+    "static/media/rr5.jpg": "/technolab/static/media/rr5.627d961bd1af6d38ee98.jpg",
+    "static/media/pp8.jpeg": "/technolab/static/media/pp8.960f76017f03b3098ce0.jpeg",
     "static/media/slick.svg": "/technolab/static/media/slick.2630a3e3eab21c607e21.svg",
     "static/media/slick.eot": "/technolab/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/technolab/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/technolab/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/technolab/index.html",
-    "main.eebfa848.css.map": "/technolab/static/css/main.eebfa848.css.map",
-    "main.13eef828.js.map": "/technolab/static/js/main.13eef828.js.map"
+    "main.834a836d.css.map": "/technolab/static/css/main.834a836d.css.map",
+    "main.c14c268f.js.map": "/technolab/static/js/main.c14c268f.js.map"
   },
   "entrypoints": [
-    "static/css/main.eebfa848.css",
-    "static/js/main.13eef828.js"
+    "static/css/main.834a836d.css",
+    "static/js/main.c14c268f.js"
   ]
 }
