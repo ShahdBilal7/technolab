@@ -255,15 +255,18 @@
 }
 
 .cart .btn:hover {
-
-  font-weight: bold;
   background-color: #777777c8;
 }
-
-.cart .btn.disabled {
-  pointer-events: none;
+.empty {
+  display: inline-block;
+  margin: 15px 0;
+  padding: 15px 30px;
+  font-size: larger;
+  font-weight: bold;
 }
-
+.empty:hover {
+  color: var(--main-color);
+}
 /* End Cart Page */
 /* start error404 */
 .errorCont {

@@ -14,7 +14,7 @@ const Product = () => {
       <Hero />
       <div className="products container">
         <div className="row justify-content-between ">
-          <div className=" filter col-lg-2  col-md-4   col-sm-12 ">
+          <div className=" filter col-lg-3  col-md-4   col-sm-12 ">
             <div className=' categories-list coll'>
               <h3>Categories</h3>
               <ul>
@@ -51,7 +51,7 @@ const Product = () => {
               </ul>
             </div>
           </div>
-          <div className=" col-lg-10 col-md-8    col-sm-12  products-list coll">
+          <div className=" col-lg-9 col-md-8    col-sm-12  products-list coll">
             <div className='mb-3 d-flex justify-content-between'>
               <Breadcrum Category={"Shop"} SubCategory={"All"} Data={"All"} />
               <DropdownButton id="dropdown-item-button" title="Sort By : Sale Item ">

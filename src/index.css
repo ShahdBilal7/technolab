@@ -149,6 +149,25 @@ img {
   margin-right: auto;
 }
 
+.Toastify__toast-container {
+  width: unset !important;
+  /* background-color: white; */
+  /* padding: 0;
+  border-radius: 6px; */
+  
+}
+/* .Toastify__toast-theme--light { */
+  /* background-color: #a1c54238; */
+  /* margin: 5px; */
+
+/* } */
+/* .Toastify__toast-container svg {
+  fill: #7b9731;
+}
+.Toastify__progress-bar--wrp {
+  height: 0;
+} */
+
 /* Small */
 @media (min-width: 768px) {
   .container {

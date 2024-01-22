@@ -1,8 +1,11 @@
-import { FontAwesomeIcon, Link } from "../../Constants";
+import { FontAwesomeIcon, Link, addToCart, useDispatch } from "../../Constants";
 import "./ProductCard.css";
-import p1 from "../../assets/p1.jpg";
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 const ProductCard = ({ product, flagSale }) => {
+  const dispatch = useDispatch();
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+  };
   const { id, name, price, salePrice, image, onSale, state, onNew, isRetired } = product;
   return (
     <div key={id} className="product-card card h-100 text-center rounded-0">
@@ -61,20 +64,18 @@ const ProductCard = ({ product, flagSale }) => {
         </div>
         <div className="border-top">
           <div className="row m-0 align-items-center">
-
-            <div className='col  border-right icon-card'>
-              <Link className="ic" >
+            <Link className='col  border-right icon-card' onClick={() => handleAddToCart(product)}>
+              <div className="ic" >
                 <FontAwesomeIcon icon="fa-shopping-cart" />
-              </Link>
+              </div>
               <h6 className="tex">To cart</h6>
-            </div>
-
-            <div className=' col border-right icon-card'>
-              <Link className="ic" to={`/detail/${id}`}>
+            </Link>
+            <Link className=' col border-right icon-card' to={`/detail/${id}`}>
+              <div className="ic" >
                 <FontAwesomeIcon icon="fa-eye" />
-              </Link>
+              </div>
               <h6 className="tex">View</h6>
-            </div>
+            </Link>
 
 
 

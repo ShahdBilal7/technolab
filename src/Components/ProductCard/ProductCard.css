@@ -41,6 +41,7 @@
 
 .icon-card {
   /* padding:15px 0 !important; */
+  cursor: pointer;
   height: 50px;
   display: flex;
   flex-direction: column;
@@ -63,6 +64,7 @@
 
 .icon-card:hover .ic {
   color: var(--main-color);
+  cursor: pointer;
 }
 
 .product-image:hover .review {

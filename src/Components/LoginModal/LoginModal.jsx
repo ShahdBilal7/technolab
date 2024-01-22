@@ -1,4 +1,4 @@
-import { logoImage, FontAwesomeIcon, useState, Link } from "../../Constants.js";
+import { useSelector, logoImage, FontAwesomeIcon, useState, Link,useDispatch,useEffect,getTotals } from "../../Constants.js";
 import { Modal } from "react-bootstrap";
 import "./loginModal.css";
 const LoginModal = ({ error, handleNavLinkClick }) => {
@@ -13,14 +13,21 @@ const LoginModal = ({ error, handleNavLinkClick }) => {
   const handlePasswordToggle = () => {
     setPasswordVisible(!passwordVisible);
   };
+  const { cartTotalQuantity } = useSelector(state => state.cart)
+  const dispatch = useDispatch();
+  const cart = useSelector(state => state.cart);
+  useEffect(() => {
+    dispatch(getTotals());
+  }, [cart, dispatch])
+
   return (
     <>
       <div className="nav-login "  >
         <div className='link' onClick={handleShow}>Login</div>
-        <Link to={"/cart"} className="cart-count link">  
+        <Link to={"/cart"} onClick={handleNavLinkClick} className="cart-count link">
           <FontAwesomeIcon className="icon" icon="fa fa-shopping-cart" />
-          <span className="count">0</span>
-    
+          <span className="count">{cartTotalQuantity}</span>
+
         </Link>
       </div>
       <Modal className="loginCont" show={show} onHide={handleClose} centered>

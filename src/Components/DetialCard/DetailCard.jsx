@@ -1,8 +1,12 @@
-import { FontAwesomeIcon,useState} from "../../Constants";
+import { toast } from "react-toastify";
+import { FontAwesomeIcon,useState,useDispatch,addToCart} from "../../Constants";
 import "./DetailCard.css";
 const DetailCard = ({product}) => {
   const [quant, setQuant] = useState(0);
-
+const dispatch=useDispatch();
+const handleAddToCart=(product)=>{
+  dispatch(addToCart(product));
+    };
   const addQuant = () => {
     setQuant(quant + 1);
   };
@@ -10,6 +14,8 @@ const DetailCard = ({product}) => {
   const removeQuant = () => {
     setQuant(quant - 1);
   };
+
+
 
   return (
     <div className="details ">
@@ -23,7 +29,7 @@ const DetailCard = ({product}) => {
             <span className="p-3" style={{ color: "#000", fontSize: "20px", }}>{product.salePrice.toFixed(2)}₪</span>
           </>
         ) : (
-          <span>{product.price.toFixed(2)}₪</span>
+          <span style={{ color: "#000", fontSize: "18px", }}>{product.price.toFixed(2)}₪</span>
         )}
       </h6>
 
@@ -50,21 +56,27 @@ const DetailCard = ({product}) => {
       </table>
     </div>
     <div className="buttons">
-      <div className="amount">
-        <button className="minus" onClick={removeQuant} disabled={quant === 0}>
-          <FontAwesomeIcon icon="fa fa-minus" />
-        </button>
-        <p>{quant}</p>
-        <button className="plus" onClick={addQuant} disabled={quant === 100}>
-          <FontAwesomeIcon icon="fa fa-plus" />
-        </button>
-      </div>
-      <button
-        className="add-to-cart"
+  {    
+    // <div className="amount">
+    //     <button className="minus" onClick={removeQuant} disabled={quant === 0}>
+    //       <FontAwesomeIcon icon="fa fa-minus" />
+    //     </button>
+    //     <p>{quant}</p>
+    //     <button className="plus" onClick={addQuant} disabled={quant === 100}>
+    //       <FontAwesomeIcon icon="fa fa-plus" />
+    //     </button>
+    //   </div>
+    }
+
+      <button 
+      
+        className="add-to-cart" onClick={ 
+          ()=>handleAddToCart(product)
+        }
       >
         <FontAwesomeIcon icon="fa fa-shopping-cart" />
         add to cart
-      </button>
+      </button>  
     </div>
   </div>
   )

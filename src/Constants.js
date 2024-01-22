@@ -12,6 +12,8 @@ import Detail from './Pages/ProductDetail.jsx';
 import About from './Pages/About.jsx';
 import Home from './Pages/Home.jsx';
 import Contact from './Pages/Contact.jsx';
+import { addToCart, decreaseCart, getTotals, removeFromCart } from "../src/features/cartSlice.js";
+import { useDispatch,useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink, Link, useParams } from 'react-router-dom';
 import { Form, Dropdown, DropdownButton } from 'react-bootstrap';
@@ -227,7 +229,7 @@ const products = [
   {
     id: 2,
     name: "0.5Ω Carbon Film Resistor 1/8W ±1%",
-    price: 4999.00,
+    price: 60.00,
     image: rr1,
     onSale: true,
     salePrice: 888.8,
@@ -264,7 +266,7 @@ const products = [
   {
     id: 4,
     name: "1.1Ω Carbon Film Resistor 1/8W ±1%",
-    price: 4999.00,
+    price: 60.00,
     image: rr2,
     onSale: true,
     salePrice: 888.8,
@@ -299,7 +301,7 @@ const products = [
   {
     id: 6,
     name: "1.5Ω Carbon Film Resistor 1/8W ±1%",
-    price: 4999.00,
+    price: 60.00,
     image: rr3,
     state: 0,
     isRetired: true,
@@ -334,7 +336,7 @@ const products = [
   {
     id: 8,
     name: "2Ω Carbon Film Resistor 1/8W ±1%",
-    price: 4999.00,
+    price: 60.00,
     image: rr4,
     onNew: true,
     state: 0,
@@ -369,7 +371,7 @@ const products = [
   {
     id: 10,
     name: "3 Ω Carbon Film Resistor 1/8W ±1%",
-    price: 4999.00,
+    price: 60.00,
     image: rr5,
     onMost: true,
     state: 0,
@@ -386,7 +388,7 @@ const products = [
   {
     id: 11,
     name: "Power Resistor 5W 20ohm",
-    price: 4999.00,
+    price: 60.00,
     image: pp7,
     onSale: true,
     onNew: true,
@@ -404,7 +406,7 @@ const products = [
   }, {
     id: 12,
     name: "Power Resistor 5W 100ohm",
-    price: 4999.00,
+    price: 60.00,
     image: pp8,
     onMost: true,
     state: 1,
@@ -420,7 +422,7 @@ const products = [
   }, {
     id: 13,
     name: "Power Resistor 10W 51ohm",
-    price: 4999.00,
+    price: 60.00,
     image: pp9,
     onNew: true,
     onMost: true,
@@ -436,8 +438,8 @@ const products = [
     description: "<div><!--block-->This is the new Arduino Uno R3. In addition to all the features of the previous board, the Uno now uses an ATmega16U2 instead of the 8U2 found on the Uno (or the FTDI found on previous generations). This allows for faster transfer rates and more memory. No drivers needed for Linux or Mac (inf file for Windows is needed and included in the Arduino IDE), and the ability to have the Uno show up as a keyboard, mouse, joystick, etc.<br><br><\/div><div><!--block-->The Uno R3 also adds SDA and SCL pins next to the AREF. In addition, there are two new pins placed near the RESET pin. One is the IOREF that allow the shields to adapt to the voltage provided from the board. The other is a not connected and is reserved for future purposes. The Uno R3 works with all existing shields but can adapt to new shields which use these additional pins.<br><br><\/div><div><!--block-->Arduino is an open-source physical computing platform based on a simple i\/o board and a development environment that implements the&nbsp;<a href=\"http:\/\/www.processing.org\/\">Processing<\/a>\/<a href=\"http:\/\/wiring.org.co\/\">Wiring<\/a>&nbsp;language. Arduino can be used to develop stand-alone interactive objects or can be connected to software on your computer (e.g. Flash, Processing, MaxMSP). The open-source IDE can be downloaded for free (currently for Mac OS X, Windows, and Linux).<br><br><\/div><div><!--block--><strong>Note:<\/strong>&nbsp;The Arduino Uno R3 requires the&nbsp;<a href=\"http:\/\/arduino.cc\/en\/Main\/Software\">Arduino 1.0<\/a>&nbsp;drivers folder in order to install properly on some computers. We have tested and confirmed that the R3 can be programmed in older versions of the IDE. However, the first time using the R3 on a new computer, you will need to have Arduino 1.0 installed on that machine. If you are interested in reading more about the changes to the IDE, check out the official&nbsp;<a href=\"http:\/\/arduino.cc\/en\/Main\/ReleaseNotes\">Arduino 1.0 Release notes<\/a>!<br><br><\/div><div><!--block-->Not sure which Arduino or Arduino-compatible board is right for you? Check out our&nbsp;<a href=\"https:\/\/www.sparkfun.com\/arduino_guide\">Arduino Buying Guide<\/a>!<br><br><\/div><strong>Features:<br><\/strong><div><!--block-->\t<\/div><ul><li><!--block-->ATmega328 microcontroller\t<\/li><li><!--block-->Input voltage - 7-12V\t<\/li><li><!--block-->14 Digital I\/O Pins (6 PWM outputs)\t<\/li><li><!--block-->6 Analog Inputs\t<\/li><li><!--block-->32k Flash Memory\t<\/li><li><!--block-->16Mhz Clock Speed<\/li><\/ul><div><!--block--><strong>Documents:<\/strong><br><\/div><div><ul><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/uploads\/Main\/Arduino_Uno_Rev3-schematic.pdf\">Schematic<\/a>\t<\/li><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/uploads\/Main\/arduino_Uno_Rev3-02-TH.zip\">Eagle Files<\/a>\t<\/li><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/Main\/ArduinoBoardUno\">Product Page<\/a>\t<\/li><li><!--block--><a href=\"http:\/\/arduino.cc\/en\/Main\/Software\">Arduino IDE Download<\/a><\/li><\/ul>"
   },
 ];
+
 const saleItems = products.filter(product => product.onSale);
-console.log(saleItems);
 const NewProducts = products.filter(product => product.onNew);
 const MostPopular = products.filter(product => product.onMost);
-export { saleItems, NewProducts, MostPopular, ProductCard, Breadcrum, Form, Dropdown, DropdownButton, ElasticCarousel, Hero, useRef, categories, products, FontAwesomeIcon, contactInfo, NavLink, Link, useParams, routes, navLinks, CarouselImages, logoImage, useState, useEffect, Footer, NavbarHeader, Register }
+export {useDispatch,useSelector,saleItems, NewProducts, MostPopular, ProductCard, Breadcrum, Form, Dropdown, DropdownButton, ElasticCarousel, Hero, useRef, categories, products, FontAwesomeIcon, contactInfo, NavLink, Link, useParams, routes, navLinks, CarouselImages, logoImage, useState, useEffect, Footer, NavbarHeader, Register,addToCart, decreaseCart, getTotals, removeFromCart }

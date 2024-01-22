@@ -1,14 +1,16 @@
-import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Search from './Components/SearchHeader/Search.jsx';
 import ScrollToTop from "react-scroll-to-top";
-import { FontAwesomeIcon, routes, navLinks, Footer, NavbarHeader, Register } from "./Constants.js";
+import {useState, FontAwesomeIcon, routes, navLinks, Footer, NavbarHeader, Register } from "./Constants.js";
+import { ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [showSearch, setShowSearch] = useState(true);
 
   return (
     <BrowserRouter basename="/technolab">
+    <ToastContainer/>
       <ScrollToTop smooth component={<FontAwesomeIcon icon="fa-solid fa-chevron-up" />} />
       <NavbarHeader />
       {showSearch && <Search />}
