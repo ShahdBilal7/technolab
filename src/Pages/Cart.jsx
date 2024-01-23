@@ -19,10 +19,7 @@ const Cart = () => {
 const [shipping,setShipping]=useState(0)
   const handleCheckboxChange = (event, key) => {
     const isChecked = event.target.checked;
-
     setSelectedOption(isChecked ? key : null);
-
-    // Log the value to the console when the checkbox is checked
     if (isChecked) {
       console.log(`Checkbox with value ${event.target.value} is checked`);
   setShipping(event.target.value);
@@ -133,23 +130,23 @@ const [shipping,setShipping]=useState(0)
               <div className="order-summary">
                 <h4>Order Summary</h4>
               </div>
-              <div className="cart-body">
+              <div dir="rtl"  className="cart-body">
                 <div className="col-f">
-                  <h6>Subtotal</h6>
+                  <h6>مجموع سعر القطع</h6>
                   <h6 id="subtotal">{cart.cartTotalAmount}$</h6>
                 </div>
                 <div className="col-f">
-                  <h6>Shipping</h6>
+                  <h6> رسوم الشحن</h6>
                   <h6>{shipping}$</h6>
                 </div>
                 <div className="col-f">
-                  <h6>Discount</h6>
+                  <h6> خصم</h6>
                   <h6>0$</h6>
                 </div>
               </div>
-              <div className="checkout">
+              <div dir="rtl"  className="checkout">
                 <div className="col-f">
-                  <h5>Total</h5>
+                  <h5>المجموع النهائي</h5>
                   <h5 id="total">{cart.cartTotalAmount+ + shipping}$</h5>
                 </div>
               </div>
