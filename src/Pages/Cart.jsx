@@ -15,7 +15,21 @@ import {
 import { Form } from 'react-bootstrap';
 import Accordion from "react-bootstrap/Accordion";
 const Cart = () => {
+  const [selectedOption, setSelectedOption] = useState(null);
+const [shipping,setShipping]=useState(0)
+  const handleCheckboxChange = (event, key) => {
+    const isChecked = event.target.checked;
 
+    setSelectedOption(isChecked ? key : null);
+
+    // Log the value to the console when the checkbox is checked
+    if (isChecked) {
+      console.log(`Checkbox with value ${event.target.value} is checked`);
+  setShipping(event.target.value);
+    }
+    else{setShipping(0);}
+  
+  };
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   const handleRemoveFromCart = (cartItem) => {
@@ -126,7 +140,7 @@ const Cart = () => {
                 </div>
                 <div className="col-f">
                   <h6>Shipping</h6>
-                  <h6>0$</h6>
+                  <h6>{shipping}$</h6>
                 </div>
                 <div className="col-f">
                   <h6>Discount</h6>
@@ -136,7 +150,7 @@ const Cart = () => {
               <div className="checkout">
                 <div className="col-f">
                   <h5>Total</h5>
-                  <h5 id="total">{cart.cartTotalAmount}$</h5>
+                  <h5 id="total">{cart.cartTotalAmount+ + shipping}$</h5>
                 </div>
               </div>
             </div>
@@ -160,7 +174,14 @@ const Cart = () => {
                 <Accordion.Body>
                   بواسطة هذه الخدمة تستطيع استلام طلبك من معرض الشركة فور تثبيت
                   الطلب دون اي تكاليف اضافية
-                </Accordion.Body>
+                  <input className="custom"
+                type="checkbox"
+                name="shippingOption"
+                value={0}
+                checked={selectedOption === "1"}
+                onChange={(e) => handleCheckboxChange(e, "1")}
+              />
+                  </Accordion.Body>
               </Accordion.Item>
               <Accordion.Item eventKey="2">
                 <Accordion.Header >
@@ -168,7 +189,17 @@ const Cart = () => {
                   <div className="bef befm">-</div>
                   شحن داخل مدينة نابلس
                 </Accordion.Header>
-                <Accordion.Body>توصيل داخل مدينة نابلس </Accordion.Body>
+                <Accordion.Body>
+                  التوصيل من خلال الدراجات النارية.
+                  <br />رسوم الشحن من 10 الى 15 شيكل
+                  <input className="custom"
+                  type="checkbox"
+                  name="shippingOption"
+                  value={15}
+                  checked={selectedOption === "2"}
+                  onChange={(e) => handleCheckboxChange(e, "2")}
+                />
+                  </Accordion.Body>
               </Accordion.Item>
               <Accordion.Item eventKey="3">
                 <Accordion.Header >
@@ -176,7 +207,17 @@ const Cart = () => {
                   <div className="bef befm">-</div>
                   شحن الى مدن و قرى الضفة
                 </Accordion.Header>
-                <Accordion.Body>توصيل الى ة</Accordion.Body>
+                <Accordion.Body>
+                  التوصيل من خلال شركة التوصيل  تورنيدو.
+                  <br />رسوم الشحن 20 شيكل
+                  <input className="custom"
+                  type="checkbox"
+                  name="shippingOption"
+                  value={20}
+                  checked={selectedOption === "3"}
+                  onChange={(e) => handleCheckboxChange(e, "3")}
+                />
+                  </Accordion.Body>
               </Accordion.Item>
               <Accordion.Item eventKey="4">
                 <Accordion.Header >
@@ -184,43 +225,58 @@ const Cart = () => {
                   <div className="bef befm">-</div>
                   شحن الى الداخل المحتل
                 </Accordion.Header>
-                <Accordion.Body>شحن الى مدن الضفة</Accordion.Body>
-              </Accordion.Item>
+                <Accordion.Body>
+                  التوصيل من خلال شركة التوصيل  تورنيدو.
+                  <br />رسوم الشحن 30 شيكل
+                  <input
+                  type="checkbox" className="custom"
+                  name="shippingOption"
+                  value={30}
+                  checked={selectedOption === "4"}
+                  onChange={(e) => handleCheckboxChange(e, "4")}/>
+                  </Accordion.Body>              
+                </Accordion.Item>
               <Accordion.Item eventKey="5">
                 <Accordion.Header >
                   <div className="bef befp">+</div>
                   <div className="bef befm">-</div>
-                  شحن الى القدس وضواحيها{" "}
+                  شحن الى القدس وضواحيها
                 </Accordion.Header>
-                <Accordion.Body>شحن الى مدن الضفة</Accordion.Body>
-              </Accordion.Item>
+                <Accordion.Body>
+                  التوصيل من خلال شركة التوصيل  تورنيدو.
+                  <br />رسوم الشحن 70 شيكل
+                  <input className="custom"
+                  type="checkbox"
+                  name="shippingOption"
+                  value={70}
+                  checked={selectedOption === "5"}
+                  onChange={(e) => handleCheckboxChange(e, "5")}/>
+                  </Accordion.Body>    </Accordion.Item>
             </Accordion>
           </div>
           <div dir="rtl" className="col-md-6 form-cart">
             <h4 className="head"> المعلومات الشخصية :</h4>
-            <div className="fieldset">
-              <Form>
-                <Form.Group className="group">
-                  <FontAwesomeIcon icon="fa-user"/>
-                  <Form.Control placeholder="الاسم" type="text" name="name" />
-                </Form.Group>
-                <Form.Group className="group">
-                  <FontAwesomeIcon icon="fa-envelope"/>
-                  <Form.Control placeholder="الايميل" type="email" name="email" />
-                </Form.Group>
-                <Form.Group className="group">
-                  <FontAwesomeIcon icon="fa-phone"/>
-                  <Form.Control dir="rtl" placeholder="رقم الهاتف" type="tel" name="phone" />
-                </Form.Group>
-                <Form.Group className="group">
-                  <FontAwesomeIcon icon="fa-location"/>
-                  <Form.Control placeholder="العنوان بالتفصيل" type="address" name="notes" />
-                </Form.Group>
-                <Form.Group className="group">
-                <Form.Control placeholder="ملاحظات .... " type="textarea" name="notes" />
+            <Form className="fieldset">
+              <Form.Group className="group">
+                <FontAwesomeIcon icon="fa-user" />
+                <Form.Control placeholder="الاسم" type="text" name="name" />
               </Form.Group>
-              </Form>
-            </div>
+              <Form.Group className="group">
+                <FontAwesomeIcon icon="fa-envelope" />
+                <Form.Control placeholder="الايميل" type="email" name="email" />
+              </Form.Group>
+              <Form.Group className="group">
+                <FontAwesomeIcon icon="fa-phone" />
+                <Form.Control dir="rtl" placeholder="رقم الهاتف" type="tel" name="phone" />
+              </Form.Group>
+              <Form.Group className="group">
+                <FontAwesomeIcon icon="fa-location" />
+                <Form.Control placeholder="العنوان بالتفصيل" type="address" name="notes" />
+              </Form.Group>
+              <button className='submit my-2' type="submit" id="register">
+                تثبيت الطلب
+              </button>
+            </Form>
           </div>
         </section>
       </div>
