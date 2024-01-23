@@ -41,12 +41,11 @@ const Register = ({ setShowSearch }) => {
       phone: Yup.string().matches(/^[0-9]{10}$/, "Invalid phone number"),
       address: Yup.string().required("Required"),
       password: Yup.string()
-        .required("Required")
-        .min(8, "Password must be at least 8 characters")
-        .matches(
-          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/,
-          "Must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
-        ),
+      .required("This field is required")
+      .min(8, "Pasword must be 8 or more characters")
+      .matches(/(?=.*[a-z])(?=.*[A-Z])\w+/, "Password should contain at least one uppercase and one lowercase character")
+      .matches(/\d/, "Password should contain at least one number")
+      .matches(/[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/, "Password should contain at least one special character"),
       cpassword: Yup.string()
         .required("Required")
         .oneOf([Yup.ref("password"), null], "Passwords must match"),
