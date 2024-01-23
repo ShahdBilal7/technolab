@@ -1,7 +1,7 @@
 import { useSelector, logoImage, FontAwesomeIcon, useState, Link,useDispatch,useEffect,getTotals } from "../../Constants.js";
 import { Modal } from "react-bootstrap";
 import "./loginModal.css";
-const LoginModal = ({ error, handleNavLinkClick }) => {
+const LoginModal = ({ handleNavLinkClick }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -40,11 +40,11 @@ const LoginModal = ({ error, handleNavLinkClick }) => {
         <Modal.Body>
           <form onSubmit={handleSubmit} className='d-flex flex-column align-items-center p-4'>
             <div className="input-group">
-              <div className="input-field validate-input" data-validate="" id="emailField">
+              <div className="input-field" id="emailField">
                 <FontAwesomeIcon icon={"fa-envelope"} />
-                <input id="name" name="username" type="email" placeholder="Email" required />
+                <input id="email" name="email" type="email" placeholder="Email" required />
               </div>
-              <div className="input-field validate-input " data-validate="" id="passwordField">
+              <div className="input-field"  id="passwordField">
                 <FontAwesomeIcon icon="fa-lock" />
                 <input id="password" name="password"
                   type={passwordVisible ? 'text' : 'password'}
@@ -52,11 +52,9 @@ const LoginModal = ({ error, handleNavLinkClick }) => {
                 <p id="toggle-password" onClick={handlePasswordToggle}>
                   <FontAwesomeIcon id="eye-slash" icon={passwordVisible ? 'eye' : 'eye-slash'} />
                 </p>
-
               </div>
-              {error && <p className="text-danger error-message">{error}</p>}
             </div>
-            <button className='submit mt-2' type="submit" id="signinBtn" >
+            <button className='submit mt-2' type="submit" id="loginBtn" >
               Submit
             </button>
           </form>
@@ -69,7 +67,6 @@ const LoginModal = ({ error, handleNavLinkClick }) => {
               <Link className="lin" onClick={handleClose} to="/register" > Register</Link>
             </p>
           </div>
-
         </Modal.Body>
       </Modal>
     </>
