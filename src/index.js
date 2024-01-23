@@ -20,7 +20,8 @@ const store=configureStore({
 })
 store.dispatch(getTotals());
 root.render(
-  <StrictMode><Provider store={store}>
+  <StrictMode>
+  <Provider store={store}>
 <App/>
 </Provider>
   </StrictMode>

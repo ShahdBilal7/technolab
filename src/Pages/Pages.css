@@ -164,7 +164,7 @@
 
 .cart .cart-info table thead th {
   vertical-align: bottom;
-  border-bottom: 2px solid #a1c54240;
+  border-bottom: 2px solid #e6e6e6;
 }
 
 .cart .cart-info table tbody {
@@ -192,7 +192,7 @@
 
 /* To-pay */
 .cart .to-pay {
-  border: 1px solid var(--second-color);
+  border: 1px solid #e6e6e6;
   display: flex;
   flex-direction: column;
 }
@@ -267,6 +267,84 @@
 .empty:hover {
   color: var(--main-color);
 }
+.head{
+    font-size: 20px;
+    font-weight: bold;
+    padding: 8px 30px;
+    border-bottom: 1px solid #a1c54240;
+    margin: 10px 0;
+}
+.accordion-item {
+  border-radius: 0 !important;
+  border: 1px solid var(--bs-accordion-border-color) !important;
+  margin: 10px 0;
+  -webkit-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  -ms-border-radius: 0 !important;
+  -o-border-radius: 0 !important;
+}
+.accordion-item .accordion-button {
+  background: #f8f8f8;
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+}
+.accordion-item .accordion-button:focus {
+  border-color: var(--main-color);
+  box-shadow: 0 0 0 0.25rem rgba(76, 175, 80, 0.25);
+}
+.accordion-button::after {
+  display: none;
+}
+
+.bef {
+  color: #fff;
+  width: 20px;
+  height: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 10px;
+  text-align: center;
+  background: var(--main-color);
+  line-height: 20px;
+}
+.befp{
+  display: none;
+}
+.collapsed .befp{
+  display: block;
+}
+.collapsed .befm{
+  display: none;
+}
+.accordion-body {
+  font-weight: 800;
+  padding: 20px ;
+}
+.fieldset{
+  display: block;
+    padding: 25px 30px 5px;
+    border: none;
+}
+.form-cart .group{
+  display: flex;
+  align-items: center;
+    margin-bottom: 20px;
+  border: 1px solid var(--bs-border-color);
+}
+.form-cart .group .form-control{
+  border-radius: 0!important;
+  border: 0;
+  border-right: 1px solid #eee !important;
+
+}
+.form-cart .group svg{
+  color: #b3b3b3;
+    padding: 0.375rem 0.75rem;
+}
+
 /* End Cart Page */
 /* start error404 */
 .errorCont {
