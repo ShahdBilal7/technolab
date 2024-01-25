@@ -4,10 +4,10 @@ import {
   useSelector,
   Breadcrum,
   FontAwesomeIcon,
-  Hero,
   Link,
   addToCart,
   decreaseCart,
+  ChangeQuantityCart,
   removeFromCart,
   useState,
 
@@ -16,9 +16,9 @@ import { Form } from 'react-bootstrap';
 import Accordion from "react-bootstrap/Accordion";
 const Cart = () => {
   const [selectedOption, setSelectedOption] = useState(null);
-const [shipping,setShipping]=useState(0)
+  const [shipping,setShipping]=useState(0)
   const handleCheckboxChange = (event, key) => {
-    const isChecked = event.target.checked;
+  const isChecked = event.target.checked;
     setSelectedOption(isChecked ? key : null);
     if (isChecked) {
       console.log(`Checkbox with value ${event.target.value} is checked`);
@@ -29,19 +29,36 @@ const [shipping,setShipping]=useState(0)
   };
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
+  const [quantities, setQuantities] = useState(
+    cart.cartItems?.map((cartItem) => cartItem.cartQuantity)
+  );
   const handleRemoveFromCart = (cartItem) => {
     dispatch(removeFromCart(cartItem));
   };
-  const handleDecreaseCart = (cartItem) => {
-    dispatch(decreaseCart(cartItem));
+  const setValueAtIndex = (index, value) => {
+    // Create a copy of the quantities array to modify
+    const newQuantities = [...quantities];
+    // Update the quantity at the specified index
+    newQuantities[index] = value;
+    // Update state with the new array of quantities
+    setQuantities(newQuantities);
   };
-  const handleIncreaseCart = (cartItem) => {
-    dispatch(addToCart(cartItem));
+  
+  const handleChangeQuantity = (index, cartItem, newQuantity) => {
+    // Ensure the new quantity is a valid positive value
+    const validatedQuantity = Math.max(1, Math.min(cartItem.quantity, parseInt(newQuantity, 10)) || 1);
+  
+    // Update the state and dispatch the action
+    setValueAtIndex(index, validatedQuantity);
+    dispatch(ChangeQuantityCart({ id: cartItem.id, newQuantity: validatedQuantity }));
   };
+  
+  // const handleIncreaseCart = (cartItem) => {
+  //   dispatch(addToCart(cartItem));
+  // };
+  // const [age, setAge] = useState("20");
 
   return (
-    <>
-      <Hero />
       <div className="container">
         <div className="pt-4">
           {" "}
@@ -58,7 +75,7 @@ const [shipping,setShipping]=useState(0)
                     <th>Price</th>
                     <th>Quantity</th>
                     <th>Total</th>
-                    <th>Remove</th>
+                    <th></th>
                   </tr>
                 </thead>
                 {cart.cartItems.length === 0 ? (
@@ -78,7 +95,7 @@ const [shipping,setShipping]=useState(0)
                   </tfoot>
                 ) : (
                   <tbody>
-                    {cart.cartItems?.map((cartItem) => (
+                    {cart.cartItems?.map((cartItem,index) => (
                       <tr key={cartItem.id}>
                         <td style={{ borderRight: "1px solid #fff" }}>
                           <img
@@ -90,32 +107,23 @@ const [shipping,setShipping]=useState(0)
                         <td>{cartItem.name}</td>
                         <td>{cartItem.price}</td>
                         <td>
-                          <div className="input-group">
-                            <button
-                              className="btn mi-btn"
-                              onClick={() => handleDecreaseCart(cartItem)}
-                            >
-                              <FontAwesomeIcon icon="fa fa-minus" />
-                            </button>
-                            <div type="text" className="form-control">
-                              {" "}
-                              {cartItem.cartQuantity}{" "}
-                            </div>
-                            <button
-                              className="btn pl-btn"
-                              onClick={() => handleIncreaseCart(cartItem)}
-                            >
-                              <FontAwesomeIcon icon="fa fa-plus" />
-                            </button>
-                          </div>
+                      
+                        <input className="quantity-group"
+                        min={1}
+                        max={cartItem.quantity}
+                        value={quantities[index]}
+                        onChange={(e) => handleChangeQuantity(index,cartItem, e.target.value)}
+                          type="number"
+                        />
+                
                         </td>
                         <td>{cartItem.price * cartItem.cartQuantity}</td>
                         <td>
                           <button
-                            className="btn ti-btn"
+                            className="btn-remove"
                             onClick={() => handleRemoveFromCart(cartItem)}
                           >
-                            <FontAwesomeIcon icon="fa fa-times" />
+                          REMOVE
                           </button>
                         </td>
                       </tr>
@@ -169,15 +177,16 @@ const [shipping,setShipping]=useState(0)
                   استلام من معرض الشركة
                 </Accordion.Header>
                 <Accordion.Body>
-                  بواسطة هذه الخدمة تستطيع استلام طلبك من معرض الشركة فور تثبيت
-                  الطلب دون اي تكاليف اضافية
-                  <input className="custom"
+                <input className="custom"
                 type="checkbox"
                 name="shippingOption"
                 value={0}
                 checked={selectedOption === "1"}
                 onChange={(e) => handleCheckboxChange(e, "1")}
               />
+                  بواسطة هذه الخدمة تستطيع استلام طلبك من معرض الشركة فور تثبيت
+                  الطلب دون اي تكاليف اضافية
+          
                   </Accordion.Body>
               </Accordion.Item>
               <Accordion.Item eventKey="2">
@@ -188,7 +197,7 @@ const [shipping,setShipping]=useState(0)
                 </Accordion.Header>
                 <Accordion.Body>
                   التوصيل من خلال الدراجات النارية.
-                  <br />رسوم الشحن من 10 الى 15 شيكل
+                  <br />
                   <input className="custom"
                   type="checkbox"
                   name="shippingOption"
@@ -196,24 +205,28 @@ const [shipping,setShipping]=useState(0)
                   checked={selectedOption === "2"}
                   onChange={(e) => handleCheckboxChange(e, "2")}
                 />
+                  رسوم الشحن 15 شيكل
+                
                   </Accordion.Body>
               </Accordion.Item>
               <Accordion.Item eventKey="3">
                 <Accordion.Header >
                   <div className="bef befp">+</div>
                   <div className="bef befm">-</div>
-                  شحن الى مدن و قرى الضفة
-                </Accordion.Header>
+                  شحن الى محافظات الضفة الاخرى
+              </Accordion.Header>
                 <Accordion.Body>
-                  التوصيل من خلال شركة التوصيل  تورنيدو.
-                  <br />رسوم الشحن 20 شيكل
-                  <input className="custom"
+                التوصيل من خلال شركة تورنيدو للتوصيل  .
+                <br /> 
+                 <input className="custom"
                   type="checkbox"
                   name="shippingOption"
                   value={20}
                   checked={selectedOption === "3"}
                   onChange={(e) => handleCheckboxChange(e, "3")}
                 />
+                رسوم الشحن 20 شيكل
+                
                   </Accordion.Body>
               </Accordion.Item>
               <Accordion.Item eventKey="4">
@@ -223,14 +236,15 @@ const [shipping,setShipping]=useState(0)
                   شحن الى الداخل المحتل
                 </Accordion.Header>
                 <Accordion.Body>
-                  التوصيل من خلال شركة التوصيل  تورنيدو.
-                  <br />رسوم الشحن 30 شيكل
-                  <input
+                  التوصيل من خلال شركة تورنيدو للتوصيل  .
+                  <br />  <input
                   type="checkbox" className="custom"
                   name="shippingOption"
-                  value={30}
+                  value={70}
                   checked={selectedOption === "4"}
                   onChange={(e) => handleCheckboxChange(e, "4")}/>
+                  رسوم الشحن 70 شيكل
+                
                   </Accordion.Body>              
                 </Accordion.Item>
               <Accordion.Item eventKey="5">
@@ -240,15 +254,17 @@ const [shipping,setShipping]=useState(0)
                   شحن الى القدس وضواحيها
                 </Accordion.Header>
                 <Accordion.Body>
-                  التوصيل من خلال شركة التوصيل  تورنيدو.
-                  <br />رسوم الشحن 70 شيكل
-                  <input className="custom"
+                التوصيل من خلال شركة تورنيدو للتوصيل  .
+                  <br />  <input className="custom"
                   type="checkbox"
                   name="shippingOption"
-                  value={70}
+                  value={30}
                   checked={selectedOption === "5"}
                   onChange={(e) => handleCheckboxChange(e, "5")}/>
-                  </Accordion.Body>    </Accordion.Item>
+                  رسوم الشحن 30 شيكل
+                
+                  </Accordion.Body>
+                      </Accordion.Item>
             </Accordion>
           </div>
           <div dir="rtl" className="col-md-6 form-cart">
@@ -277,7 +293,6 @@ const [shipping,setShipping]=useState(0)
           </div>
         </section>
       </div>
-    </>
   );
 };
 

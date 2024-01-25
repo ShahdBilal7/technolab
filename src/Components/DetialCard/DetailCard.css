@@ -79,3 +79,6 @@
 .product-detail .minus {
   color: var(--main-color);
 }
+.product-detail .notify-link{
+  text-decoration: underline !important;
+}

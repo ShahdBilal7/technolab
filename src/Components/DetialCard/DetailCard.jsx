@@ -1,5 +1,5 @@
 import { toast } from "react-toastify";
-import { FontAwesomeIcon,useState,useDispatch,addToCart} from "../../Constants";
+import { FontAwesomeIcon,useState,useDispatch,addToCart, Link} from "../../Constants";
 import "./DetailCard.css";
 import { Alert } from "react-bootstrap";
 const DetailCard = ({product}) => {
@@ -58,7 +58,7 @@ const handleAddToCart=(product)=>{
     </div>
     {
     product.isRetired?
-    <Alert variant="danger">
+    <Alert variant="danger" >
     <Alert.Heading>
     <FontAwesomeIcon className="mx-2" icon="fa-solid fa-circle-exclamation" />
     Retired Product
@@ -67,7 +67,16 @@ const handleAddToCart=(product)=>{
     This product has been retired from our catalog and is no longer for sale. This page is made available for those looking for datasheets and the simply curious.
     </p>
   </Alert>
-    :<div className="buttons">
+    :product.quantity===0 ?
+    <Alert variant="warning">
+    <FontAwesomeIcon className="mx-2" icon="fa-clock" />
+    <span className="mb-0">
+    We do not currently have an estimate of when this product will be back in stock.
+    <Link title="Receive an email when this product returns to stock." className="notify-link"> Notify Me</Link> 
+    </span>
+  </Alert>
+    :
+    <div className="buttons">
   {    
     // <div className="amount">
     //     <button className="minus" onClick={removeQuant} disabled={quant === 0}>

@@ -18,9 +18,9 @@ const cartSlice = createSlice({
         (item) => item.id === action.payload.id
       );
 
-      if(action.payload.isRetired || action.payload.state === 0 )
+      if(action.payload.isRetired || action.payload.quantity === 0 )
       {
-        toast.error(`This Product is Not Available`, {
+        toast.error(`This Product is Not Available Now`, {
           position: "top-right",
           })
       }
@@ -71,6 +71,27 @@ const cartSlice = createSlice({
 
       localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
     },
+    ChangeQuantityCart(state, action) {
+      const { id, newQuantity } = action.payload;
+
+      const itemIndex = state.cartItems.findIndex(
+        (item) => item.id === id
+      );
+
+      if (itemIndex !== -1 && newQuantity > 0) {
+        // Update the cart quantity for the specified item
+        state.cartItems[itemIndex].cartQuantity = newQuantity;
+
+        // Update localStorage
+        localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+
+        // toast.info(`Changed product quantity to ${newQuantity}`, {
+        //   position: "top-right",
+        //   // autoClose:1000
+        // });
+      }
+      
+    },
     removeFromCart(state, action) {
       state.cartItems.map((cartItem) => {
         if (cartItem.id === action.payload.id) {
@@ -116,7 +137,7 @@ const cartSlice = createSlice({
   },
 });
 
-export const { addToCart, decreaseCart, removeFromCart, getTotals, clearCart } =
+export const {ChangeQuantityCart, addToCart, decreaseCart, removeFromCart, getTotals, clearCart } =
   cartSlice.actions;
 
 export default cartSlice.reducer;

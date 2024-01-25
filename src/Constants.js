@@ -12,7 +12,7 @@ import Detail from './Pages/ProductDetail.jsx';
 import About from './Pages/About.jsx';
 import Home from './Pages/Home.jsx';
 import Contact from './Pages/Contact.jsx';
-import { addToCart, decreaseCart, getTotals, removeFromCart } from "../src/features/cartSlice.js";
+import { addToCart, decreaseCart, getTotals, removeFromCart,ChangeQuantityCart } from "../src/features/cartSlice.js";
 import { useDispatch,useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink, Link, useParams } from 'react-router-dom';
@@ -443,4 +443,4 @@ const products = [
 const saleItems = products.filter(product => product.onSale);
 const NewProducts = products.filter(product => product.onNew);
 const MostPopular = products.filter(product => product.onMost);
-export {out,inn,few,retired,useDispatch,useSelector,saleItems, NewProducts, MostPopular,Modal, ProductCard, Breadcrum, Form, Dropdown, DropdownButton, ElasticCarousel, Hero, useRef, categories, products, FontAwesomeIcon, contactInfo, NavLink, Link, useParams, routes, navLinks, CarouselImages, logoImage, useState, useEffect, Footer, NavbarHeader, Register,addToCart, decreaseCart, getTotals, removeFromCart }
+export {out,inn,few,retired,useDispatch,useSelector,saleItems, NewProducts, MostPopular,Modal, ProductCard, Breadcrum, Form, Dropdown, DropdownButton, ElasticCarousel, Hero, useRef, categories, products, FontAwesomeIcon, contactInfo, NavLink, Link, useParams, routes, navLinks, CarouselImages, logoImage, useState, useEffect, Footer, NavbarHeader, Register,addToCart, decreaseCart, getTotals,ChangeQuantityCart, removeFromCart }

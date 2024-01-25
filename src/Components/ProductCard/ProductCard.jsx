@@ -12,7 +12,7 @@ const ProductCard = ({ product, flagSale }) => {
   const handleShow = () => setShow(true);
   const { id, name, category, price, salePrice, image, onSale, quantity, onNew, isRetired } = product;
   return (
-    <div key={id} className="product-card card h-100 text-center rounded-0" style={isRetired ? { opacity: 0.6 } : {}}>
+    <div key={id} className="product-card card h-100 text-center rounded-0" style={isRetired ? { opacity: 0.5 } : {}}>
       <Link to={`/detail/${id}`}>
         <div className="product-image d-flex align-items-center">
           <img alt="product" src={image} />
@@ -21,7 +21,7 @@ const ProductCard = ({ product, flagSale }) => {
           {flagSale && onSale && <div className="label sale">ON SALE</div>}
           {onNew && <div className="label new">New</div>}
           {
-            // isRetired && <div className="label retired"> &nbsp; Retired</div>
+            isRetired && <div className="label retired"> &nbsp; Retired</div>
           }
         </div>
       </Link>
@@ -98,7 +98,15 @@ const ProductCard = ({ product, flagSale }) => {
           {
             isRetired
             ?<strong onClick={handleShow} className="col  border-right icon-card">Retired</strong>
-            :   <Link className='col  border-right icon-card' onClick={() => handleAddToCart(product)}>
+            :quantity===0? 
+              <div title="Receive an email when this product returns to stock."  className=' col border-right icon-card' >
+            <div className="ic" >
+              <FontAwesomeIcon icon="fa-bell" />
+            </div>
+            <h6 className="tex">Notify me</h6>
+          </div>
+            :
+               <Link className='col  border-right icon-card' onClick={() => handleAddToCart(product)}>
               <div className="ic" >
           
                 <FontAwesomeIcon icon="fa-shopping-cart" />
