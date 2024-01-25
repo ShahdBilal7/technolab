@@ -1,6 +1,7 @@
 import { toast } from "react-toastify";
 import { FontAwesomeIcon,useState,useDispatch,addToCart} from "../../Constants";
 import "./DetailCard.css";
+import { Alert } from "react-bootstrap";
 const DetailCard = ({product}) => {
   const [quant, setQuant] = useState(0);
 const dispatch=useDispatch();
@@ -55,7 +56,18 @@ const handleAddToCart=(product)=>{
         </tbody>
       </table>
     </div>
-    <div className="buttons">
+    {
+    product.isRetired?
+    <Alert variant="danger">
+    <Alert.Heading>
+    <FontAwesomeIcon className="mx-2" icon="fa-solid fa-circle-exclamation" />
+    Retired Product
+    </Alert.Heading>
+    <p className="mb-0">
+    This product has been retired from our catalog and is no longer for sale. This page is made available for those looking for datasheets and the simply curious.
+    </p>
+  </Alert>
+    :<div className="buttons">
   {    
     // <div className="amount">
     //     <button className="minus" onClick={removeQuant} disabled={quant === 0}>
@@ -78,6 +90,8 @@ const handleAddToCart=(product)=>{
         add to cart
       </button>  
     </div>
+    }
+    
   </div>
   )
 }

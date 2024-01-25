@@ -12,15 +12,17 @@ const ProductCard = ({ product, flagSale }) => {
   const handleShow = () => setShow(true);
   const { id, name, category, price, salePrice, image, onSale, quantity, onNew, isRetired } = product;
   return (
-    <div key={id} className="product-card card h-100 text-center rounded-0">
+    <div key={id} className="product-card card h-100 text-center rounded-0" style={isRetired ? { opacity: 0.6 } : {}}>
       <Link to={`/detail/${id}`}>
         <div className="product-image d-flex align-items-center">
           <img alt="product" src={image} />
           {// <h6 className="review">Quick Review</h6>
           }
-          {flagSale && onSale && <div className="sale">ON SALE</div>}
-          {onNew && <div className="new">New</div>}
-          {isRetired && <div className="out">Retired</div>}
+          {flagSale && onSale && <div className="label sale">ON SALE</div>}
+          {onNew && <div className="label new">New</div>}
+          {
+            // isRetired && <div className="label retired"> &nbsp; Retired</div>
+          }
         </div>
       </Link>
       <div className="border-top card-body p-0">
@@ -93,12 +95,18 @@ const ProductCard = ({ product, flagSale }) => {
         </div>
         <div className="border-top">
           <div className="row m-0 align-items-center">
-            <Link className='col  border-right icon-card' onClick={() => handleAddToCart(product)}>
+          {
+            isRetired
+            ?<strong onClick={handleShow} className="col  border-right icon-card">Retired</strong>
+            :   <Link className='col  border-right icon-card' onClick={() => handleAddToCart(product)}>
               <div className="ic" >
+          
                 <FontAwesomeIcon icon="fa-shopping-cart" />
               </div>
               <h6 className="tex">To cart</h6>
             </Link>
+          }
+          
             <Link className=' col border-right icon-card' to={`/detail/${id}`}>
               <div className="ic" >
                 <FontAwesomeIcon icon="fa-eye" />

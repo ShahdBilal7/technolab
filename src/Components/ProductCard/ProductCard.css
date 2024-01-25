@@ -76,60 +76,45 @@
   color: #b71540 !important;
 }
 
+
+.product-image .label{
+  color: #fff;
+  font-size: 13px;
+  padding: 2px 6px 2px 18px;
+  border-radius: 1px 3px 3px 1px;
+  position: absolute;
+  left: -15px;
+  clip-path: polygon(10% 0, 100% 0, 100% 100%, 10% 100%, 0 50%);
+}
+.product-image .label:before {
+  content: "";
+  background: #fff;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  position: absolute;
+  top: 8px;
+  left: 7px;
+}
 .product-image .sale {
   background: #b71540;
-  color: #fff;
-  font-size: 13px;
-  padding: 2px 6px 2px 18px;
-  border-radius: 1px 3px 3px 1px;
-  position: absolute;
   top: 30px;
-  left: -15px;
-  clip-path: polygon(10% 0, 100% 0, 100% 100%, 10% 100%, 0 50%);
 }
-
-.product-image .sale:before {
-  content: "";
-  background: #fff;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  position: absolute;
-  top: 8px;
-  left: 7px;
-}
-
+  
 .product-image .new {
   background: rgb(139, 139, 253);
-  color: #fff;
-  font-size: 13px;
-  padding: 2px 6px 2px 18px;
-  border-radius: 1px 3px 3px 1px;
-  position: absolute;
   top: 60px;
-  left: -15px;
-  clip-path: polygon(10% 0, 100% 0, 100% 100%, 10% 100%, 0 50%);
 }
 
-.product-image .new:before {
-  content: "";
-  background: #fff;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  position: absolute;
-  top: 8px;
-  left: 7px;
+.product-image .retired {
+  background: rgb(255, 2, 23);
+  top:30px;
+  font-size: 20px;
 }
-
-.product-image .out {
-  background: rgba(233, 17, 35, 0.788);
-  color: #fff;
-  font-size: 16px;
-  padding: 7px;
-  position: absolute;
-  top: 10px;
-  right: 15px;
+.product-image .retired::before{
+  width: 10px;
+  height: 10px;
+  top:10px
 }
 
 .product-card .salePrice {
