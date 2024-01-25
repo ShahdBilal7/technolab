@@ -10,11 +10,13 @@ import {
   ChangeQuantityCart,
   removeFromCart,
   useState,
+  useEffect
 
 } from "../Constants";
 import { Form } from 'react-bootstrap';
 import Accordion from "react-bootstrap/Accordion";
 const Cart = () => {
+
   const [selectedOption, setSelectedOption] = useState(null);
   const [shipping,setShipping]=useState(0)
   const handleCheckboxChange = (event, key) => {
@@ -43,12 +45,13 @@ const Cart = () => {
     // Update state with the new array of quantities
     setQuantities(newQuantities);
   };
+  useEffect(() => {
+    dispatch(handleChangeQuantity);
+  }, [cart, dispatch])
+
   
   const handleChangeQuantity = (index, cartItem, newQuantity) => {
-    // Ensure the new quantity is a valid positive value
     const validatedQuantity = Math.max(1, Math.min(cartItem.quantity, parseInt(newQuantity, 10)) || 1);
-  
-    // Update the state and dispatch the action
     setValueAtIndex(index, validatedQuantity);
     dispatch(ChangeQuantityCart({ id: cartItem.id, newQuantity: validatedQuantity }));
   };
@@ -105,7 +108,7 @@ const Cart = () => {
                           />
                         </td>
                         <td>{cartItem.name}</td>
-                        <td>{cartItem.price}</td>
+                        <td>{cartItem.price}₪</td>
                         <td>
                       
                         <input className="quantity-group"
@@ -117,7 +120,7 @@ const Cart = () => {
                         />
                 
                         </td>
-                        <td>{cartItem.price * cartItem.cartQuantity}</td>
+                        <td>{cartItem.price * cartItem.cartQuantity}₪</td>
                         <td>
                           <button
                             className="btn-remove"
@@ -141,21 +144,21 @@ const Cart = () => {
               <div dir="rtl"  className="cart-body">
                 <div className="col-f">
                   <h6>مجموع سعر القطع</h6>
-                  <h6 id="subtotal">{cart.cartTotalAmount}$</h6>
+                  <h6 id="subtotal">{cart.cartTotalAmount}₪</h6>
                 </div>
                 <div className="col-f">
                   <h6> رسوم الشحن</h6>
-                  <h6>{shipping}$</h6>
+                  <h6>{shipping}₪</h6>
                 </div>
                 <div className="col-f">
                   <h6> خصم</h6>
-                  <h6>0$</h6>
+                  <h6>0₪</h6>
                 </div>
               </div>
               <div dir="rtl"  className="checkout">
                 <div className="col-f">
                   <h5>المجموع النهائي</h5>
-                  <h5 id="total">{cart.cartTotalAmount+ + shipping}$</h5>
+                  <h5 id="total">{cart.cartTotalAmount+ + shipping}₪</h5>
                 </div>
               </div>
             </div>
