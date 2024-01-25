@@ -16,7 +16,7 @@ import { addToCart, decreaseCart, getTotals, removeFromCart } from "../src/featu
 import { useDispatch,useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink, Link, useParams } from 'react-router-dom';
-import { Form, Dropdown, DropdownButton } from 'react-bootstrap';
+import { Form, Dropdown, DropdownButton ,Modal} from 'react-bootstrap';
 import { useState, useEffect, useRef } from 'react';
 import logoImage from "./assets/logo.png";
 import h1 from './assets/h1.jpg';
@@ -42,6 +42,11 @@ import rr2 from './assets/rr2.jpg';
 import rr3 from './assets/rr3.jpg';
 import rr4 from './assets/rr4.jpg';
 import rr5 from './assets/rr5.jpg';
+
+import out from './assets/out.png';
+import inn from './assets/inn.png';
+import few from './assets/few.png';
+import retired from './assets/retired.png';
 
 const contactInfo = [
   {
@@ -215,7 +220,7 @@ const products = [
     image: pp1,
     onSale: true,
     salePrice: 25.8,
-    state: 2,
+    quantity: 40,
     detailImage: [p11, p12, p13, p14,
     ],
     category: categories[1].name,
@@ -233,10 +238,8 @@ const products = [
     image: rr1,
     onSale: true,
     salePrice: 888.8,
-    state: 1,
-
+    quantity: 20,
     detailImage: [p11, p12, p13, p14,
-
     ],
     category: categories[1].name,
     technicalDetails: {
@@ -252,8 +255,7 @@ const products = [
     image: pp3,
     onSale: true,
     salePrice: 30.8,
-    state: 2,
-
+    quantity: 35,
     detailImage: [p11, p12, p13, p14,
     ],
     category: categories[1].name,
@@ -270,7 +272,7 @@ const products = [
     image: rr2,
     onSale: true,
     salePrice: 888.8,
-    state: 2,
+    quantity: 10,
     detailImage: [p11, p12, p13, p14,
     ],
     category: categories[1].name,
@@ -287,8 +289,7 @@ const products = [
     image: pp4,
     onSale: true,
     salePrice: 40.8,
-    state: 0,
-
+    quantity: 60,
     detailImage: [p11, p12, p13, p14,
     ],
     category: categories[1].name,
@@ -303,7 +304,7 @@ const products = [
     name: "1.5Ω Carbon Film Resistor 1/8W ±1%",
     price: 60.00,
     image: rr3,
-    state: 0,
+    quantity: -1,
     isRetired: true,
     detailImage: [p11, p12, p13, p14,
     ],
@@ -322,7 +323,7 @@ const products = [
     salePrice: 10.0,
     onNew: true,
     onMost: true,
-    state: 2,
+    quantity: 10,
 
     detailImage: [p11, p12, p13, p14,
     ],
@@ -339,7 +340,7 @@ const products = [
     price: 60.00,
     image: rr4,
     onNew: true,
-    state: 0,
+    quantity: 30,
 
     detailImage: [p11, p12, p13, p14,
     ],
@@ -356,7 +357,7 @@ const products = [
     price: 25.00,
     image: pp6,
     onSale: true,
-    state: 2,
+    quantity: 0,
 
     salePrice: 13.0,
     detailImage: [p11, p12, p13, p14,
@@ -374,7 +375,7 @@ const products = [
     price: 60.00,
     image: rr5,
     onMost: true,
-    state: 0,
+    quantity: -1,
     isRetired: true,
     detailImage: [p11, p12, p13, p14,
     ],
@@ -392,7 +393,7 @@ const products = [
     image: pp7,
     onSale: true,
     onNew: true,
-    state: 1,
+    quantity: 60,
 
     salePrice: 888.8,
     detailImage: [p11, p12, p13, p14,
@@ -409,7 +410,7 @@ const products = [
     price: 60.00,
     image: pp8,
     onMost: true,
-    state: 1,
+    quantity: 10,
 
     detailImage: [p11, p12, p13, p14,
     ],
@@ -426,7 +427,7 @@ const products = [
     image: pp9,
     onNew: true,
     onMost: true,
-    state: 1,
+    quantity: 40,
 
     detailImage: [p11, p12, p13, p14,
     ],
@@ -442,4 +443,4 @@ const products = [
 const saleItems = products.filter(product => product.onSale);
 const NewProducts = products.filter(product => product.onNew);
 const MostPopular = products.filter(product => product.onMost);
-export {useDispatch,useSelector,saleItems, NewProducts, MostPopular, ProductCard, Breadcrum, Form, Dropdown, DropdownButton, ElasticCarousel, Hero, useRef, categories, products, FontAwesomeIcon, contactInfo, NavLink, Link, useParams, routes, navLinks, CarouselImages, logoImage, useState, useEffect, Footer, NavbarHeader, Register,addToCart, decreaseCart, getTotals, removeFromCart }
+export {out,inn,few,retired,useDispatch,useSelector,saleItems, NewProducts, MostPopular,Modal, ProductCard, Breadcrum, Form, Dropdown, DropdownButton, ElasticCarousel, Hero, useRef, categories, products, FontAwesomeIcon, contactInfo, NavLink, Link, useParams, routes, navLinks, CarouselImages, logoImage, useState, useEffect, Footer, NavbarHeader, Register,addToCart, decreaseCart, getTotals, removeFromCart }

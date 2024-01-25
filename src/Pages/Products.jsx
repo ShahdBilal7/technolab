@@ -13,8 +13,8 @@ const Product = () => {
     <>
       <Hero />
       <div className="products container">
-        <div className="row justify-content-between ">
-          <div className=" filter col-lg-3  col-md-4   col-sm-12 ">
+        <div className="  products-page">
+          <div className=" filter">
             <div className=' categories-list coll'>
               <h3>Categories</h3>
               <ul>
@@ -38,7 +38,7 @@ const Product = () => {
                 ))}
               </ul>
             </div>
-            <div className=' categories-list coll'>
+          { /* <div className=' categories-list coll'>
               <h3>Filter</h3>
               <ul>
                 {categories.map((category, index) => (
@@ -49,9 +49,10 @@ const Product = () => {
                 ))}
 
               </ul>
-            </div>
+            </div>*/
+          }
           </div>
-          <div className=" col-lg-9 col-md-8    col-sm-12  products-list coll">
+          <div className=" products-list coll">
             <div className='mb-3 d-flex justify-content-between'>
               <Breadcrum Category={"Shop"} SubCategory={"All"} Data={"All"} />
               <DropdownButton id="dropdown-item-button" title="Sort By : Sale Item ">
