@@ -75,7 +75,7 @@ const Cart = () => {
                     <th>Price</th>
                     <th>Quantity</th>
                     <th>Total</th>
-                    <th></th>
+                    <th>Remove</th>
                   </tr>
                 </thead>
                 {cart.cartItems.length === 0 ? (
