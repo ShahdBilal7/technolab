@@ -128,7 +128,7 @@ const Register = ({ setShowSearch }) => {
                 <Form.Label>Phone Number</Form.Label>
                 <Form.Control
                   type="tel"
-                  placeholder="0123456789"
+                  placeholder="+9725XXXXXXXX"
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   value={formik.values.phone}

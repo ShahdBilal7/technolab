@@ -1,7 +1,10 @@
 import { FontAwesomeIcon, Link, addToCart, useDispatch, useState, Modal, out, inn, retired, few } from "../../Constants";
+import CountDown from "../CountDown/CountDown";
+
 import LoginModal from "../LoginModal/LoginModal";
 import "./ProductCard.css";
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
+
 const ProductCard = ({ product, flagSale }) => {
   const dispatch = useDispatch();
   const handleAddToCart = (product) => {
@@ -11,7 +14,8 @@ const ProductCard = ({ product, flagSale }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const { id, name, category, price, salePrice, image, onSale, quantity, onNew, isRetired } = product;
+
+  const { id, name, category, price, salePrice, image, onSale, quantity, onNew, isRetired,saleDate,AvailableDate } = product;
   return (
     <div key={id} className="product-card card h-100 text-center rounded-0" style={isRetired ? { opacity: 0.6 } : {}}>
       <Link to={`/detail/${id}`}>
@@ -36,7 +40,21 @@ const ProductCard = ({ product, flagSale }) => {
               <h6 className="product-name">{name}</h6>
             </OverlayTrigger>
           </Link>
-
+          {
+            onSale
+            ?   <div title="sale will end" className="counterDown counterDownSale" >
+          <CountDown futureDate={new Date(saleDate)- (2 * 60 * 60 * 1000)} completionMessage="Sale End!" />
+            </div>
+            :<></>
+          }
+          {
+            quantity === 0
+            ?   <div title="product will available" className="counterDown counterDownAvailable" >
+            <CountDown futureDate={new Date(AvailableDate )- (2 * 60 * 60 * 1000)} completionMessage="product Now Available" />
+            </div>
+            :<></>
+          }
+    
           <div className="state">
             <OverlayTrigger
               placement="bottom"
@@ -125,9 +143,8 @@ const ProductCard = ({ product, flagSale }) => {
                 <FontAwesomeIcon icon="fa-eye" />
               </div>
               <h6 className="tex">View</h6>
+
             </Link>
-
-
 
             {  // <FontAwesomeIcon icon="fa-heart" className='link heart col py-3' />
             }

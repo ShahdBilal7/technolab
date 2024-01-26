@@ -146,7 +146,22 @@
   align-items: center;
  }
 
-
+ .counterDown{
+  background-color: #fff;
+   padding-right:5px; 
+  position: absolute;
+  top:48%;
+    left: 10px; 
+  border :1px solid #000;
+  
+ }
+ .counterDownSale{
+   color: #b71540;
+   /* border-color: #b71540 */
+ }
+ .counterDownAvailable{
+  color: var(--main-color);
+ }
 /* .product-card .stock {
   width: 20px;
   height: 20px;

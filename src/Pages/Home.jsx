@@ -1,5 +1,6 @@
+
 import { saleItems, NewProducts, MostPopular,Hero,ElasticCarousel } from '../Constants'
-const Home = () => {
+ const Home = () => {
   return (
     <div>
       <Hero />

@@ -40,7 +40,7 @@ const Detail = () => {
         <div className="headline">
           <h2>Related Product</h2>
         </div>
-        <ElasticCarousel slidesToShow={4}  products={products} color="white" rowCount={1} flagSale={true} />
+        <ElasticCarousel slidesToShow={5}  products={products} color="white" rowCount={1} flagSale={true} />
       </section>
 
     </div>
