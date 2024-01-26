@@ -1,4 +1,5 @@
 import { FontAwesomeIcon, Link, addToCart, useDispatch, useState, Modal, out, inn, retired, few } from "../../Constants";
+import LoginModal from "../LoginModal/LoginModal";
 import "./ProductCard.css";
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 const ProductCard = ({ product, flagSale }) => {
@@ -6,13 +7,13 @@ const ProductCard = ({ product, flagSale }) => {
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
   };
+  const [showLoginModal, setShowLoginModal] = useState(false);
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const { id, name, category, price, salePrice, image, onSale, quantity, onNew, isRetired } = product;
   return (
-    <div key={id} className="product-card card h-100 text-center rounded-0" style={isRetired ? { opacity: 0.5 } : {}}>
+    <div key={id} className="product-card card h-100 text-center rounded-0" style={isRetired ? { opacity: 0.6 } : {}}>
       <Link to={`/detail/${id}`}>
         <div className="product-image d-flex align-items-center">
           <img alt="product" src={image} />
@@ -67,7 +68,7 @@ const ProductCard = ({ product, flagSale }) => {
             <span>{category}</span>
           </div>
 
-          <Modal show={show} onHide={handleClose}>
+          <Modal className="product-state" show={show} onHide={handleClose}>
             <Modal.Header closeButton>
               <Modal.Title>What do the color bubbles mean?</Modal.Title>
             </Modal.Header>
@@ -100,10 +101,14 @@ const ProductCard = ({ product, flagSale }) => {
             ?<strong onClick={handleShow} className="col  border-right icon-card">Retired</strong>
             :quantity===0? 
               <div title="Receive an email when this product returns to stock."  className=' col border-right icon-card' >
-            <div className="ic" >
+            <div onClick={()=>setShowLoginModal(true)} className="ic" >
               <FontAwesomeIcon icon="fa-bell" />
             </div>
-            <h6 className="tex">Notify me</h6>
+            <h6  className="tex">Notify me</h6>
+            <LoginModal show={showLoginModal}
+            handleClose={() => setShowLoginModal(false)}
+            describe="In order to be notified when this item becomes available, you need to log in to your account."
+             />
           </div>
             :
                <Link className='col  border-right icon-card' onClick={() => handleAddToCart(product)}>

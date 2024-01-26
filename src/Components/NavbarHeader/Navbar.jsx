@@ -1,14 +1,21 @@
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import Logo from '../Logo/Logo';
 import LoginModal from '../LoginModal/LoginModal';
-import { navLinks, NavLink, useState } from "../../Constants.js";
+import { NavLink, useState ,useEffect,useDispatch,useSelector,getTotals,FontAwesomeIcon,Link} from "../../Constants.js";
 import './Navbar.css';
 const NavbarHeader = () => {
+  const [showLoginModal, setShowLoginModal] = useState(false);
   const [expanded, setExpanded] = useState(false);
 
   const handleNavLinkClick = () => {
     setExpanded(false);
   };
+  const { cartTotalQuantity } = useSelector(state => state.cart)
+  const dispatch = useDispatch();
+  const cart = useSelector(state => state.cart);
+  useEffect(() => {
+    dispatch(getTotals());
+  }, [cart, dispatch])
 
   return (
     <header>
@@ -51,9 +58,21 @@ const NavbarHeader = () => {
         Contact    
           </NavLink>
 
-            </Nav>
+            </Nav> 
 
-            <LoginModal handleNavLinkClick={handleNavLinkClick} />
+            <div className="nav-login "  >
+            <div className='link' onClick={()=>setShowLoginModal(true)}>Login</div>
+            <Link to={"/cart"} onClick={handleNavLinkClick} className="cart-count link">
+              <FontAwesomeIcon className="icon-cart" icon="fa fa-shopping-cart" />
+              <span className="count">{cartTotalQuantity}</span>
+    
+            </Link>
+          </div>
+
+            <LoginModal show={showLoginModal}
+            handleClose={() => setShowLoginModal(false)}
+             />
+
           </Navbar.Collapse>
         </Navbar>
       </div>

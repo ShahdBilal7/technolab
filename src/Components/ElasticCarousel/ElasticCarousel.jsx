@@ -18,8 +18,8 @@ const ElasticCarousel = ({ slidesToShow=3,heading, products, color, rowCount, fl
       {
         breakpoint: 992,
         settings: {
-          slidesToShow: slidesToShow-1,
-          slidesToScroll: slidesToShow-1,
+          slidesToShow: 3,
+          slidesToScroll: 3,
         }
       },
       {

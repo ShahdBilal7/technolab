@@ -1,10 +1,14 @@
-.breadcrumb-item+.breadcrumb-item::before {
+
+.bread-item::after {
 content: ">" !important;
+color: black;
+margin: 0 4px;
 }
-.breadcrumb-item a{
+.bread-item{
 color: blue !important;
 font-weight: bold;
+
 }
-.breadcrumb-item a:hover{
+.bread-item:hover{
   color: var(--main-color) !important;
 }

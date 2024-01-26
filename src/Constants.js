@@ -1,6 +1,6 @@
 import NavbarHeader from './Components/NavbarHeader/Navbar.jsx';
 import Footer from './Components/Footer/Footer.jsx';
-import Breadcrum from "./Components/Breadcrumb/Breadcrum.jsx";
+import Breadcrumb from "./Components/Breadcrumb/Breadcrumb.jsx";
 import ElasticCarousel from "./Components/ElasticCarousel/ElasticCarousel.jsx";
 import ProductCard from './Components/ProductCard/ProductCard.jsx';
 import Hero from './Components/Hero/Hero.jsx';
@@ -254,6 +254,7 @@ const products = [
     price: 70.00,
     image: pp3,
     onSale: true,
+    onNew:true,
     salePrice: 30.8,
     quantity: 35,
     detailImage: [p11, p12, p13, p14,
@@ -271,6 +272,7 @@ const products = [
     price: 60.00,
     image: rr2,
     onSale: true,
+    onMost: true,
     salePrice: 888.8,
     quantity: 10,
     detailImage: [p11, p12, p13, p14,
@@ -341,7 +343,7 @@ const products = [
     image: rr4,
     onNew: true,
     quantity: 30,
-
+    onMost: true,
     detailImage: [p11, p12, p13, p14,
     ],
     category: categories[1].name,
@@ -358,7 +360,7 @@ const products = [
     image: pp6,
     onSale: true,
     quantity: 0,
-
+    onMost: true,
     salePrice: 13.0,
     detailImage: [p11, p12, p13, p14,
     ],
@@ -374,7 +376,7 @@ const products = [
     name: "3 Ω Carbon Film Resistor 1/8W ±1%",
     price: 60.00,
     image: rr5,
-    onMost: true,
+
     quantity: -1,
     isRetired: true,
     detailImage: [p11, p12, p13, p14,
@@ -443,4 +445,4 @@ const products = [
 const saleItems = products.filter(product => product.onSale);
 const NewProducts = products.filter(product => product.onNew);
 const MostPopular = products.filter(product => product.onMost);
-export {out,inn,few,retired,useDispatch,useSelector,saleItems, NewProducts, MostPopular,Modal, ProductCard, Breadcrum, Form, Dropdown, DropdownButton, ElasticCarousel, Hero, useRef, categories, products, FontAwesomeIcon, contactInfo, NavLink, Link, useParams, routes, navLinks, CarouselImages, logoImage, useState, useEffect, Footer, NavbarHeader, Register,addToCart, decreaseCart, getTotals,ChangeQuantityCart, removeFromCart }
+export {out,inn,few,retired,useDispatch,useSelector,saleItems, NewProducts, MostPopular,Modal, ProductCard, Breadcrumb, Form, Dropdown, DropdownButton, ElasticCarousel, Hero, useRef, categories, products, FontAwesomeIcon, contactInfo, NavLink, Link, useParams, routes, navLinks, CarouselImages, logoImage, useState, useEffect, Footer, NavbarHeader, Register,addToCart, decreaseCart, getTotals,ChangeQuantityCart, removeFromCart }

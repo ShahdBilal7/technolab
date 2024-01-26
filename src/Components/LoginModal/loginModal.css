@@ -24,6 +24,10 @@
   border: 10px solid #fff;
   border-radius: 50%;
   background-color: #eaeaea;
+  -webkit-border-radius:;
+  -moz-border-radius:;
+  -ms-border-radius:;
+  -o-border-radius:;
 }
 
 .loginCont  h2 {
@@ -76,41 +80,7 @@
   outline: 0;
   padding: 5px 15px;
 }
-.nav-login {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.nav-login .link {
-  color: var(--main-color) !important;
-  font-size: 20px;
-  font-weight: 400;
-}
 
-.nav-login .link:hover {
-color: var(--dark-color) !important;
-}
-.cart-count {
-  display: inline-block;
-  position: relative;
-  cursor: pointer;
-}
-
-.cart-count .count {
-  position: absolute;
-  top: -5px;
-  right: -5px;
-  z-index: 2;
-  font-size: 11px;
-  border-radius: 50%;
-  background: #d60b28;
-  width: 15px;
-  height: 15px;
-  line-height: 15px;
-  text-align: center;
-  color: white;
-  font-weight: bold;
-}
 #toggle-password{
   cursor: pointer;
 }

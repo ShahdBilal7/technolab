@@ -18,26 +18,35 @@ const cartSlice = createSlice({
         (item) => item.id === action.payload.id
       );
 
-      if(action.payload.isRetired || action.payload.quantity === 0 )
-      {
+      if (action.payload.isRetired || action.payload.quantity === 0) {
         toast.error(`This Product is Not Available Now`, {
           position: "top-right",
-          })
+        })
       }
-    else if (existingIndex >= 0) {
-        state.cartItems[existingIndex] = {
-          ...state.cartItems[existingIndex],
-          cartQuantity: state.cartItems[existingIndex].cartQuantity + 1,
-        };
 
-        toast.info(`Increased product quantity`, {
-          position: "top-right",
-          // autoClose:false
+      else if (existingIndex >= 0) {
+
+        if (state.cartItems[existingIndex].cartQuantity >= action.payload.quantity) {
+          toast.error(`عذرا... الكمية المطلوبة غير متوفرة في المتجر حاليا`, {
+            position: "top-right",
           })
+        }
+        else {
+          state.cartItems[existingIndex] = {
+            ...state.cartItems[existingIndex],
+            cartQuantity: state.cartItems[existingIndex].cartQuantity + 1,
+          };
+
+          toast.info(`Increased product quantity`, {
+            position: "top-right",
+            autoClose: 1000
+          })
+        }
+
       } else {
         let tempProductItem = { ...action.payload, cartQuantity: 1 };
         state.cartItems.push(tempProductItem);
-        
+
         toast.success(` added ${action.payload.name} to your cart  `, {
           position: "top-right",
           // autoClose:1000
@@ -78,7 +87,7 @@ const cartSlice = createSlice({
         (item) => item.id === id
       );
 
-      if (itemIndex !== -1 && newQuantity > 0) {
+      if (itemIndex !== -1 && newQuantity > 0 && newQuantity <= state.cartItems[itemIndex].quantity) {
         // Update the cart quantity for the specified item
         state.cartItems[itemIndex].cartQuantity = newQuantity;
 
@@ -90,7 +99,7 @@ const cartSlice = createSlice({
         //   // autoClose:1000
         // });
       }
-      
+
     },
     removeFromCart(state, action) {
       state.cartItems.map((cartItem) => {
@@ -137,7 +146,7 @@ const cartSlice = createSlice({
   },
 });
 
-export const {ChangeQuantityCart, addToCart, decreaseCart, removeFromCart, getTotals, clearCart } =
+export const { ChangeQuantityCart, addToCart, decreaseCart, removeFromCart, getTotals, clearCart } =
   cartSlice.actions;
 
 export default cartSlice.reducer;

@@ -1,44 +1,25 @@
-import { useSelector, logoImage, FontAwesomeIcon, useState, Link,useDispatch,useEffect,getTotals } from "../../Constants.js";
+import {  logoImage, FontAwesomeIcon, useState, Link } from "../../Constants.js";
 import { Modal } from "react-bootstrap";
 import "./loginModal.css";
-const LoginModal = ({ handleNavLinkClick }) => {
+const LoginModal = (props) => {
+  const { show, handleClose,describe } = props;
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => {
-    handleNavLinkClick();
-    setShow(true);
-  }
-  const handleSubmit = () => setShow(false);
   const handlePasswordToggle = () => {
     setPasswordVisible(!passwordVisible);
   };
-  const { cartTotalQuantity } = useSelector(state => state.cart)
-  const dispatch = useDispatch();
-  const cart = useSelector(state => state.cart);
-  useEffect(() => {
-    dispatch(getTotals());
-  }, [cart, dispatch])
 
   return (
-    <>
-      <div className="nav-login "  >
-        <div className='link' onClick={handleShow}>Login</div>
-        <Link to={"/cart"} onClick={handleNavLinkClick} className="cart-count link">
-          <FontAwesomeIcon className="icon" icon="fa fa-shopping-cart" />
-          <span className="count">{cartTotalQuantity}</span>
-
-        </Link>
-      </div>
       <Modal className="loginCont" show={show} onHide={handleClose} centered>
         <Modal.Header className='flex-column-reverse' closeButton>
           <div className="logo-login">
             <img src={logoImage} alt="logo" />
           </div>
           <h2 id="title">Log in</h2>
+        
         </Modal.Header>
         <Modal.Body>
-          <form onSubmit={handleSubmit} className='d-flex flex-column align-items-center p-4'>
+        <p>{describe}</p>
+          <form onSubmit={handleClose} className='d-flex flex-column align-items-center p-4'>
             <div className="input-group">
               <div className="input-field" id="emailField">
                 <FontAwesomeIcon icon={"fa-envelope"} />
@@ -69,8 +50,7 @@ const LoginModal = ({ handleNavLinkClick }) => {
           </div>
         </Modal.Body>
       </Modal>
-    </>
   );
 }
 
-export default LoginModal
+export default  LoginModal;

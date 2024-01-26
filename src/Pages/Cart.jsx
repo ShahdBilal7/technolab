@@ -2,7 +2,7 @@
 import {
   useDispatch,
   useSelector,
-  Breadcrum,
+  Breadcrumb,
   FontAwesomeIcon,
   Link,
   addToCart,
@@ -11,10 +11,10 @@ import {
   removeFromCart,
   useState,
   useEffect
-
 } from "../Constants";
 import { Form } from 'react-bootstrap';
 import Accordion from "react-bootstrap/Accordion";
+import exportFromJSON from 'export-from-json'
 const Cart = () => {
 
   const [selectedOption, setSelectedOption] = useState(null);
@@ -36,19 +36,15 @@ const Cart = () => {
   );
   const handleRemoveFromCart = (cartItem) => {
     dispatch(removeFromCart(cartItem));
+    setQuantities((prevQuantities) =>
+    prevQuantities.filter((_, index) => index !== cart.cartItems.findIndex((item) => item.id === cartItem.id))
+  );
   };
   const setValueAtIndex = (index, value) => {
-    // Create a copy of the quantities array to modify
     const newQuantities = [...quantities];
-    // Update the quantity at the specified index
     newQuantities[index] = value;
-    // Update state with the new array of quantities
     setQuantities(newQuantities);
   };
-  useEffect(() => {
-    dispatch(handleChangeQuantity);
-  }, [cart, dispatch])
-
   
   const handleChangeQuantity = (index, cartItem, newQuantity) => {
     const validatedQuantity = Math.max(1, Math.min(cartItem.quantity, parseInt(newQuantity, 10)) || 1);
@@ -59,13 +55,25 @@ const Cart = () => {
   // const handleIncreaseCart = (cartItem) => {
   //   dispatch(addToCart(cartItem));
   // };
-  // const [age, setAge] = useState("20");
-
+  const onExportLocal=()=>{
+    
+    const exportData = cart.cartItems.map(item => ({
+      ProductName: item.name,
+      Price: item.price,
+      Quantity: item.cartQuantity,
+      TotalPrice: item.price * item.cartQuantity,
+    }));console.log(exportData)
+    const fileName = 'myCart'
+  const exportType =  exportFromJSON.types.csv
+  exportFromJSON({data:exportData, fileName, exportType })
+  }
+  
   return (
+
       <div className="container">
-        <div className="pt-4">
-          {" "}
-          <Breadcrum Category={"Home"} SubCategory={"Shop"} Data={"Cart"} />
+        <div className="pt-4 cart-head">
+          <Breadcrumb Category="Home" CategoryLink="/" SubCategory="Shop" SubCategoryLink="/products" Data="Cart" />
+          <FontAwesomeIcon className="csv" onClick={onExportLocal}  title="CSV version of your cart (for import into Excel, etc.)" icon="fa-solid fa-file-csv" />
         </div>
 
         <section className="cart row ">
@@ -296,6 +304,7 @@ const Cart = () => {
           </div>
         </section>
       </div>
+    
   );
 };
 

@@ -1,6 +1,6 @@
 import CustomPaging from "../Components/CustomPaging/CustomPaging"
 import DetailCard from "../Components/DetialCard/DetailCard";
-import { products, Breadcrum, ElasticCarousel, useParams } from "../Constants";
+import { products, ElasticCarousel, useParams } from "../Constants";
 
 const Detail = () => {
   const { id } = useParams();
@@ -8,7 +8,9 @@ const Detail = () => {
   return (
     <div className="container">
       <div className="product-detail mt-4 mb-5">
-        <Breadcrum Category={product.category} SubCategory={"subcategory"} Data={product.name} />
+      {  
+        // <Breadcrumb Category={product.category} SubCategory={"subcategory"} Data={product.name} />
+    }
         <div className="row">
           <div className="col-lg-8 col-sm-12 col-xs-12 ">
             <section className="image-detail">

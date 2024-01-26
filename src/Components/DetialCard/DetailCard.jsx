@@ -1,21 +1,14 @@
-import { toast } from "react-toastify";
+
 import { FontAwesomeIcon,useState,useDispatch,addToCart, Link} from "../../Constants";
+import LoginModal from "../LoginModal/LoginModal";
 import "./DetailCard.css";
 import { Alert } from "react-bootstrap";
 const DetailCard = ({product}) => {
-  const [quant, setQuant] = useState(0);
 const dispatch=useDispatch();
 const handleAddToCart=(product)=>{
   dispatch(addToCart(product));
     };
-  const addQuant = () => {
-    setQuant(quant + 1);
-  };
-
-  const removeQuant = () => {
-    setQuant(quant - 1);
-  };
-
+    const [showLoginModal, setShowLoginModal] = useState(false);
 
 
   return (
@@ -72,9 +65,14 @@ const handleAddToCart=(product)=>{
     <FontAwesomeIcon className="mx-2" icon="fa-clock" />
     <span className="mb-0">
     We do not currently have an estimate of when this product will be back in stock.
-    <Link title="Receive an email when this product returns to stock." className="notify-link"> Notify Me</Link> 
+    <Link onClick={()=>setShowLoginModal(true)} title="Receive an email when this product returns to stock." className="notify-link"> Notify Me</Link> 
     </span>
+    <LoginModal show={showLoginModal}
+    handleClose={() => setShowLoginModal(false)}
+    describe="In order to be notified when this item becomes available, you need to log in to your account."
+     />
   </Alert>
+
     :
     <div className="buttons">
   {    

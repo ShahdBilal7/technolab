@@ -132,7 +132,7 @@
 .product-card .stock {
   cursor: pointer;
 }
-.modal-dialog {
+.product-state .modal-dialog {
   width: 716px !important;
   max-width:unset !important ;
 }
