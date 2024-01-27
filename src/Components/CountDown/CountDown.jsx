@@ -1,14 +1,16 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { colors } from "@mui/material";
 import Countdown from "react-countdown";
 const CountDown = ({ futureDate, completionMessage }) => {
+  const formatNumber = (number) => {
+    return String(number).padStart(2, "0");
+  };
   const renderer = ({ days, hours, minutes,seconds, completed }) => {
     if (completed) {
       return <span>{completionMessage}</span>;
     } else {
       return (
         <span>
-          {days}:{hours}:{minutes}:{seconds}
+          {formatNumber(days)}:{formatNumber(hours)}:{formatNumber(minutes)}:{formatNumber(seconds)}
         </span>
       );
     }
