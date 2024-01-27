@@ -4,17 +4,15 @@ import {
   Breadcrumb,
   FontAwesomeIcon,
   Link,
-  addToCart,
-  decreaseCart,
   ChangeQuantityCart,
   removeFromCart,
   useState,
-  useEffect,
 
 } from "../Constants";
 import { useFormik } from "formik";
+import domtoimage from 'dom-to-image';
 import * as Yup from "yup";
-import { Form, Modal, ModalFooter } from 'react-bootstrap';
+import { Form, Modal } from 'react-bootstrap';
 import Accordion from "react-bootstrap/Accordion";
 import exportFromJSON from 'export-from-json'
 const Cart = () => {
@@ -88,15 +86,47 @@ const Cart = () => {
     },
   });
 
+  const takeImage = () => {
+    const captureElement = document.querySelector("#capture");
+
+    if (!captureElement) {
+      console.error("Element with ID 'capture' not found");
+      return;
+    }
+
+    domtoimage.toPng(captureElement)
+      .then((dataUrl) => {
+        // Create a download link
+        const downloadLink = document.createElement("a");
+        downloadLink.href = dataUrl;
+        downloadLink.download = "image.png";
+
+        // Append the download link to the document
+        document.body.appendChild(downloadLink);
+
+        // Trigger the click event on the download link
+        downloadLink.click();
+
+        // Remove the download link from the document
+        document.body.removeChild(downloadLink);
+      })
+      .catch(error => {
+        console.error("Error capturing image:", error);
+      });
+  };
+
+
   return (
 
     <div className="container">
       <div className="pt-4 cart-head">
         <Breadcrumb Category="Home" CategoryLink="/" SubCategory="Shop" SubCategoryLink="/products" Data="Cart" />
-        <FontAwesomeIcon className="csv" onClick={onExportLocal} title="CSV version of your cart (for import into Excel, etc.)" icon="fa-solid fa-file-csv" />
+        <div>
+          <FontAwesomeIcon className="csv" onClick={takeImage} title="Take a screenshot of my cart information." icon="fa-solid fa-camera-retro" />
+          <FontAwesomeIcon className="csv" onClick={onExportLocal} title="CSV version of your cart (for import into Excel, etc.)" icon="fa-solid fa-file-csv" />
+        </div>
       </div>
-
-      <section className="cart row ">
+      <section id="capture" className="cart row " >
         <div className="col-lg-9 my-4">
           <div id="cart-info" className="cart-info ">
             <table>
@@ -125,7 +155,7 @@ const Cart = () => {
                   </tr>
                 </tfoot>
               ) : (
-                <tbody>
+                <tbody >
                   {cart.cartItems?.map((cartItem, index) => (
                     <tr key={cartItem.id}>
                       <td style={{ borderRight: "1px solid #fff" }}>
@@ -323,50 +353,50 @@ const Cart = () => {
 
             </Form.Group>
             <div className="row">
-            <div className="col-md-6">
-            <Form.Group className="group ">
-            <FontAwesomeIcon icon="fa-location" />
-            <Form.Control placeholder="المحافظة " type="address" required name="address" onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.address} />
-          </Form.Group>
+              <div className="col-md-6">
+                <Form.Group className="group ">
+                  <FontAwesomeIcon icon="fa-location" />
+                  <Form.Control placeholder="المحافظة " type="address" required name="address" onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.address} />
+                </Form.Group>
+              </div>
+              <div className="col-md-6">
+                <Form.Group className="group">
+                  <FontAwesomeIcon icon="fa-location" />
+                  <Form.Control placeholder="القرية / المخيم/ الحي " type="address" required name="address2" onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.address2} />
+                </Form.Group>
+              </div>
+
+
+
             </div>
-            <div className="col-md-6">
-            <Form.Group className="group">
-          <FontAwesomeIcon icon="fa-location" />
-          <Form.Control placeholder="القرية / المخيم/ الحي " type="address" required name="address2" onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.address2} />
-        </Form.Group>
-            </div>
-          
-        
-            
-            </div>
-          
+
             <button className='submit my-2' type="submit" id="register">
               تثبيت الطلب
             </button>
-            <Modal dir="ltr" style={{alignContent:"center"}} show={showOrderModal} onHide={() => setShowOrderModal(false)} centered>
+            <Modal dir="ltr" style={{ alignContent: "center" }} show={showOrderModal} onHide={() => setShowOrderModal(false)} centered>
               <Modal.Header closeButton>
                 <h1>تأكيد الطلب</h1>
               </Modal.Header>
               <Modal.Body>
-              <p>Your Name : &nbsp; {formik.values.name}</p>
-              <p>Your Phone : &nbsp;{formik.values.phone}</p>
-              <p>Your Email : &nbsp;{formik.values.email}</p>
-              <p>Your Address : &nbsp;{formik.values.address + "/" + formik.values.address2}</p>
-              <hr/>
-              <strong>The Total Price = {cart.cartTotalAmount + + shipping}₪  </strong> 
-              <hr></hr>
-            
-      
-              <p style={{color:"red"}}>عند تأكيد الطلب لايمكن التراجع عن الطلب </p>
-              <br/>
-              <button className='submit my-2' >
-              تأكيد الطلب
-            </button>
-            </Modal.Body>
+                <p>Your Name : &nbsp; {formik.values.name}</p>
+                <p>Your Phone : &nbsp;{formik.values.phone}</p>
+                <p>Your Email : &nbsp;{formik.values.email}</p>
+                <p>Your Address : &nbsp;{formik.values.address + "/" + formik.values.address2}</p>
+                <hr />
+                <strong>The Total Price = {cart.cartTotalAmount + + shipping}₪  </strong>
+                <hr></hr>
+
+
+                <p style={{ color: "red" }}>عند تأكيد الطلب لايمكن التراجع عن الطلب </p>
+                <br />
+                <button className='submit my-2' >
+                  تأكيد الطلب
+                </button>
+              </Modal.Body>
             </Modal>
           </Form>
         </div>
