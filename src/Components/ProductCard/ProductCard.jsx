@@ -1,10 +1,8 @@
 import { FontAwesomeIcon, Link, addToCart, useDispatch, useState, Modal, out, inn, retired, few } from "../../Constants";
 import CountDown from "../CountDown/CountDown";
-
 import LoginModal from "../LoginModal/LoginModal";
 import "./ProductCard.css";
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
-
 const ProductCard = ({ product, flagSale }) => {
   const dispatch = useDispatch();
   const handleAddToCart = (product) => {
@@ -62,7 +60,7 @@ const ProductCard = ({ product, flagSale }) => {
                 <Tooltip id="button-tooltip">{
                   isRetired ? "retired" :
                     quantity === 0 ? "out of stock" :
-                      quantity <= 35 ? `only ${quantity} left` :
+                      quantity <= 35 ? `few in stock` :
                         "in stock"
 
                 }
@@ -93,8 +91,8 @@ const ProductCard = ({ product, flagSale }) => {
             <Modal.Body>
               <ul className="list-unstyled mod">
                 <li><img className="quantity" src={out} alt="out of stock" /><span>An empty red circle denotes a product which is out of stock.</span></li>
-                <li><img className="quantity" src={few} alt="few in stock" /> <span>A half-empty yellow circle denotes a product which has only 35 or fewer units left in stock.</span></li>
-                <li><img className="quantity" src={inn} alt="in stock" /> <span>A full green circle denotes a product with more than 35 units in stock.</span></li>
+                <li><img className="quantity" src={few} alt="few in stock" /> <span>A half-empty yellow circle denotes that a product has a few left in stock.</span></li>
+                <li><img className="quantity" src={inn} alt="in stock" /> <span>A full green circle denotes that a product is in high quantity in stock</span></li>
                 <li><img className="quantity" src={retired} alt="retired" /><span>A gray slashed-out circle denotes a product which is retired; we might have replaced it with a newer revision or might not carry the product anymore.</span></li>
               </ul>
             </Modal.Body>
