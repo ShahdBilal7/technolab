@@ -16,17 +16,20 @@ import { Form, Modal } from 'react-bootstrap';
 import Accordion from "react-bootstrap/Accordion";
 import exportFromJSON from 'export-from-json'
 const Cart = () => {
+
   const [showOrderModal, setShowOrderModal] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
   const [shipping, setShipping] = useState(0)
+  
   const handleCheckboxChange = (event, key) => {
     const isChecked = event.target.checked;
     setSelectedOption(isChecked ? key : null);
     if (isChecked) {
-      console.log(`Checkbox with value ${event.target.value} is checked`);
       setShipping(event.target.value);
     }
-    else { setShipping(0); }
+    else { setShipping(0);
+
+    }
 
   };
   const dispatch = useDispatch();
@@ -77,7 +80,7 @@ const Cart = () => {
     validationSchema: Yup.object({
       name: Yup.string().required("Required"),
       email: Yup.string().required("Required"),
-      phone: Yup.string().required("Required"),
+      phone: Yup.string().matches(/^[0-9]{10}$/, "Invalid phone number").required("Required"),
       address: Yup.string().required("Required"),
       address2: Yup.string().required("Required"),
     }),
@@ -333,41 +336,68 @@ const Cart = () => {
           <Form onSubmit={formik.handleSubmit} className="fieldset">
             <Form.Group className="group">
               <FontAwesomeIcon icon="fa-user" />
-              <Form.Control placeholder="الاسم" type="text" name="name" required onChange={formik.handleChange}
+              <Form.Control placeholder="الاسم"
+               type="text" name="name"  onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.name} />
 
             </Form.Group>
+            <Form.Text className="text-danger mb-3">
+                    {formik.touched.name && formik.errors.name ? (
+                      <div className="text-danger">* {formik.errors.name}</div>
+                    ) : null}
+                  </Form.Text>
             <Form.Group className="group">
               <FontAwesomeIcon icon="fa-envelope" />
-              <Form.Control placeholder="الايميل" type="email" name="email" required onChange={formik.handleChange}
+              <Form.Control placeholder="الايميل" 
+              type="email" name="email"  onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.email} />
 
             </Form.Group>
+            <Form.Text className="text-danger mb-3">
+            {formik.touched.email && formik.errors.email ? (
+              <div className="text-danger">* {formik.errors.email}</div>
+            ) : null}
+          </Form.Text>
             <Form.Group className="group">
               <FontAwesomeIcon icon="fa-phone" />
-              <Form.Control dir="ltr" placeholder="+9725XXXXXXXX" type="tel" required name="phone" onChange={formik.handleChange}
+              <Form.Control dir="ltr" placeholder="05XXXXXXXX" type="tel"  name="phone" onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.phone} />
 
             </Form.Group>
+            <Form.Text className="text-danger mb-3">
+            {formik.touched.phone && formik.errors.phone ? (
+              <div className="text-danger">* {formik.errors.phone}</div>
+            ) : null}
+          </Form.Text>
             <div className="row">
-              <div className="col-md-6">
+              <div className="col-md-6 mb-3">
                 <Form.Group className="group ">
                   <FontAwesomeIcon icon="fa-location" />
-                  <Form.Control placeholder="المحافظة " type="address" required name="address" onChange={formik.handleChange}
+                  <Form.Control placeholder="المحافظة " type="address"  name="address" onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     value={formik.values.address} />
                 </Form.Group>
+                <Form.Text className="text-danger mb-3">
+                {formik.touched.address && formik.errors.address ? (
+                  <div className="text-danger">* {formik.errors.address}</div>
+                ) : null}
+              </Form.Text>
               </div>
               <div className="col-md-6">
                 <Form.Group className="group">
                   <FontAwesomeIcon icon="fa-location" />
-                  <Form.Control placeholder="القرية / المخيم/ الحي " type="address" required name="address2" onChange={formik.handleChange}
+                  <Form.Control placeholder="القرية / المخيم/ الحي " type="address" name="address2" onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     value={formik.values.address2} />
                 </Form.Group>
+                <Form.Text className="text-danger ">
+                {formik.touched.address2 && formik.errors.address2 ? (
+                  <div className="text-danger">* {formik.errors.address2}</div>
+                ) : null}
+              </Form.Text>
               </div>
 
 
@@ -377,25 +407,55 @@ const Cart = () => {
             <button className='submit my-2' type="submit" id="register">
               تثبيت الطلب
             </button>
-            <Modal dir="ltr" style={{ alignContent: "center" }} show={showOrderModal} onHide={() => setShowOrderModal(false)} centered>
+            <Modal dir="rtl"  show={showOrderModal} onHide={() => setShowOrderModal(false)} centered>
               <Modal.Header closeButton>
-                <h1>تأكيد الطلب</h1>
+                <h1 style={{flex:"1"}}>تأكيد الطلب</h1>
               </Modal.Header>
               <Modal.Body>
-                <p>Your Name : &nbsp; {formik.values.name}</p>
-                <p>Your Phone : &nbsp;{formik.values.phone}</p>
-                <p>Your Email : &nbsp;{formik.values.email}</p>
-                <p>Your Address : &nbsp;{formik.values.address + "/" + formik.values.address2}</p>
+                <p>الإسم: &nbsp; {formik.values.name}</p>
+                <p>رقم الجوال : &nbsp;{formik.values.phone}</p>
+                <p>الايميل الخاص بك : &nbsp;{formik.values.email}</p>
+                <p>العنوان : &nbsp;{formik.values.address + "/" + formik.values.address2}</p>
                 <hr />
-                <strong>The Total Price = {cart.cartTotalAmount + + shipping}₪  </strong>
+                <strong>وسيلة الشحن : {(() => {
+                  switch (selectedOption) {
+                    case "2":
+                      return "شحن داخل مدينة نابلس";
+                    case "3":
+                      return " شحن الى محافظات الضفة الاخرى من خلال شركة تورنيدو للتوصيل";
+                    case "4":
+                      return " شحن الى الداخل المحتل من خلال شركة تورنيدو للتوصيل";
+                    case "5":
+                      return "شحن الى القدس وضواحيها من خلال شركة تورنيدو للتوصي";
+                    default:
+                      return "استلام من معرض الشركة";
+                  }
+                })()}</strong>
+                
+                <br/>
+                
+                <strong>المجموع النهائي = {cart.cartTotalAmount + + shipping}₪  </strong>
                 <hr></hr>
 
+                <p style={{ color: "#777" }}>عند تأكيد الطلب سيتم  إرسال ايميل يحتوي على تفاصيل طلبك والمعلومات التي تحتاجها </p>
+            
+<br/>
 
-                <p style={{ color: "red" }}>عند تأكيد الطلب لايمكن التراجع عن الطلب </p>
+                <strong style={{ color: "red" }}>عند تأكيد الطلب لايمكن التراجع عن الطلب  !</strong>
                 <br />
-                <button className='submit my-2' >
-                  تأكيد الطلب
+                <br />
+                <div dir="rtl" className="d-flex justify-content-center" style={{fontSize:"14px"}}>
+                <button className=' submit m-2  ' type="submit" id="register">
+                  تأكيد الطلب <br/>
+                   الدفع عند الإستلام
                 </button>
+                <button className='  submit m-2 p-3' type="submit" id="register">
+                تأكيد الطلب <br/> الدفع
+                 عن طريق حوالة بنكية
+                </button>
+              </div>
+
+    
               </Modal.Body>
             </Modal>
           </Form>

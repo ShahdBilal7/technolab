@@ -371,7 +371,6 @@ padding: 3px;
 .form-cart .group{
   display: flex;
   align-items: center;
-    margin-bottom: 20px;
   border: 1px solid var(--bs-border-color);
 }
 .form-cart .group .form-control{

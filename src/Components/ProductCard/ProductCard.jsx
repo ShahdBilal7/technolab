@@ -47,7 +47,7 @@ const ProductCard = ({ product, flagSale }) => {
           }
           {
             quantity === 0
-            ?   <div title="product will available" className="counterDown counterDownAvailable" >
+            ?   <div title={`product will available in ${AvailableDate}`} className="counterDown counterDownAvailable" >
             <CountDown futureDate={new Date(AvailableDate )- (2 * 60 * 60 * 1000)} completionMessage="product Now Available" />
             </div>
             :<></>
@@ -91,8 +91,8 @@ const ProductCard = ({ product, flagSale }) => {
             <Modal.Body>
               <ul className="list-unstyled mod">
                 <li><img className="quantity" src={out} alt="out of stock" /><span>An empty red circle denotes a product which is out of stock.</span></li>
-                <li><img className="quantity" src={few} alt="few in stock" /> <span>A half-empty yellow circle denotes that a product has a few left in stock.</span></li>
-                <li><img className="quantity" src={inn} alt="in stock" /> <span>A full green circle denotes that a product is in high quantity in stock</span></li>
+                <li><img className="quantity" src={few} alt="few in stock" /> <span>A half-empty yellow circle denotes that a product has a low quantity.</span></li>
+                <li><img className="quantity" src={inn} alt="in stock" /> <span>A full green circle denotes that a product has a hight quantity.</span></li>
                 <li><img className="quantity" src={retired} alt="retired" /><span>A gray slashed-out circle denotes a product which is retired; we might have replaced it with a newer revision or might not carry the product anymore.</span></li>
               </ul>
             </Modal.Body>

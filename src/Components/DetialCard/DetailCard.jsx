@@ -64,8 +64,8 @@ const handleAddToCart=(product)=>{
     <Alert variant="warning">
     <FontAwesomeIcon className="mx-2" icon="fa-clock" />
     <span className="mb-0">
-    We do not currently have an estimate of when this product will be back in stock.
-    <Link onClick={()=>setShowLoginModal(true)} title="Receive an email when this product returns to stock." className="notify-link"> Notify Me</Link> 
+    We expect this product will be available on {product.AvailableDate +"  "}
+    <Link onClick={()=>setShowLoginModal(true)} title="Receive an email when this product returns to stock." className="notify-link">  Notify Me</Link> 
     </span>
     <LoginModal show={showLoginModal}
     handleClose={() => setShowLoginModal(false)}

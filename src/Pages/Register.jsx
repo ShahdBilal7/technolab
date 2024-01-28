@@ -38,10 +38,10 @@ const Register = ({ setShowSearch }) => {
       firstName: Yup.string().max(15, "Must be 15 characters or less").required("Required"),
       lastName: Yup.string().max(20, "Must be 20 characters or less").required("Required"),
       email: Yup.string().email("Invalid email address").required("Required"),
-      phone: Yup.string().matches(/^[0-9]{10}$/, "Invalid phone number"),
+      phone: Yup.string().matches(/^[0-9]{10}$/, "Invalid phone number").required("Required"),
       address: Yup.string().required("Required"),
       password: Yup.string()
-      .required("This field is required")
+      .required("Required")
       .min(8, "Pasword must be 8 or more characters")
       .matches(/(?=.*[a-z])(?=.*[A-Z])\w+/, "Password should contain at least one uppercase and one lowercase character")
       .matches(/\d/, "Password should contain at least one number")
