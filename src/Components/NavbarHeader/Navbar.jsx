@@ -1,5 +1,5 @@
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
-import Logo from '../Logo/Logo';
+import Logo from '../Logo';
 import LoginModal from '../LoginModal/LoginModal';
 import { NavLink, useState ,useEffect,useDispatch,useSelector,getTotals,FontAwesomeIcon,Link} from "../../Constants.js";
 import './Navbar.css';

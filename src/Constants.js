@@ -12,7 +12,7 @@ import Detail from './Pages/ProductDetail.jsx';
 import About from './Pages/About.jsx';
 import Home from './Pages/Home.jsx';
 import Contact from './Pages/Contact.jsx';
-import { addToCart, decreaseCart, getTotals, removeFromCart,ChangeQuantityCart } from "../src/features/cartSlice.js";
+import { addToCart,setShipping, getTotals, removeFromCart,ChangeQuantityCart } from "./store/cartSlice.js";
 import { useDispatch,useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink, Link, useParams } from 'react-router-dom';
@@ -365,7 +365,7 @@ const products = [
     price: 25.00,
     image: pp6,
     quantity: 0,
-    AvailableDate:"2024-01-28T17:00:00",
+    AvailableDate:"2024-02-28T17:00:00",
     onMost: true,
     salePrice: 13.0,
     detailImage: [p11, p12, p13, p14,
@@ -452,4 +452,4 @@ const products = [
 const saleItems = products.filter(product => product.onSale);
 const NewProducts = products.filter(product => product.onNew);
 const MostPopular = products.filter(product => product.onMost);
-export {out,inn,few,retired,useDispatch,useSelector,saleItems, NewProducts, MostPopular,Modal, ProductCard, Breadcrumb, Form, Dropdown, DropdownButton, ElasticCarousel, Hero, useRef, categories, products, FontAwesomeIcon, contactInfo, NavLink, Link, useParams, routes, navLinks, CarouselImages, logoImage, useState, useEffect, Footer, NavbarHeader, Register,addToCart, decreaseCart, getTotals,ChangeQuantityCart, removeFromCart }
+export {setShipping,out,inn,few,retired,useDispatch,useSelector,saleItems, NewProducts, MostPopular,Modal, ProductCard, Breadcrumb, Form, Dropdown, DropdownButton, ElasticCarousel, Hero, useRef, categories, products, FontAwesomeIcon, contactInfo, NavLink, Link, useParams, routes, navLinks, CarouselImages, logoImage, useState, useEffect, Footer, NavbarHeader, Register,addToCart, getTotals,ChangeQuantityCart, removeFromCart }

@@ -38,19 +38,6 @@ const Product = () => {
                 ))}
               </ul>
             </div>
-          { /* <div className=' categories-list coll'>
-              <h3>Filter</h3>
-              <ul>
-                {categories.map((category, index) => (
-                  <label key={index} htmlFor={index}>
-                    <input type="checkbox" id={index} />
-                    <span className="lab">f{index} </span>
-                  </label>
-                ))}
-
-              </ul>
-            </div>*/
-          }
           </div>
           <div className=" products-list coll">
             <div className='mb-3 d-flex justify-content-between'>
@@ -65,7 +52,7 @@ const Product = () => {
             <div className='row'>
               {products.sort().map((product) => (
                 <div key={product.id} className=" col-lg-3 col-md-6  col-sm-12 mb-3">
-                  <ProductCard product={product} flagSale={true} />
+                  <ProductCard product={product} />
                 </div>
               ))}
             </div>

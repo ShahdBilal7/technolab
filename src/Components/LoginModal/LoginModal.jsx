@@ -2,6 +2,7 @@ import {  logoImage, FontAwesomeIcon, useState, Link } from "../../Constants.js"
 import { Modal } from "react-bootstrap";
 import "./loginModal.css";
 const LoginModal = (props) => {
+  console.log("hi iam login modal");
   const { show, handleClose,describe } = props;
   const [passwordVisible, setPasswordVisible] = useState(false);
   const handlePasswordToggle = () => {

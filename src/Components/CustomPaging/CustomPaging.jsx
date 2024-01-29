@@ -1,11 +1,11 @@
 import Slider from "react-slick";
 import "./CustomPaging.css";
-const CustomPaging = ({detailImage}) => {
+const CustomPaging = ({ detailImage }) => {
   const settings = {
-    customPaging: function(i) {
+    customPaging: function (i) {
       return (
         <a>
-          <img style={{borderRadius:"10px"}} src={detailImage[i]} alt="imageDetail" />
+          <img style={{ borderRadius: "10px" }} src={detailImage[i]} alt="imageDetail" />
         </a>
       );
     },
@@ -19,18 +19,14 @@ const CustomPaging = ({detailImage}) => {
   };
   return (
     <div>
-    <Slider {...settings}>
-    {detailImage.map((image,index)=>
-      <div  key={index}>
-      <img style={{borderRadius:"10px"}} src={image} alt="imageDetail" />
+      <Slider {...settings}>
+        {detailImage.map((image, index) =>
+          <div key={index}>
+            <img style={{ borderRadius: "10px" }} src={image} alt="imageDetail" />
+          </div>
+        )}
+      </Slider>
     </div>
-      )
-
-    }
-    
-    
-    </Slider>
-  </div>
   )
 }
 

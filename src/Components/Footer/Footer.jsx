@@ -1,4 +1,4 @@
-import Logo from "../Logo/Logo";
+import Logo from "../Logo.jsx";
 import { contactInfo, FontAwesomeIcon, NavLink, Link, navLinks } from "../../Constants.js";
 import "./Footer.css";
 const Footer = () => {

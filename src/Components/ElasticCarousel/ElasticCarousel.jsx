@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick-theme.css";
 import ProductCard from "../ProductCard/ProductCard";
 import Slider from "react-slick";
 
-const ElasticCarousel = ({ slidesToShow=3,heading, products, color, rowCount, flagSale }) => {
+const ElasticCarousel = ({ slidesToShow = 5, heading, products, color, rowCount = 1, flagSale = true }) => {
   const settings = {
     dots: false,
     infinite: true,
@@ -33,11 +33,11 @@ const ElasticCarousel = ({ slidesToShow=3,heading, products, color, rowCount, fl
     ]
   };
   return (
-    <section className="ElasticCarousel " style={{ backgroundColor: color }}>
+    <section className="ElasticCarousel" style={{ backgroundColor:color }}>
       <div className="main-heading">
         <h2>{heading}</h2>
       </div>
-      <div className="  container">
+      <div className="container">
         <Slider {...settings}>
           {products.map((product) => (
             <div key={product.id} className="p-3">
