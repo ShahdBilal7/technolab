@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useSelector } from "../../Constants";
 
 const OrderSummary = () => {
   const cart = useSelector((state) => state.cart);

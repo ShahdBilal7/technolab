@@ -1,7 +1,6 @@
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
-import Logo from '../Logo';
+import { Navbar, Nav, NavDropdown, NavLink, useState ,useEffect,useDispatch,useSelector,getTotals,FontAwesomeIcon,Link} from "../../Constants.js";
 import LoginModal from '../LoginModal/LoginModal';
-import { NavLink, useState ,useEffect,useDispatch,useSelector,getTotals,FontAwesomeIcon,Link} from "../../Constants.js";
+import Logo from '../Logo';
 import './Navbar.css';
 const NavbarHeader = () => {
   const [showLoginModal, setShowLoginModal] = useState(false);

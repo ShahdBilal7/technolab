@@ -1,20 +1,10 @@
-import { useFormik } from "formik";
-import * as Yup from "yup";
-import { Form, Modal } from 'react-bootstrap';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useSelector } from "react-redux";
-import { useState } from "react";
+import { Yup, useFormik, Form, Modal, useSelector, useState, FontAwesomeIcon } from "../../Constants";
+
 const FormCat = () => {
   const [showOrderModal, setShowOrderModal] = useState(false);
   const cart = useSelector((state) => state.cart);
   const formik = useFormik({
-    initialValues: {
-      name: "",
-      email: "",
-      phone: "",
-      address: "",
-      address2: "",
-    },
+    initialValues: { name: "", email: "", phone: "", address: "",  address2: ""},
     validationSchema: Yup.object({
       name: Yup.string().required("Required"),
       email: Yup.string().required("Required"),

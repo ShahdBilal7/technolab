@@ -1,8 +1,6 @@
-import {  logoImage, FontAwesomeIcon, useState, Link } from "../../Constants.js";
-import { Modal } from "react-bootstrap";
+import {  logoImage, FontAwesomeIcon, useState, Link ,Modal} from "../../Constants.js";
 import "./loginModal.css";
 const LoginModal = (props) => {
-  console.log("hi iam login modal");
   const { show, handleClose,describe } = props;
   const [passwordVisible, setPasswordVisible] = useState(false);
   const handlePasswordToggle = () => {
@@ -16,7 +14,6 @@ const LoginModal = (props) => {
             <img src={logoImage} alt="logo" />
           </div>
           <h2 id="title">Log in</h2>
-        
         </Modal.Header>
         <Modal.Body>
         <p>{describe}</p>

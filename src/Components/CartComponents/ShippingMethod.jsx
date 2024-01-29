@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useState,useDispatch,setShipping } from "../../Constants";
 import Accordion from "react-bootstrap/Accordion";
-import { useDispatch } from "react-redux";
-import { setShipping } from "../../Constants";
+
 const ShippingMethod = () => {
   const dispatch = useDispatch();
   const [selectedOption, setSelectedOption] = useState(null);

@@ -1,8 +1,6 @@
 
+import {Yup, useEffect, Form, useState,useFormik } from "../Constants.js";
 import DropdownSelector from "../Components/DropdownSelector.jsx";
-import { useFormik } from "formik";
-import * as Yup from "yup";
-import { useEffect, Form, useState } from "../Constants.js";
 const Register = ({ setShowSearch }) => {
 
   const [jobType, setJobType] = useState("");

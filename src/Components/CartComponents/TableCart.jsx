@@ -1,6 +1,4 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { ChangeQuantityCart, removeFromCart } from '../../Constants';
+import { useSelector, useDispatch,Link,ChangeQuantityCart, removeFromCart } from "../../Constants";
 
 const TableCart = () => {
   const cart = useSelector((state) => state.cart);
@@ -21,7 +19,7 @@ const TableCart = () => {
         {cart.cartItems.length === 0 ? (
           <tbody>
             <tr>
-              <td colSpan="6" style={{ border: 'none', paddingTop: '50px' }}>
+              <td colSpan="6" style={{ border: "none", paddingTop: "50px" }}>
                 <h2>No Items In The Cart</h2>
                 <Link className="empty" to="/Products">
                   Continue Shopping
@@ -33,9 +31,9 @@ const TableCart = () => {
           <tbody>
             {cart.cartItems?.map((cartItem) => (
               <tr key={cartItem.id}>
-                <td style={{ borderRight: '1px solid #fff' }}>
+                <td style={{ borderRight: "1px solid #fff" }}>
                   <img
-                    style={{ width: '70px' }}
+                    style={{ width: "70px" }}
                     src={cartItem.image}
                     alt={cartItem.name}
                   />

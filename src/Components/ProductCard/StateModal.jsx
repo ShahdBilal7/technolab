@@ -1,6 +1,4 @@
-import React from 'react'
-import { Modal } from 'react-bootstrap'
-import { out, few, inn, retired } from '../../Constants';
+import { out, few, inn, retired,Modal } from '../../Constants';
 
 const StateModal = ({ show, handleClose }) => {
   return (

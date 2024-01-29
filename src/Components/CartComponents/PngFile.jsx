@@ -1,4 +1,4 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '../../Constants';
 import domtoimage from 'dom-to-image';
 
 const PngFile = () => {

@@ -1,6 +1,5 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useSelector,FontAwesomeIcon } from '../../Constants';
 import exportFromJSON from 'export-from-json';
-import { useSelector } from 'react-redux';
 
 const JsonFile = () => {
   const cart = useSelector((state) => state.cart);

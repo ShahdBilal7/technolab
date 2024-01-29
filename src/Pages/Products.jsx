@@ -1,7 +1,6 @@
 import { categories, useState, products, FontAwesomeIcon, Breadcrumb, ProductCard, Hero, Dropdown, DropdownButton } from '../Constants';
 const Product = () => {
   const [openSubcategories, setOpenSubcategories] = useState({});
-
   const handleCategoryClick = (categoryName) => {
     setOpenSubcategories((prevOpenSubcategories) => ({
       ...prevOpenSubcategories,
@@ -41,7 +40,8 @@ const Product = () => {
           </div>
           <div className=" products-list coll">
             <div className='mb-3 d-flex justify-content-between'>
-              <Breadcrumb Category={"Shop"} CategoryLink="/products" SubCategory={"All"} Data={"All"} />
+              {//<Breadcrumb Category={"Shop"} CategoryLink="/products" SubCategory={"All"} Data={"All"} />
+              }
               <DropdownButton id="dropdown-item-button" title="Sort By : Sale Item ">
                 <Dropdown.Item as="button">&gt; Sale Item</Dropdown.Item>
                 <Dropdown.Item as="button">&gt; New Item</Dropdown.Item>

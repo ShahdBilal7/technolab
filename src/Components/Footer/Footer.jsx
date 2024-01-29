@@ -1,5 +1,5 @@
+import {  FontAwesomeIcon, NavLink, Link, navLinks,contactInfo} from "../../Constants.js";
 import Logo from "../Logo.jsx";
-import { contactInfo, FontAwesomeIcon, NavLink, Link, navLinks } from "../../Constants.js";
 import "./Footer.css";
 const Footer = () => {
   return (
@@ -23,12 +23,7 @@ const Footer = () => {
                 <h4 className="mb-4">Quick links</h4>
                 <div className="d-flex flex-column justify-content-start">
                   {navLinks.map((link, index) => (
-                    <NavLink
-                      key={index}
-                      className="link mb-2"
-                      activeclassname="active"
-                      to={link.path}
-                    >
+                    <NavLink key={index} className="link mb-2" activeclassname="active" to={link.path}>
                       <FontAwesomeIcon icon="fa-angle-right" /> {link.label}
                     </NavLink>
                   ))}

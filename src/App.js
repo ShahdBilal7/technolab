@@ -1,9 +1,9 @@
+import {useState, FontAwesomeIcon,routes,navLinks, Register,Search,NavbarHeader,Footer } from "./Constants.js";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Search from './Components/SearchHeader/Search.jsx';
 import ScrollToTop from "react-scroll-to-top";
-import {useState, FontAwesomeIcon, routes, navLinks, Footer, NavbarHeader, Register } from "./Constants.js";
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+
 
 function App() {
   const [showSearch, setShowSearch] = useState(true);

@@ -1,4 +1,3 @@
-
 import { saleItems, NewProducts, MostPopular, Hero, ElasticCarousel } from '../Constants'
 const Home = () => {
   return (

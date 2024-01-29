@@ -1,9 +1,8 @@
-import "./ElasticCarousel.css"
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import ProductCard from "../ProductCard/ProductCard";
 import Slider from "react-slick";
-
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import "./ElasticCarousel.css"
 const ElasticCarousel = ({ slidesToShow = 5, heading, products, color, rowCount = 1, flagSale = true }) => {
   const settings = {
     dots: false,

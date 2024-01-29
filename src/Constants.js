@@ -1,23 +1,37 @@
-import NavbarHeader from './Components/NavbarHeader/Navbar.jsx';
-import Footer from './Components/Footer/Footer.jsx';
-import Breadcrumb from "./Components/Breadcrumb/Breadcrumb.jsx";
-import ElasticCarousel from "./Components/ElasticCarousel/ElasticCarousel.jsx";
-import ProductCard from './Components/ProductCard/ProductCard.jsx';
-import Hero from './Components/Hero/Hero.jsx';
-import Register from './Pages/Register.jsx';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// react
+import { useState, useEffect, useRef} from "react";
+// react-router-dom
+import { Link,NavLink,useParams } from 'react-router-dom';
+// formik
+import * as Yup from "yup";
+import { useFormik } from "formik";
+// bootstrap
+import { Form, Modal,Alert, Navbar, Nav, NavDropdown, Dropdown, DropdownButton  } from 'react-bootstrap';
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
+// redux
+import { useSelector,useDispatch } from "react-redux";
+// cartSlice
+ import {addToCart,setShipping,getTotals,removeFromCart,ChangeQuantityCart } from "./store/cartSlice.js";
+//  pages
 import Products from './Pages/Products.jsx';
-import Error404 from './Pages/Error404.jsx';
-import Cart from './Pages/Cart.jsx';
-import Detail from './Pages/ProductDetail.jsx';
 import About from './Pages/About.jsx';
 import Home from './Pages/Home.jsx';
 import Contact from './Pages/Contact.jsx';
-import { addToCart,setShipping, getTotals, removeFromCart,ChangeQuantityCart } from "./store/cartSlice.js";
-import { useDispatch,useSelector } from "react-redux";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { NavLink, Link, useParams } from 'react-router-dom';
-import { Form, Dropdown, DropdownButton ,Modal} from 'react-bootstrap';
-import { useState, useEffect, useRef } from 'react';
+import Register from './Pages/Register.jsx';
+import Error404 from './Pages/Error404.jsx';
+import Cart from './Pages/Cart.jsx';
+import Detail from './Pages/ProductDetail.jsx';
+
+// components
+import Hero from './Components/Hero/Hero.jsx';
+import ElasticCarousel from "./Components/ElasticCarousel/ElasticCarousel.jsx";
+import Breadcrumb from "./Components/Breadcrumb/Breadcrumb.jsx";
+import ProductCard from './Components/ProductCard/ProductCard.jsx';
+import Search from './Components/SearchHeader/Search.jsx';
+import NavbarHeader from './Components/NavbarHeader/Navbar.jsx';
+import Footer from './Components/Footer/Footer.jsx';
+// Images
 import logoImage from "./assets/logo.png";
 import h1 from './assets/h1.jpg';
 import h2 from './assets/h2.jpg';
@@ -76,19 +90,19 @@ const CarouselImages = [
   { src: h5, alt: 'Image 5', caption: 'fifth image' },
 ];
 
-
-const routes = [
-  { path: '/cart', element: <Cart /> },
-  { path: "/detail/:id", element: <Detail /> },
-  { path: '*', element: <Error404 /> },
-];
-
 const navLinks = [
   { path: '/', element: <Home />, label: "Home" },
   { path: '/products', element: <Products />, label: "Products" },
   { path: '/about', element: <About />, label: "About" },
   { path: '/contact', element: <Contact />, label: "Contact" },
   // { path: '/services', element: <Services />, label: "Services" },
+];
+
+
+const routes = [
+  { path: '/cart', element: <Cart /> },
+  { path: "/detail/:id", element: <Detail /> },
+  { path: '*', element: <Error404 /> },
 ];
 
 const categories = [
@@ -452,4 +466,19 @@ const products = [
 const saleItems = products.filter(product => product.onSale);
 const NewProducts = products.filter(product => product.onNew);
 const MostPopular = products.filter(product => product.onMost);
-export {setShipping,out,inn,few,retired,useDispatch,useSelector,saleItems, NewProducts, MostPopular,Modal, ProductCard, Breadcrumb, Form, Dropdown, DropdownButton, ElasticCarousel, Hero, useRef, categories, products, FontAwesomeIcon, contactInfo, NavLink, Link, useParams, routes, navLinks, CarouselImages, logoImage, useState, useEffect, Footer, NavbarHeader, Register,addToCart, getTotals,ChangeQuantityCart, removeFromCart }
+export {
+  FontAwesomeIcon, 
+  useState,useEffect, useRef, 
+  Link,NavLink,useParams,
+  Yup, useFormik,
+  Form, Modal,Alert, Navbar, Nav, NavDropdown,Dropdown, DropdownButton , OverlayTrigger, Tooltip,
+  useSelector,useDispatch,
+  addToCart,setShipping,getTotals,removeFromCart,ChangeQuantityCart,
+  contactInfo,navLinks,routes,categories,CarouselImages,
+  logoImage,
+  h1,h2,h3,h4,h5,p11,p12,p13,p14,pp1,pp3,pp4,pp5,pp6,pp7,pp8,pp9,rr1,rr2,rr3,rr4,rr5,
+  out,inn,few,retired,
+  products,saleItems,NewProducts,MostPopular,
+  Hero,ElasticCarousel,ProductCard,Breadcrumb,Search,NavbarHeader,Footer,
+  Register
+ };

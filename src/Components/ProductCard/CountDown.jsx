@@ -1,4 +1,4 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from "../../Constants";
 import Countdown from "react-countdown";
 const CountDown = ({ futureDate, completionMessage,title,color }) => {
   const formatNumber = (number) => {

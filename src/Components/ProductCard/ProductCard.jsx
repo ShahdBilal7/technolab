@@ -1,5 +1,4 @@
-import { OverlayTrigger, Tooltip } from 'react-bootstrap';
-import { FontAwesomeIcon, Link, addToCart, useDispatch, useState } from "../../Constants";
+import {  OverlayTrigger, Tooltip,FontAwesomeIcon, Link, addToCart, useDispatch, useState } from "../../Constants";
 import LoginModal from "../LoginModal/LoginModal";
 import CountDown from "./CountDown";
 import StateQuantity from "./stateQuantity";

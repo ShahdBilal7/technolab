@@ -1,6 +1,4 @@
-
-import { Alert } from "react-bootstrap";
-import { FontAwesomeIcon, useState, useDispatch, addToCart, Link } from "../../Constants";
+import { FontAwesomeIcon, useState, useDispatch, addToCart, Link ,Alert} from "../../Constants";
 import LoginModal from "../LoginModal/LoginModal";
 import "./DetailCard.css";
 const DetailCard = ({ product }) => {

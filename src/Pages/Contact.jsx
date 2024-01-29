@@ -1,5 +1,4 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { contactInfo } from "../Constants.js";
+import { contactInfo,FontAwesomeIcon } from "../Constants.js";
 const Contact = () => {
   return (
     <div className="container contact">
