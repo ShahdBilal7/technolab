@@ -1,9 +1,11 @@
-import { FontAwesomeIcon, useState, useDispatch, addToCart, Link ,Alert} from "../../Constants";
-import LoginModal from "../LoginModal/LoginModal";
+import { FontAwesomeIcon, useDispatch, addToCart, Link, Alert, openLoginModal,setDescribe } from "../../Constants";
 import "./DetailCard.css";
 const DetailCard = ({ product }) => {
   const dispatch = useDispatch();
-  const [showLoginModal, setShowLoginModal] = useState(false);
+  const handleOpenLoginModal=()=>{
+    dispatch(setDescribe("In order to be notified when this item becomes available, you need to log in to your account."));
+    dispatch(openLoginModal());
+  }
   return (
     <div className="details ">
       <h1 className="title">{product.name}</h1>
@@ -57,16 +59,12 @@ const DetailCard = ({ product }) => {
               <FontAwesomeIcon className="mx-2" icon="fa-clock" />
               <span className="mb-0">
                 We expect this product will be available on {product.AvailableDate + "  "}
-                <Link onClick={() => setShowLoginModal(true)} title="Receive an email when this product returns to stock." className="notify-link">  Notify Me</Link>
+                <Link onClick={handleOpenLoginModal} title="Receive an email when this product returns to stock." className="notify-link">  Notify Me</Link>
               </span>
-              <LoginModal show={showLoginModal}
-                handleClose={() => setShowLoginModal(false)}
-                describe="In order to be notified when this item becomes available, you need to log in to your account."
-              />
             </Alert>
             :
             <div className="buttons">
-              <button className="add-to-cart" onClick={() =>dispatch(addToCart(product))}>
+              <button className="add-to-cart" onClick={() => dispatch(addToCart(product))}>
                 <FontAwesomeIcon icon="fa fa-shopping-cart" />
                 add to cart
               </button>

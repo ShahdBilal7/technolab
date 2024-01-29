@@ -3,8 +3,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ScrollToTop from "react-scroll-to-top";
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
-
-
+import StateModal from '../src/Components/ProductCard/StateModal';
+import LoginModal from '../src/Components/LoginModal/LoginModal';
 function App() {
   const [showSearch, setShowSearch] = useState(true);
 
@@ -12,6 +12,8 @@ function App() {
     <BrowserRouter basename="/technolab">
     <ToastContainer/>
       <ScrollToTop smooth component={<FontAwesomeIcon icon="fa-solid fa-chevron-up" />} />
+      <StateModal  />
+      <LoginModal describe="hi"/>
       <NavbarHeader />
       {showSearch && <Search />}
       <Routes>

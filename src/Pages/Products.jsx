@@ -39,7 +39,7 @@ const Product = () => {
             </div>
           </div>
           <div className=" products-list coll">
-            <div className='mb-3 d-flex justify-content-between'>
+            <div className='mb-3 d-flex justify-content-end'>
               {//<Breadcrumb Category={"Shop"} CategoryLink="/products" SubCategory={"All"} Data={"All"} />
               }
               <DropdownButton id="dropdown-item-button" title="Sort By : Sale Item ">

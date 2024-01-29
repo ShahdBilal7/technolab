@@ -1,8 +1,11 @@
-import { out, few, inn, retired,Modal } from '../../Constants';
+import { out, few, inn, retired, Modal, useDispatch, useSelector, showStateModal, closeStateModal } from '../../Constants';
 
-const StateModal = ({ show, handleClose }) => {
+const StateModal = () => {
+  const dispatch = useDispatch();
+  const showModal = useSelector(showStateModal);
+
   return (
-    <Modal className="product-state" show={show} onHide={handleClose}>
+    <Modal className="product-state" show={showModal} onHide={() => dispatch(closeStateModal())}>
       <Modal.Header closeButton>
         <Modal.Title>What do the color bubbles mean?</Modal.Title>
       </Modal.Header>
@@ -15,7 +18,6 @@ const StateModal = ({ show, handleClose }) => {
         </ul>
       </Modal.Body>
     </Modal>
-
   )
 }
 

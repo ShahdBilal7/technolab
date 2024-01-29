@@ -1,16 +1,15 @@
-import { Navbar, Nav, NavDropdown, NavLink, useState ,useEffect,useDispatch,useSelector,getTotals,FontAwesomeIcon,Link} from "../../Constants.js";
-import LoginModal from '../LoginModal/LoginModal';
+import { Navbar, Nav, NavDropdown, NavLink, useState, useEffect, useDispatch,setDescribe, useSelector, getTotals, FontAwesomeIcon, Link, openLoginModal } from "../../Constants.js";
 import Logo from '../Logo';
 import './Navbar.css';
 const NavbarHeader = () => {
-  const [showLoginModal, setShowLoginModal] = useState(false);
   const [expanded, setExpanded] = useState(false);
-
-  const handleNavLinkClick = () => {
-    setExpanded(false);
-  };
+  const handleNavLinkClick = () => setExpanded(false);
   const { cartTotalQuantity } = useSelector(state => state.cart)
   const dispatch = useDispatch();
+  const handleOpenLoginModal=()=>{
+    dispatch(setDescribe(""));
+    dispatch(openLoginModal());
+  }
   const cart = useSelector(state => state.cart);
   useEffect(() => {
     dispatch(getTotals());
@@ -44,34 +43,26 @@ const NavbarHeader = () => {
                 <NavDropdown.Item>&gt; 3D Printing</NavDropdown.Item>
               </NavDropdown>
               <NavLink
-              className="link"
-              activeclassname="active"
-              to="/about"
-              onClick={handleNavLinkClick}>
-              About
-            </NavLink><NavLink
-            className="link"
-            activeclassname="active"
-            to="/contact"
-            onClick={handleNavLinkClick}>
-        Contact    
-          </NavLink>
-
-            </Nav> 
-
+                className="link"
+                activeclassname="active"
+                to="/about"
+                onClick={handleNavLinkClick}>
+                About
+              </NavLink><NavLink
+                className="link"
+                activeclassname="active"
+                to="/contact"
+                onClick={handleNavLinkClick}>
+                Contact
+              </NavLink>
+            </Nav>
             <div className="nav-login "  >
-            <div className='link' onClick={()=>setShowLoginModal(true)}>Login</div>
-            <Link to={"/cart"} onClick={handleNavLinkClick} className="cart-count link">
-              <FontAwesomeIcon className="icon-cart" icon="fa fa-shopping-cart" />
-              <span className="count">{cartTotalQuantity}</span>
-    
-            </Link>
-          </div>
-
-            <LoginModal show={showLoginModal}
-            handleClose={() => setShowLoginModal(false)}
-             />
-
+              <div className='link' onClick={handleOpenLoginModal}>Login</div>
+              <Link to={"/cart"} onClick={handleNavLinkClick} className="cart-count link">
+                <FontAwesomeIcon className="icon-cart" icon="fa fa-shopping-cart" />
+                <span className="count">{cartTotalQuantity}</span>
+              </Link>
+            </div>
           </Navbar.Collapse>
         </Navbar>
       </div>

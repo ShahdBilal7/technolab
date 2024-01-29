@@ -1,14 +1,14 @@
-import {  OverlayTrigger, Tooltip,FontAwesomeIcon, Link, addToCart, useDispatch, useState } from "../../Constants";
-import LoginModal from "../LoginModal/LoginModal";
+import { OverlayTrigger, Tooltip, FontAwesomeIcon, Link, addToCart, useDispatch, openStateModal, openLoginModal,setDescribe } from "../../Constants";
 import CountDown from "./CountDown";
 import StateQuantity from "./stateQuantity";
 import "./ProductCard.css";
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
-  const handleAddToCart = (product) => {
-    dispatch(addToCart(product));
-  };
-  const [showLoginModal, setShowLoginModal] = useState(false);
+  const handleAddToCart = (product) => dispatch(addToCart(product));
+  const handleOpenLoginModal=()=>{
+    dispatch(setDescribe("In order to be notified when this item becomes available, you need to log in to your account."));
+    dispatch(openLoginModal());
+  }
   const { id, name, price, salePrice, image, onSale, quantity, onNew, isRetired, saleDate, AvailableDate } = product;
   return (
     <div key={id} className="product-card card h-100 text-center rounded-0" style={isRetired ? { opacity: 0.5 } : {}}>
@@ -46,12 +46,11 @@ const ProductCard = ({ product }) => {
         <div className="border-top">
           <div className="row m-0 align-items-center">
             {
-              isRetired ? <strong className="col border-right icon-card">Retired</strong>
+              isRetired ? <strong onClick={() => dispatch(openStateModal())} className="col border-right icon-card">Retired</strong>
                 : quantity === 0 ?
-                  <div title="Receive an email when this product returns to stock." className=' col border-right icon-card' >
-                    <div onClick={() => setShowLoginModal(true)} className="ic" ><FontAwesomeIcon icon="fa-bell" /></div>
+                  <div onClick={handleOpenLoginModal} title="Receive an email when this product returns to stock." className=' col border-right icon-card' >
+                    <div  className="ic" ><FontAwesomeIcon icon="fa-bell" /></div>
                     <h6 className="tex">Notify me</h6>
-                    <LoginModal show={showLoginModal} handleClose={() => setShowLoginModal(false)} describe="In order to be notified when this item becomes available, you need to log in to your account." />
                   </div>
                   :
                   <Link className='col  border-right icon-card' onClick={() => handleAddToCart(product)}>
@@ -68,6 +67,7 @@ const ProductCard = ({ product }) => {
         </div>
       </div>
     </div>
+
   )
 }
 

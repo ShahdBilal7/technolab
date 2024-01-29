@@ -13,6 +13,9 @@ import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { useSelector,useDispatch } from "react-redux";
 // cartSlice
  import {addToCart,setShipping,getTotals,removeFromCart,ChangeQuantityCart } from "./store/cartSlice.js";
+//  modalSlice
+ import {openStateModal,closeStateModal,showStateModal} from './store/modalSlice';
+ import {openLoginModal,closeLoginModal,showLoginModal,setDescribe,describeLoginModal} from './store/modalSlice';
 //  pages
 import Products from './Pages/Products.jsx';
 import About from './Pages/About.jsx';
@@ -474,6 +477,8 @@ export {
   Form, Modal,Alert, Navbar, Nav, NavDropdown,Dropdown, DropdownButton , OverlayTrigger, Tooltip,
   useSelector,useDispatch,
   addToCart,setShipping,getTotals,removeFromCart,ChangeQuantityCart,
+  openStateModal,closeStateModal,showStateModal,
+  openLoginModal,closeLoginModal,showLoginModal,setDescribe,describeLoginModal,
   contactInfo,navLinks,routes,categories,CarouselImages,
   logoImage,
   h1,h2,h3,h4,h5,p11,p12,p13,p14,pp1,pp3,pp4,pp5,pp6,pp7,pp8,pp9,rr1,rr2,rr3,rr4,rr5,
