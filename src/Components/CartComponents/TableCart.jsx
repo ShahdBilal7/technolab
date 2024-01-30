@@ -39,7 +39,7 @@ const TableCart = () => {
                   />
                 </td>
                 <td>{cartItem.name}</td>
-                <td>{cartItem.price}₪</td>
+                <td>{cartItem.topPrice.toFixed(2)}₪</td>
                 <td>
                   <input
                     className="quantity-group"
@@ -57,7 +57,7 @@ const TableCart = () => {
                     type="number"
                   />
                 </td>
-                <td>{cartItem.price * cartItem.cartQuantity}₪</td>
+                <td>{(cartItem.topPrice * cartItem.cartQuantity).toFixed(2)}₪</td>
                 <td>
                   <button
                     className="btn-remove"
