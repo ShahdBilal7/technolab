@@ -7,10 +7,13 @@ import {
   productStatus,
   storeDetailsHeader,
   storeDetailsData,
+  priceQuantityRange,
 } from "../Components/NewItems/constants";
 import Editor from '../Components/NewItems/Editor';
 const NewItem = () => {
   const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(null);
+  const [onSale, setOnSale] = useState(false);
+  const [NotAva, setNotAva] = useState(false);
   const formik = useFormik({
     initialValues: {
       productName: '',
@@ -79,7 +82,7 @@ const NewItem = () => {
 
               </Select>
             </div>
-            <div className='col-md-6  mb-4 form-group'>
+            <div className='col-md-6 mb-4 form-group'>
               <label className="form-label" htmlFor="productBarcode">
                 Main Barcode
               </label>
@@ -90,7 +93,7 @@ const NewItem = () => {
               />
               <p className="text-danger error-message"></p>
             </div>
-            <div className='col-md-6  mb-4 form-group'>
+            <div className='col-md-6 mb-4 form-group'>
               <label className="form-label" htmlFor="productBarcode">
                 Secondary Barcode:
               </label>
@@ -100,13 +103,32 @@ const NewItem = () => {
               />
               <p className="text-danger error-message"></p>
             </div>
+            <div className='col-md-6 mb-4 form-group'>
+            <label className='form-label' >Product availability</label>
+            <div className='form-control hide'>
 
-            <div className="col-md-6 mb-4 form-group">
+              <h6>
+                Is This Product Not Availabel Now </h6>
+              <input className='custom mx-2' type="checkbox"
+                checked={NotAva}
+                onChange={(e) => setNotAva(e.target.checked)} />
+            </div>
+
+          </div>
+          {NotAva &&
+            <div className='col-md-6 mb-4 form-group'>
+              <label className=' form-label '> Product availability date</label>
+              <input className="form-control" type='date'></input>
+            </div>
+
+          }
+<div className='row  '>  
+<div className="col-md-6 mb-4 form-group">
               <label className="form-label" htmlFor="productBarcode">
                 Categories
               </label>
               <Select
-
+        
                 isMulti
                 options={categoryOptions}
                 value={formik.values.selectedCategories}
@@ -136,14 +158,90 @@ const NewItem = () => {
                   placeholder={`Select Subcategories for ${categoryOptions[selectedCategoryIndex].label}`}
                 />
               </div>
-            )}
-
+            )}</div>
+          
+            
           </div>
 
           <div className="headline">
             <h2>Price Information</h2>
           </div>
-          <div></div>
+          <div className='row priceInformation'>
+            <div className='col-lg-6 mb-2 form-group'>
+              <h5>Ordinary Price</h5>
+              <div className="table-responsive">
+                <table style={{ textAlign: "center", fontSize: "18px" }} className="table table-striped table-bordered table-hover">
+                  <thead style={{ textAlign: "center", fontSize: "18px", fontWeight: "bold" }}>
+                    <tr>
+                      <td>Quantity</td>
+                      <td>Price</td>
+                    </tr>
+                  </thead>
+                  <tbody >
+                    {priceQuantityRange?.map((rowData, index) => (
+                      <tr key={index}>
+                        <td> {rowData}</td>
+                        <td><input min="0"
+                          defaultValue={0}
+                          step="0.1"
+                          className='quantity-group ' type="number" /></td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div className='col-lg-6 mb-2 form-group'>
+              <h5>Discount Price</h5>
+              <div className="saleSection row">
+                <div className=' mb-2 form-group d-flex align-items-center'>
+                  <label>
+                    Do You Need Add Discount</label>
+                  <input className='custom mx-2' type="checkbox"
+                    checked={onSale}
+                    onChange={(e) => setOnSale(e.target.checked)} />
+                </div>
+
+                {onSale &&
+                  <>
+                    <div className="form-group  mb-4">
+                      <label className="form-label " htmlFor="priceAfterDiscount">
+                        Price After Discount
+                      </label>
+                      <input
+                        className="form-control"
+                        id="priceAfterDiscount"
+                        type="number"
+                        defaultValue={null}
+                        min="0"
+                        step="0.1"
+
+                        onWheel={(e) => e.currentTarget.blur()}
+
+                      />
+                      <p className="text-danger error-message">
+
+                      </p>
+                    </div>
+                    <div className='form-group  mb-4'>
+                      <label className=' form-label '> Discount end date</label>
+                      <input className="form-control" type='date'></input>
+                    </div>
+                  </>
+                }
+              </div>
+            </div>
+
+            <div className=' mb-4 col-lg-6 form-group'>
+              <div className='form-control hide'>
+                <label>
+                  Hide price for public </label>
+                <input className='custom mx-2' type="checkbox" />
+              </div>
+
+            </div>
+
+          </div>
           <div className="headline">
             <h2>Images Section</h2>
           </div>
@@ -167,7 +265,7 @@ const NewItem = () => {
             <h2>Store Details</h2>
           </div>
           <div className="table-responsive mb-4">
-            <table style={{textAlign:"center"}} className="table table-striped table-bordered table-hover">
+            <table style={{ textAlign: "center" }} className="table table-striped table-bordered table-hover">
               <thead>
                 <tr>
                   {storeDetailsHeader?.map((item, index) => (
@@ -179,11 +277,11 @@ const NewItem = () => {
                 {storeDetailsData?.map((rowData, index) => (
                   <tr key={index}>
                     <td> {rowData.storeName}</td>
-                    <td><input min="0" className='quantity-group' type="number" /></td>
-                    <td><input min="0" className='quantity-group' type="number" /></td>
-                    <td><input  className='quantity-group' type="text" /></td>
-                    <td><input  className='quantity-group' type="text" /></td>
-                    <td><input  className='quantity-group' type="text" /></td>
+                    <td><input defaultValue={0} min="0" className='quantity-group' type="number" /></td>
+                    <td><input defaultValue={0} min="0" className='quantity-group' type="number" /></td>
+                    <td><input className='quantity-group' type="text" /></td>
+                    <td><input className='quantity-group' type="text" /></td>
+                    <td><input className='quantity-group' type="text" /></td>
                   </tr>
                 ))}
                 <tr>
@@ -203,7 +301,7 @@ const NewItem = () => {
             <h2>Description Details</h2>
           </div>
           <div className='row mb-4'>
-          <Editor/>
+            <Editor />
           </div>
           <button type='submit' className='submit mb-4'>SAVE</button>
         </form>

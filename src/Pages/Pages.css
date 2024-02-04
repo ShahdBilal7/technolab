@@ -156,7 +156,7 @@
 
 
 .quantity-group { 
-  width: 80px;
+  width: 90px;
   margin: 0 auto;
   text-align: center;
   border: 1px solid #ccc;
@@ -257,10 +257,23 @@ padding: 3px;
   border-width: 2px !important;
   box-shadow: unset !important;
 }
-.newItem  table{
-overflow: hidden;
+.newItem .priceInformation .quantity-group{
+  width: 150px;
 }
-
+.newItem .saleSection{
+  border: 1px solid #dee2e6;
+  padding: 15px;
+  height: calc(266px);
+}
+.newItem .priceInformation .custom{
+    width: 25px; 
+    height: 25px; 
+}
+.newItem .hide{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 /* end newItem page */
 /* Small */
 @media (max-width: 768px) {

@@ -7,7 +7,9 @@ export const storeDetailsHeader = [
   { id: "positionX", name: "Position-X" },
   { id: "positionY", name: "Position-Y" },
 ];
-
+export const   priceQuantityRange=[
+  "1 - 4","5 - 9","10 - 20","  > 20"
+]
 export const storeDetailsData = [
   {
     storeName: "المعرض الرئيسي - نابلس",
