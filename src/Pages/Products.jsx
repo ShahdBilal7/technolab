@@ -1,4 +1,5 @@
-import { categories, useState, products, FontAwesomeIcon, Breadcrumb, ProductCard, Hero, Dropdown, DropdownButton } from '../Constants';
+import EmptyState from '../Components/EmptyState/EmptyState';
+import { categories, useState, products, FontAwesomeIcon, Breadcrumb,useSelector,searchValue, ProductCard, Hero, Dropdown, DropdownButton } from '../Constants';
 const Product = () => {
   const [openSubcategories, setOpenSubcategories] = useState({});
   const handleCategoryClick = (categoryName) => {
@@ -8,9 +9,23 @@ const Product = () => {
     }));
   };
 
+  const search = useSelector(searchValue);
+  // console.log(search);
+
+  // Filter products based on the search term
+  const filteredProducts = products.filter((product) => {
+    const searchWords = search.toLowerCase().split(' ');
+    return searchWords.every((word) =>
+      product.name.toLowerCase().includes(word)
+    );
+  })
+  // Sort products by name (A-Z)
+  const sortedProducts = filteredProducts.sort((a, b) =>
+    a.name.localeCompare(b.name)
+  );
+
   return (
-    <>
-      <Hero />
+
       <div className="products container">
         <div className="  products-page">
           <div className=" filter">
@@ -42,7 +57,8 @@ const Product = () => {
             <div className='mb-3 d-flex justify-content-end'>
               {//<Breadcrumb Category={"Shop"} CategoryLink="/products" SubCategory={"All"} Data={"All"} />
               }
-              <DropdownButton id="dropdown-item-button" title="Sort By : Sale Item ">
+              <DropdownButton id="dropdown-item-button" title="Sort By : Name (A-Z) ">
+              <Dropdown.Item as="button">&gt; Name (A-Z)</Dropdown.Item>
                 <Dropdown.Item as="button">&gt; Sale Item</Dropdown.Item>
                 <Dropdown.Item as="button">&gt; New Item</Dropdown.Item>
                 <Dropdown.Item as="button">&gt; Price (High First)</Dropdown.Item>
@@ -50,17 +66,22 @@ const Product = () => {
               </DropdownButton>
             </div>
             <div className='row'>
-              {products.sort().map((product) => (
-                <div key={product.id} className=" col-lg-3 col-md-6  col-sm-12 mb-3">
+            {sortedProducts.length > 0 ? (
+              sortedProducts.map((product) => (
+                <div key={product.id} className="col-lg-3 col-md-6 col-sm-12 mb-3">
                   <ProductCard product={product} />
                 </div>
-              ))}
+              ))
+            ) : (
+              <div className="col-12 text-center">
+                <EmptyState/>
+              </div>
+            )}
             </div>
           </div>
 
         </div>
       </div>
-    </>
   );
 };
 

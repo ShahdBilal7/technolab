@@ -23,16 +23,14 @@ const cartSlice = createSlice({
 
       if (existingIndex >= 0) {
         if (state.cartItems[existingIndex].cartQuantity >= action.payload.quantity) {
-          toast.error(`عذرا... الكمية المطلوبة غير متوفرة في المتجر حاليا`, {
-            position: "top-right",
-          })
+          toast.error(`عذرا... الكمية المطلوبة غير متوفرة في المتجر حاليا`, { position: "top-right", autoClose: 2000 })
         }
         else {
           state.cartItems[existingIndex] = {
             ...state.cartItems[existingIndex],
             cartQuantity: state.cartItems[existingIndex].cartQuantity + 1,
           };
-          toast.info(`Increased product quantity`, { position: "top-right", autoClose: 1000 })
+          toast.info(`Increased product quantity`, { position: "top-right", autoClose: 2000 })
         }
       }
       // Not On Cart
@@ -42,9 +40,7 @@ const cartSlice = createSlice({
         newItem.topPrice = newItem.onSale ? newItem.salePrice : newItem.price;
 
         state.cartItems.push(newItem);
-        toast.success(` added ${action.payload.name} to your cart  `, {
-          position: "top-right",
-        });
+        toast.success(` added ${action.payload.name} to your cart  `, { position: "top-right", autoClose: 2000 });
       }
       localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
     },
@@ -69,7 +65,7 @@ const cartSlice = createSlice({
           ...state.cartItems.slice(indexOfItemToRemove + 1),
         ];
         state.cartItems = nextCartItems;
-        toast.error(`${removedItem.name} removed from cart`, { position: "top-right", });
+        toast.error(`${removedItem.name} removed from cart`, { position: "top-right", autoClose: 2000 });
         localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
       }
     },

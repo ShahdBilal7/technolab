@@ -1,16 +1,45 @@
-import { logoImage, FontAwesomeIcon, useState, Link, Modal, useDispatch,describeLoginModal, showLoginModal, useSelector, closeLoginModal, } from "../../Constants.js";
+import { useNavigate } from "react-router-dom";
+import {isLogin, loginUser, setIsLogIn, logoImage, FontAwesomeIcon, useState, Link, Modal, useDispatch,describeLoginModal, showLoginModal, useSelector, closeLoginModal, } from "../../Constants.js";
 import "./loginModal.css";
 const LoginModal = () => {
-
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const handlePasswordToggle = () => {
-    setPasswordVisible(!passwordVisible);
-  };
+
   const dispatch = useDispatch();
   const showModal = useSelector(showLoginModal);
-  const describe= useSelector(describeLoginModal);
-  const handleClose = () => dispatch(closeLoginModal());  
-  console.log(describe);
+  const describe = useSelector(describeLoginModal);
+  const {loading,error}=useSelector((state)=>state.user)
+  const navigate = useNavigate();
+
+  const handlePasswordToggle = () => setPasswordVisible(!passwordVisible);
+  
+
+  const handleClose = () => dispatch(closeLoginModal());
+
+  const handleLoginEvent =(e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("username",email);
+    formData.append("password",password);
+    dispatch(loginUser(formData))
+    .then((result) => {
+      if (result.payload) {
+        setEmail('');
+        setPassword('');
+        handleClose();
+        dispatch(setIsLogIn(true));
+        navigate('/');
+      }
+    })
+    .catch((error) => {
+      console.error('Login failed:', error);
+      // Log or console.log the error details for debugging
+    });
+  
+  };
+
+
   return (
     <Modal className="loginCont" show={showModal} onHide={handleClose} centered>
       <Modal.Header className='flex-column-reverse' closeButton>
@@ -21,27 +50,31 @@ const LoginModal = () => {
       </Modal.Header>
       <Modal.Body>
         <p>{describe}</p>
-        <form className='d-flex flex-column align-items-center p-4'>
+        <form className='d-flex flex-column align-items-center p-4' onSubmit={handleLoginEvent}>
           <div className="input-group">
             <div className="input-field" id="emailField">
               <FontAwesomeIcon icon={"fa-envelope"} />
-              <input id="email" name="email" type="email" placeholder="Email" required />
+              <input id="email" name="email" type="email" placeholder="Email" required value={email} onChange={(e)=>setEmail(e.target.value)}/>
             </div>
             <div className="input-field" id="passwordField">
               <FontAwesomeIcon icon="fa-lock" />
               <input id="password" name="password"
                 type={passwordVisible ? 'text' : 'password'}
-                placeholder="Password" required />
+                placeholder="Password" required  value={password} onChange={(e)=>setPassword(e.target.value)}/>
               <p id="toggle-password" onClick={handlePasswordToggle}>
                 <FontAwesomeIcon id="eye-slash" icon={passwordVisible ? 'eye' : 'eye-slash'} />
               </p>
             </div>
+            {error && <p className="mb-2 text-danger error-message">* {error}</p>}
+        
           </div>
+
           <button className='submit mt-2' type="submit" id="loginBtn" >
-            Submit
+            {loading?'Loading...':'Submit'}
           </button>
+        
         </form>
-        <div className="mod-footer px-4">
+      <div className="mod-footer px-4">
           <p id="lostPass">
             <Link className="lin"> Forgot your password?</Link>
           </p>

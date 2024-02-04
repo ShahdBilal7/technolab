@@ -1,12 +1,10 @@
-import { FontAwesomeIcon, useState, categories, Link } from "../../Constants.js";
+import { FontAwesomeIcon, useState, categories, Link ,setSearch,useDispatch,useSelector} from "../../Constants.js";
 import "./Search.css"
 
 const Search = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const dispatch = useDispatch();
 
   return (
     <div className={`${isMenuOpen ? 'searchOut opened-menu' : 'searchOut'}`}>
@@ -22,10 +20,12 @@ const Search = () => {
             className="form-control"
             id="inputModalSearch"
             placeholder="Search By product name ..."
+            onChange={(e)=>dispatch(setSearch(e.target.value))}
           />
-          <button className="btnSearch">
+          <Link to={`/products`}><button className="btnSearch">
             <FontAwesomeIcon icon="fa fa-search" />
-          </button>
+          </button></Link>
+          
         </div>
       </div>
 

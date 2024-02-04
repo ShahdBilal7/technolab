@@ -1,36 +1,43 @@
-import { FontAwesomeIcon } from '../../Constants';
+import { FontAwesomeIcon, Link } from '../../Constants';
 import domtoimage from 'dom-to-image';
-
+import { useNavigate } from "react-router-dom";
 const PngFile = () => {
+  const navigate = useNavigate();
   const takeImage = () => {
     const captureElement = document.querySelector("#capture");
     if (!captureElement) {
       console.error("Element with ID 'capture' not found");
       return;
     }
-    domtoimage.toPng(captureElement)
+    const scale = 4    
+    const style = {
+        transform: 'scale('+scale+')',
+        transformOrigin: 'top left',
+        width: captureElement.offsetWidth + "px",
+         height: captureElement.offsetHeight + "px"
+    }
+    
+    const param = {
+         height: captureElement.offsetHeight * scale,
+         width: captureElement.offsetWidth * scale,
+          quality: 1,
+         style
+    }
+    
+    domtoimage.toPng(captureElement,param)
       .then((dataUrl) => {
-        // Create a download link
-        const downloadLink = document.createElement("a");
-        downloadLink.href = dataUrl;
-        downloadLink.download = "image.png";
-
-        // Append the download link to the document
-        document.body.appendChild(downloadLink);
-
-        // Trigger the click event on the download link
-        downloadLink.click();
-
-        // Remove the download link from the document
-        document.body.removeChild(downloadLink);
+        navigate(`/myCartImage/${encodeURIComponent(dataUrl)}`);
       })
       .catch(error => {
         console.error("Error capturing image:", error);
       });
   };
-  return (
-    <FontAwesomeIcon className="csv" onClick={takeImage} title="Take a screenshot of my cart information." icon="fa-solid fa-camera-retro" />
-  )
-}
 
-export default PngFile
+  return (
+
+    <FontAwesomeIcon className="csv" onClick={takeImage} title="Take a screenshot of my cart information." icon="fa-solid fa-camera-retro" />
+
+  );
+};
+
+export default PngFile;

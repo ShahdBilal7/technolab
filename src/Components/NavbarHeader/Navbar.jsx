@@ -1,4 +1,4 @@
-import { Navbar, Nav, NavDropdown, NavLink, useState, useEffect, useDispatch,setDescribe, useSelector, getTotals, FontAwesomeIcon, Link, openLoginModal } from "../../Constants.js";
+import { Navbar, Nav, NavDropdown, NavLink, useState, useEffect, useDispatch, setDescribe, useSelector, getTotals, FontAwesomeIcon, Link, openLoginModal, isLoginUser, user, setIsLogIn } from "../../Constants.js";
 import Logo from '../Logo';
 import './Navbar.css';
 const NavbarHeader = () => {
@@ -6,7 +6,7 @@ const NavbarHeader = () => {
   const handleNavLinkClick = () => setExpanded(false);
   const { cartTotalQuantity } = useSelector(state => state.cart)
   const dispatch = useDispatch();
-  const handleOpenLoginModal=()=>{
+  const handleOpenLoginModal = () => {
     dispatch(setDescribe(""));
     dispatch(openLoginModal());
   }
@@ -14,7 +14,10 @@ const NavbarHeader = () => {
   useEffect(() => {
     dispatch(getTotals());
   }, [cart, dispatch])
+  const isLogin = useSelector(isLoginUser);
+  const userInfo = useSelector(user);
 
+  console.log(userInfo);
   return (
     <header>
       <div className="NavbarHeader container">
@@ -42,6 +45,24 @@ const NavbarHeader = () => {
                 <NavDropdown.Item>&gt;  Projects Idea</NavDropdown.Item>
                 <NavDropdown.Item>&gt; 3D Printing</NavDropdown.Item>
               </NavDropdown>
+              {isLogin && userInfo.roles[0] !== "ROLE_CUSTOMER" && (
+                <>
+                <NavLink className="link" activeclassname="active" onClick={handleNavLinkClick} to="/pos" >  POS  </NavLink>
+              
+                  <NavDropdown  className='link ' title="Item Manager" id="basic-nav-dropdown">
+                    <NavDropdown.Item>&gt; 
+                    <NavLink className="link" activeclassname="active" onClick={handleNavLinkClick} to="/allItems" >  All Items  </NavLink>
+                      </NavDropdown.Item>
+                    {userInfo.roles[0] !== "ROLE_TECHNICAL" &&
+                      <NavDropdown.Item>&gt;
+                      <NavLink className="link" activeclassname="active" onClick={handleNavLinkClick} to="/newItem" > New Item </NavLink>
+                      </NavDropdown.Item>
+                    }
+                  </NavDropdown>
+                  {userInfo.roles[0] !== "ROLE_TECHNICAL" &&
+                    <NavLink className="link" activeclassname="active" onClick={handleNavLinkClick} to="/transactions" > Transactions </NavLink>}
+                </>
+              )}
               <NavLink
                 className="link"
                 activeclassname="active"
@@ -57,11 +78,18 @@ const NavbarHeader = () => {
               </NavLink>
             </Nav>
             <div className="nav-login "  >
-              <div className='link' onClick={handleOpenLoginModal}>Login</div>
+              {
+                isLogin
+                  ? <div className='link ' style={{border:"2px solid #777", padding:"5px",borderRadius:"5px"}} onClick={()=>dispatch(setIsLogIn(false))}>Logout</div>
+                  : <div className='link' onClick={handleOpenLoginModal}>Login</div>
+              }
+              
+                {!(isLogin && userInfo.roles[0] !== "ROLE_CUSTOMER") && 
               <Link to={"/cart"} onClick={handleNavLinkClick} className="cart-count link">
                 <FontAwesomeIcon className="icon-cart" icon="fa fa-shopping-cart" />
                 <span className="count">{cartTotalQuantity}</span>
               </Link>
+              }
             </div>
           </Navbar.Collapse>
         </Navbar>

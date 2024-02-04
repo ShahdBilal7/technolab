@@ -4,14 +4,16 @@ import DetailCard from "../Components/DetialCard/DetailCard";
 const Detail = () => {
   const { id } = useParams();
   const product = products[id - 1];
+
   return (
     <div className="container">
       <div className="product-detail mt-4 mb-5">
         <div className="row">
           <div className="col-lg-8 col-sm-12 col-xs-12 ">
-            <section className="image-detail">
-              <CustomPaging detailImage={product.detailImage} />
+           <section className="image-detail">
+              <CustomPaging detailImage={[product.image,...product.detailImage]} />
             </section>
+          
             <section className="description mt-5">
               <div className="headline">
                 <h2>Description</h2>

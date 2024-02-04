@@ -20,3 +20,10 @@
 .product-detail .slick-dots li.slick-active img{
   border: 4px solid var(--main-color);
 }
+.product-detail .basic{
+  padding: 30px;
+  text-align: center;  
+  height: 528px;
+  display: flex;
+    justify-content: center;
+}

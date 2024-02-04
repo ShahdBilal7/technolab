@@ -8,15 +8,23 @@
   color: var(--main-color);
 }
 
-/* Table Cart */
 
+/* Table Cart */
 .cart .cart-info table {
   text-align: center;
   margin-bottom: 0;
   width: 100%;
   border-collapse: collapse;
 }
+.productsTd{
+  display: flex;
+  flex-direction: column;
+    align-items: flex-start;
+}
+.productsTd .state{
+  display: flex;
 
+}
 .cart .cart-info table th,
 .cart .cart-info table td {
   padding: 0.75rem;

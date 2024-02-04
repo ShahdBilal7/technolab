@@ -5,7 +5,7 @@ const CustomPaging = ({ detailImage }) => {
     customPaging: function (i) {
       return (
         <a>
-          <img style={{ borderRadius: "10px" }} src={detailImage[i]} alt="imageDetail" />
+          <img style={{ borderRadius: "10px", }} src={detailImage[i]} alt="imageDetail" />
         </a>
       );
     },
@@ -21,8 +21,8 @@ const CustomPaging = ({ detailImage }) => {
     <div>
       <Slider {...settings}>
         {detailImage.map((image, index) =>
-          <div key={index}>
-            <img style={{ borderRadius: "10px" }} src={image} alt="imageDetail" />
+          <div className="basic" key={index}>
+            <img style={{ borderRadius: "10px",  border: "2px solid #777"}} src={image} alt="imageDetail" />
           </div>
         )}
       </Slider>

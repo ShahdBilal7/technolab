@@ -4,12 +4,12 @@
 }
 p {
   margin: 0 !important;
-}
+} 
 
 .search {
   display: flex;
   align-items: center;
-  gap: 80px;
+  gap: 30px;
   padding: 20px;
 
 }
@@ -18,12 +18,11 @@ p {
   cursor: pointer;
   background-color: #3C464D;
   color: white;
-  padding: 15px;
+  padding: 17px;
   display: flex;
   gap: 10px;
   align-items: center;
   justify-content: center;
-  width: 270px;
 }
 
 .search .categories p {

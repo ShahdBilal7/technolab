@@ -1,4 +1,5 @@
 import { useSelector, useDispatch,Link,ChangeQuantityCart, removeFromCart } from "../../Constants";
+import StateQuantity from "../ProductCard/stateQuantity";
 
 const TableCart = () => {
   const cart = useSelector((state) => state.cart);
@@ -38,8 +39,33 @@ const TableCart = () => {
                     alt={cartItem.name}
                   />
                 </td>
-                <td>{cartItem.name}</td>
-                <td>{cartItem.topPrice.toFixed(2)}₪</td>
+                <td>
+
+                <div className="productsTd">
+              <p>  {cartItem.name}</p>
+                <StateQuantity product={cartItem} />
+                </div>
+                
+                </td>
+                <td>  {(cartItem.price || cartItem.salePrice) && (
+                  <div className="d-flex justify-content-center flex-column gap-1">
+                
+                    {cartItem.salePrice && (
+                      <span className="price-text ">
+                        {cartItem.salePrice}₪
+                      </span>
+                    )} 
+                       {cartItem.price && (
+                      <span
+                        className={`price-text me-2 ${
+                          cartItem.salePrice ? "discount-price" : ""
+                        }`}
+                      >
+                        {cartItem.price}₪
+                      </span>
+                    )}
+                    </div>
+                )}</td>
                 <td>
                   <input
                     className="quantity-group"

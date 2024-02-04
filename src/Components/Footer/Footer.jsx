@@ -22,7 +22,7 @@ const Footer = () => {
               <div className="col-md-4 mb-5">
                 <h4 className="mb-4">Quick links</h4>
                 <div className="d-flex flex-column justify-content-start">
-                  {navLinks.map((link, index) => (
+                  {navLinks.slice(0, 4).map((link, index) => (
                     <NavLink key={index} className="link mb-2" activeclassname="active" to={link.path}>
                       <FontAwesomeIcon icon="fa-angle-right" /> {link.label}
                     </NavLink>
