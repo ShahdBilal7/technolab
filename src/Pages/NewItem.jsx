@@ -1,4 +1,4 @@
-import { useState, useFormik, Yup, categories } from '../Constants'
+import {useParams, useState, useFormik, Yup, categories } from '../Constants'
 import { useForm, Controller } from "react-hook-form";
 import Select from "react-select";
 import DropZone from '../Components/NewItems/DropZone';
@@ -10,7 +10,12 @@ import {
   priceQuantityRange,
 } from "../Components/NewItems/constants";
 import Editor from '../Components/NewItems/Editor';
-const NewItem = () => {
+import MoveQtyForm from '../Components/NewItems/MoveQtyForm';
+const NewItem = ({isUpdatepage}) => {
+  const { id } = useParams();//if Update
+  const [showMoveQtyForm, setShowMoveQtyForm] = useState(false);
+  const handleMoveQtyFormShow = () => setShowMoveQtyForm(true);
+  const handleMoveQtyFormClose = () => setShowMoveQtyForm(false);
   const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(null);
   const [onSale, setOnSale] = useState(false);
   const [NotAva, setNotAva] = useState(false);
@@ -78,9 +83,10 @@ const NewItem = () => {
             </div>
             <div className='col-md-4 mb-4 form-group'>
               <label className="form-label" htmlFor="productName">Product state</label>
-              <Select defaultValue={productStatusOption[0]} options={productStatusOption}>
+              <Select
+               defaultValue={productStatusOption[0]}
+                options={productStatusOption}/>
 
-              </Select>
             </div>
             <div className='col-md-6 mb-4 form-group'>
               <label className="form-label" htmlFor="productBarcode">
@@ -108,7 +114,7 @@ const NewItem = () => {
             <div className='form-control hide'>
 
               <h6>
-                Is This Product Not Availabel Now </h6>
+                Is This Product <span style={{color:"red"}}>Not</span> Availabel Now </h6>
               <input className='custom mx-2' type="checkbox"
                 checked={NotAva}
                 onChange={(e) => setNotAva(e.target.checked)} />
@@ -193,8 +199,8 @@ const NewItem = () => {
             </div>
             <div className='col-lg-6 mb-2 form-group'>
               <h5>Discount Price</h5>
-              <div className="saleSection row">
-                <div className=' mb-2 form-group d-flex align-items-center'>
+              <div className="saleSection row ">
+                <div className=' mb-2 form-group d-flex '>
                   <label>
                     Do You Need Add Discount</label>
                   <input className='custom mx-2' type="checkbox"
@@ -268,6 +274,7 @@ const NewItem = () => {
             <table style={{ textAlign: "center" }} className="table table-striped table-bordered table-hover">
               <thead>
                 <tr>
+                {isUpdatepage&& <th>Add To Stock</th>}
                   {storeDetailsHeader?.map((item, index) => (
                     <th key={index}>{item?.name}</th>
                   ))}
@@ -276,6 +283,24 @@ const NewItem = () => {
               <tbody >
                 {storeDetailsData?.map((rowData, index) => (
                   <tr key={index}>
+                  {isUpdatepage && <td >
+                    <div className="d-flex  flex-start ">
+                    <input
+                      name="addToStock"
+                      type="number"
+                      className="quantity-group me-2 "
+                    
+                    />
+                    <button
+                      type="button" 
+                    
+                      className="btn btn-secondary"
+                    
+                    >
+                      Add
+                    </button>
+                  </div>
+                    </td>}
                     <td> {rowData.storeName}</td>
                     <td><input defaultValue={0} min="0" className='quantity-group' type="number" /></td>
                     <td><input defaultValue={0} min="0" className='quantity-group' type="number" /></td>
@@ -286,7 +311,7 @@ const NewItem = () => {
                 ))}
                 <tr>
                   <td></td>
-                  {false && <td></td>}
+                  {isUpdatepage && <td></td>}
                   <td>
                     <div className="d-flex">Quantity Total  : {0}</div>
                   </td>
@@ -296,6 +321,17 @@ const NewItem = () => {
                 </tr>
               </tbody>
             </table>
+            {isUpdatepage && (
+              <div className="d-flex">
+                <button
+                  className="btn btn-secondary w-100"
+                  type="button"
+                  onClick={handleMoveQtyFormShow}
+                >
+                  Move between stores
+                </button>
+              </div>
+            )}
           </div>
           <div className="headline">
             <h2>Description Details</h2>
@@ -305,6 +341,8 @@ const NewItem = () => {
           </div>
           <button type='submit' className='submit mb-4'>SAVE</button>
         </form>
+        <MoveQtyForm   show={showMoveQtyForm}
+        handleClose={handleMoveQtyFormClose}/>
       </div>
 
     </div>

@@ -70,7 +70,16 @@ input:focus {
   background-color: var(--main-color) !important;
   color: #fff;
 }
-
+.custom-select input:focus {
+  border-width: 2px;
+  border-color: var(--main-color) ;
+  box-shadow: unset !important;
+}
+.css-t3ipsp-control:hover{
+  border-color: var(--main-color) !important ;
+  border-width: 2px !important;
+  box-shadow: unset !important;
+}
 .scroll-to-top:hover {
   background-color: var(--dark-color) !important;
 }

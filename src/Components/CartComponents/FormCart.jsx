@@ -1,21 +1,29 @@
-import { Yup, useFormik, Form, Modal, useSelector, useState, FontAwesomeIcon } from "../../Constants";
+import { Yup, useFormik,useRef, Form, Modal, useSelector, useState, FontAwesomeIcon } from "../../Constants";
+import DropZone from "../NewItems/DropZone";
 
 const FormCat = () => {
   const [showOrderModal, setShowOrderModal] = useState(false);
   const cart = useSelector((state) => state.cart);
   const formik = useFormik({
-    initialValues: { name: "", email: "", phone: "", address: "",  address2: ""},
+    initialValues: { name: "", email: "", phone: "", address: "", address2: "", img:"" },
     validationSchema: Yup.object({
       name: Yup.string().required("Required"),
       email: Yup.string().required("Required"),
       phone: Yup.string().matches(/^[0-9]{10}$/, "Invalid phone number").required("Required"),
       address: Yup.string().required("Required"),
       address2: Yup.string().required("Required"),
+      img: Yup.mixed().test('isImage', 'Please upload a valid image file', function (value) {
+        if (!value) return true; // Allow empty field
+    
+        // Check if 'type' property exists before calling 'startsWith'
+        return value && value.type && value.type.startsWith('image/');
+      }),
     }),
     onSubmit: (values) => {
       setShowOrderModal(true);
     },
   });
+  
   return (
     <Form onSubmit={formik.handleSubmit} className="fieldset">
       <Form.Group className="group">
@@ -52,6 +60,7 @@ const FormCat = () => {
       <Form.Text className="text-danger mb-3">
         {formik.touched.phone && formik.errors.phone ? <div className="text-danger">* {formik.errors.phone}</div> : null}
       </Form.Text>
+
       <div className="row">
         <div className="col-md-6 mb-3">
           <Form.Group className="group ">
@@ -64,7 +73,7 @@ const FormCat = () => {
             {formik.touched.address && formik.errors.address ? <div className="text-danger">* {formik.errors.address}</div> : null}
           </Form.Text>
         </div>
-        <div className="col-md-6">
+        <div className="col-md-6 mb-3">
           <Form.Group className="group">
             <FontAwesomeIcon icon="fa-location" />
             <Form.Control placeholder="القرية / المخيم/ الحي " type="address" name="address2" onChange={formik.handleChange}
@@ -77,7 +86,14 @@ const FormCat = () => {
         </div>
       </div>
 
-      <button className='submit my-2' type="submit" id="register">
+      <p style={{fontSize:"15px",color:"#84601d"}}>يوجد منتج لديك لا يتم بيعه الا برفع صورة للكتاب من المؤسسة المسؤولة </p>
+  
+      <DropZone tit="Drag & drop Main product Image here" multiple={false} />
+              
+  
+
+
+      <button className='submit my-3' type="submit" id="register">
         تثبيت الطلب
       </button>
       <Modal dir="rtl" show={showOrderModal} onHide={() => setShowOrderModal(false)} centered>

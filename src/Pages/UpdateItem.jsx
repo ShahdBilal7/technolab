@@ -1,9 +1,10 @@
-import React from 'react'
+import React from "react";
+import NewItem from "./NewItem";
 
-const UpdateItem = () => {
+function UpdateItem() {
   return (
-    <div>UpdateItem</div>
-  )
+      <NewItem isUpdatepage={true}  />
+  );
 }
 
-export default UpdateItem
+export default UpdateItem;

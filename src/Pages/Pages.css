@@ -247,18 +247,11 @@ padding: 3px;
     color: #66714b;
     font-weight: 600;
 }
-.newItem .generalInformation input:focus {
-  border-width: 2px;
-  border-color: var(--main-color) ;
-  box-shadow: unset !important;
-}
-.newItem .css-t3ipsp-control:hover{
-  border-color: var(--main-color) !important ;
-  border-width: 2px !important;
-  box-shadow: unset !important;
-}
-.newItem .priceInformation .quantity-group{
+
+
+.newItem .quantity-group{
   width: 150px;
+  margin: 0;
 }
 .newItem .saleSection{
   border: 1px solid #dee2e6;
@@ -273,6 +266,17 @@ padding: 3px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.newItem .btn.btn-secondary {
+  background-color: #fff;
+  border: 2px solid var(--main-color);
+  color: var(--main-color);
+  font-weight: bold;
+}
+
+.newItem .btn.btn-secondary:hover {
+  background-color: var(--main-color);
+  color: #fff;
 }
 /* end newItem page */
 /* Small */

@@ -1,4 +1,4 @@
-export const productStatus = ["published", "not published", "asset", "expense"];
+export const productStatus = ["published", "not published", "restricted"];
 export const storeDetailsHeader = [
   { id: "storeName", name: "Store Name" },
   { id: "stockQty", name: "Stock Qty" },
@@ -10,6 +10,13 @@ export const storeDetailsHeader = [
 export const   priceQuantityRange=[
   "1 - 4","5 - 9","10 - 20","  > 20"
 ]
+export const Stores = [
+  "المعرض الرئيسي - نابلس",
+  "تل - المخزن الرئيسي",
+  "مخازن المعرض الرئيسي",
+  "مخزن المعرض",
+];
+
 export const storeDetailsData = [
   {
     storeName: "المعرض الرئيسي - نابلس",

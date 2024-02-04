@@ -3,7 +3,7 @@ import CustomPaging from "../Components/CustomPaging/CustomPaging"
 import DetailCard from "../Components/DetialCard/DetailCard";
 const Detail = () => {
   const { id } = useParams();
-  const product = products[id - 1];
+  const product = products[id];
 
   return (
     <div className="container">

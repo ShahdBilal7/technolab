@@ -12,19 +12,24 @@ const ProductCard = ({ product }) => {
 
   const isLogin = useSelector(isLoginUser);
   const userInfo = useSelector(user);
-  const { id, name, price, salePrice, image, onSale, quantity, onNew, isRetired, saleDate, AvailableDate } = product;
+  const { id, name, price, salePrice,restricted, image, onSale, quantity,NotAva, onNew, isRetired, saleDate, AvailableDate } = product;
   return (
     <div key={id} className="product-card card h-100 text-center rounded-0" style={isRetired ? { opacity: 0.5 } : {}}>
       <Link to={`/detail/${id}`}>
         <div className="product-image d-flex align-items-center">
           <img alt="product" src={image} />
+          <div className="labels ">
           {onSale && <div className="label sale">ON SALE</div>}
           {onNew && <div className="label new">New</div>}
-          {isRetired && <div className="label retired"> &nbsp; Retired</div>}
+          {quantity === 0 && <div className="label oos">Out of stock</div>}
+          {isRetired && <div className="label retired">Retired</div>}
+          {restricted && <div className="label restricted">Restricted</div>}
+          </div>
+        
         </div>
       </Link>
       {onSale && <CountDown color="#b71540" title={`sale end at ${saleDate}`} futureDate={new Date(saleDate) - (2 * 60 * 60 * 1000)} completionMessage="Sale End!" />}
-      {quantity === 0 ? <CountDown color="#A1C542" title={`product available at ${AvailableDate}`} futureDate={new Date(AvailableDate) - (2 * 60 * 60 * 1000)} completionMessage="product Now Available" /> : <span></span>}
+      {NotAva === 0 ? <CountDown color="#A1C542" title={`product available at ${AvailableDate}`} futureDate={new Date(AvailableDate) - (2 * 60 * 60 * 1000)} completionMessage="product Now Available" /> : <span></span>}
       <div className="border-top card-body p-0">
         <div className="py-2">
           <Link to={`/detail/${id}`}>

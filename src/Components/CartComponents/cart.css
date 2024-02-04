@@ -221,3 +221,17 @@ cursor: pointer;
 .custom:checked{
 background-color: #777 !important;
 }
+.features{
+  display: flex;
+  gap: 10px;
+  text-transform: uppercase;
+  color: #fff;
+  margin-top: 5px;
+
+}
+.features div{
+  padding: 2px 5px;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: bold;
+}

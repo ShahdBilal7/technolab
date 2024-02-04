@@ -45,6 +45,14 @@ const TableCart = () => {
               <p>  {cartItem.name}</p>
                 <StateQuantity product={cartItem} />
                 </div>
+
+                <div className="features "> 
+          {cartItem?.onSale && <div className=" sale">SALE</div>}
+          {cartItem?.onNew && <div className=" new">New</div>}
+          {cartItem?.restricted && <div className=" restricted">Restricted</div>}
+          {cartItem?.quantity === 0 && <div className="label oos">Out of stock</div>}
+          {cartItem?.isRetired && <div className="label retired">Retired</div>}
+          </div>
                 
                 </td>
                 <td>  {(cartItem.price || cartItem.salePrice) && (
