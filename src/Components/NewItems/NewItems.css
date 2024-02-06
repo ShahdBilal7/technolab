@@ -1,11 +1,67 @@
-.DropZone{
+/* start  Global newItem  */
+.newItem label {
+  text-transform: capitalize;
+  font-size: 18px;
+  color: #66714b;
+  font-weight: 600;
+}
+
+.newItem .quantity-group {
+  width: 150px;
+  margin: 0;
+}
+
+.newItem .btn.btn-secondary {
+  background-color: #fff;
+  border: 2px solid var(--main-color);
+  color: var(--main-color);
+  font-weight: bold;
+}
+
+.newItem .btn.btn-secondary:hover {
+  background-color: var(--main-color);
+  color: #fff;
+}
+
+.newItem .hide {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* end Global newItem */
+/* General */
+.subcategories .css-jtaw72-group {
+  font-size: large;
+  color: var(--main-color);
+  font-weight: bold;
+}
+
+.css-d7l1ni-option {}
+
+/* Price */
+.newItem .priceInformation .custom {
+  width: 25px;
+  height: 25px;
+}
+
+.newItem .saleSection {
+  border: 1px solid #dee2e6;
+  padding: 15px;
+  height: calc(266px);
+}
+
+/* Image */
+/* Store */
+/* Description */
+/* DropZone */
+.DropZone {
   padding: 16px;
   margin-top: 10px;
   border: 1px solid #ced4da;
-  /* height: 95%; */
-
 }
-.DropZone .drop{
+
+.DropZone .drop {
   text-align: center;
   padding: 20px;
   border-width: 2px;
@@ -22,14 +78,15 @@
   -ms-transition: border .24s ease-in-out;
   -o-transition: border .24s ease-in-out;
 }
-.DropZone .BasicImage{
+
+.DropZone .BasicImage {
   margin-top: 20px;
   border: 1px solid #ced4da;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   border-radius: 5px;
-  gap:15px;
+  gap: 15px;
   justify-content: center;
   padding: 15px;
   -webkit-border-radius: 5px;
@@ -37,19 +94,22 @@
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
 }
-.DropZone .BasicImage img{
+
+.DropZone .BasicImage img {
   margin: auto;
   max-width: 350px;
 }
-.DropZone ul{
+
+.DropZone ul {
   margin-top: 20px;
   display: flex;
   justify-content: flex-start;
-  gap:15px;
+  gap: 15px;
   flex-wrap: wrap;
   padding: 7px;
 }
-.DropZone ul li{
+
+.DropZone ul li {
   margin-top: 5px;
   width: 150px;
   border: 1px solid #ced4da;
@@ -63,6 +123,7 @@
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
 }
+
 .DropZone .delete-button {
   background-color: #eee;
   border-radius: 3px;
@@ -74,20 +135,25 @@
   -ms-border-radius: 3px;
   -o-border-radius: 3px;
 }
+
 .DropZone .delete-button:hover {
-  background-color:  rgba(var(--bs-danger-rgb));
+  background-color: rgba(var(--bs-danger-rgb));
   color: white;
 }
 
 .DropZone .rejected .tit {
   padding-left: 5px;
 }
-.DropZone .rejectedFiles{
+
+.DropZone .rejectedFiles {
   padding: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .DropZone .rejectedFiles .delete-button {
   padding: 5px 15px;
 }
+
+/* End DropZone */

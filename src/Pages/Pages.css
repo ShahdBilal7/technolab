@@ -27,17 +27,19 @@
 .products {
   margin-top: 30px;
 }
-.products-page{
+
+.products-page {
   display: flex;
   flex-direction: row;
   gap: 10px;
 }
+
 .products .coll {
   border: 1px solid #dee2e6;
   padding: 1rem;
   border-radius: 0.25rem;
   margin-bottom: 1.5rem;
-  flex:1;
+  flex: 1;
 }
 
 .products h3 {
@@ -89,9 +91,10 @@
   -o-border-radius: 0;
 }
 
-.categories-list{
+.categories-list {
   width: 200px;
 }
+
 /* end products page */
 
 
@@ -139,13 +142,15 @@
 
 /* end contact */
 /* Start Cart Page */
-.cart{
+.cart {
   background-color: #fff;
 }
- .cart-head{
+
+.cart-head {
   display: flex;
   justify-content: space-between;
 }
+
 .cart .cart-info {
   border: 1px solid var(--second-color);
   text-align: center;
@@ -155,7 +160,7 @@
 }
 
 
-.quantity-group { 
+.quantity-group {
   width: 90px;
   margin: 0 auto;
   text-align: center;
@@ -164,8 +169,8 @@
   padding: 5px 3px;
 }
 
-.cart .btn-control{
-padding: 3px;
+.cart .btn-control {
+  padding: 3px;
 }
 
 
@@ -177,17 +182,20 @@ padding: 3px;
   align-items: center;
   justify-content: center;
   } */
-.myCart .down{
+.myCart .down {
   margin-top: 30px;
 }
-.myCart .down a{
+
+.myCart .down a {
   font-size: larger;
   text-decoration: underline;
   color: blue;
 }
-.myCart img{
+
+.myCart img {
   height: unset !important;
 }
+
 /* start error404 */
 .errorCont {
   margin-top: 30px;
@@ -239,50 +247,12 @@ padding: 3px;
   color: white;
   background-color: #777;
 }
+
 /* end   error404 */
-/* start newItem page */
-.newItem label{
-    text-transform: capitalize;
-    font-size: 18px;
-    color: #66714b;
-    font-weight: 600;
-}
 
-
-.newItem .quantity-group{
-  width: 150px;
-  margin: 0;
-}
-.newItem .saleSection{
-  border: 1px solid #dee2e6;
-  padding: 15px;
-  height: calc(266px);
-}
-.newItem .priceInformation .custom{
-    width: 25px; 
-    height: 25px; 
-}
-.newItem .hide{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.newItem .btn.btn-secondary {
-  background-color: #fff;
-  border: 2px solid var(--main-color);
-  color: var(--main-color);
-  font-weight: bold;
-}
-
-.newItem .btn.btn-secondary:hover {
-  background-color: var(--main-color);
-  color: #fff;
-}
-/* end newItem page */
 /* Small */
 @media (max-width: 768px) {
   .products .filter {
     display: none;
   }
 }
-
