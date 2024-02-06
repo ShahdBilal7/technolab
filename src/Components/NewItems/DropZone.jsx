@@ -1,7 +1,7 @@
 import React, { useEffect, useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-const DropZone = ({ tit, multiple }) => {
+const DropZone = ({ tit, multiple, register, setValue, handleKeyPress }) => {
   const [file, setFile] = useState(null); // For single file
   const [files, setFiles] = useState([]); // For multiple files
   const [rejected, setRejected] = useState([]);
@@ -18,6 +18,7 @@ const DropZone = ({ tit, multiple }) => {
               preview: URL.createObjectURL(acceptedFile),
             })
           );
+          setValue(register.name, acceptedFile);
         }
       } else {
         acceptedFiles.forEach((file) => {
@@ -31,6 +32,7 @@ const DropZone = ({ tit, multiple }) => {
                 ...previousFiles,
                 Object.assign(file, { preview: URL.createObjectURL(file) }),
               ]);
+              setValue(register.name, [...files, file]);
             }
           } else {
             console.log(
@@ -40,11 +42,26 @@ const DropZone = ({ tit, multiple }) => {
         });
       }
 
-      if (rejectedFiles.length > 0) {
-        setRejected((previousFiles) => [...previousFiles, ...rejectedFiles]);
-      }
+      rejectedFiles?.forEach((file) => {
+        const isDuplicate = rejected.some(
+          (existingFile) => existingFile.name === file.name
+        );
+        if (!isDuplicate) {
+          if (setRejected?.length) {
+            // Optional chaining here
+            setRejected((previousFiles) => [
+              ...previousFiles,
+              ...rejectedFiles,
+            ]);
+          }
+        } else {
+          console.log(
+            `File "${file.name}" already exists. Rejecting duplicate file.`
+          );
+        }
+      });
     },
-    [multiple, files]
+    [multiple, register.name, setValue, setFile, setFiles, files, rejected]
   );
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -52,16 +69,28 @@ const DropZone = ({ tit, multiple }) => {
     accept,
     multiple: multiple,
   });
-  const removeFile = (name) => {
-    setFiles((files) => files.filter((file) => file.name !== name));
+  const removeFile = () => {
+    setFile(null);
+    setValue(register.name, null);
   };
+
+  const removeMFile = (name) => {
+    setFiles((prevFiles) => prevFiles.filter((file) => file.name !== name));
+    setValue(
+      register.name,
+      files.filter((file) => file.name !== name)
+    );
+  };
+
   const removeRejected = (name) => {
     setRejected((files) => files.filter(({ file }) => file.name !== name));
   };
   useEffect(() => {
-    // Revoke the data uris to avoid memory leaks
-    return () => files.forEach((file) => URL.revokeObjectURL(file.preview));
+    return () => {
+      files.forEach((file) => URL.revokeObjectURL(file.preview));
+    };
   }, [files]);
+
   return (
     <section className="DropZone">
       <div {...getRootProps()}>
@@ -83,7 +112,7 @@ const DropZone = ({ tit, multiple }) => {
           <img src={file.preview} alt="" />
           <button
             type="button"
-            onClick={() => setFile(null)}
+            onClick={() => removeFile()}
             className="delete-button mt-1"
           >
             Remove
@@ -96,11 +125,11 @@ const DropZone = ({ tit, multiple }) => {
           {files.map((file) => (
             <li key={file.name}>
               <div>
-                <img src={file.preview} alt="" />
+                <img src={file.preview} alt={file.name} />
               </div>
               <button
                 type="button"
-                onClick={() => removeFile(file.name)}
+                onClick={() => removeMFile(file.name)}
                 className="delete-button mt-1"
               >
                 Remove
@@ -114,9 +143,8 @@ const DropZone = ({ tit, multiple }) => {
           <h5 className="mt-3 tit text-danger"> Rejected Files </h5>
           <div className="mt-1">
             {rejected.map(({ file, errors }) => (
-              <div className="rejectedFiles">
+              <div key={file.name} className="rejectedFiles">
                 <li key={file.name}>
-                  {" "}
                   {file.name}
                   <div className="text-[12px] text-red-400">
                     {errors.map((error) => (

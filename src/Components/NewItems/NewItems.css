@@ -47,13 +47,15 @@
 
 .newItem .saleSection {
   border: 1px solid #dee2e6;
-  padding: 15px;
+  margin: 0;
   height: calc(266px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 /* Image */
-/* Store */
-/* Description */
+
 /* DropZone */
 .DropZone {
   padding: 16px;
@@ -157,3 +159,15 @@
 }
 
 /* End DropZone */
+/* Store */
+.storeDetails table th {
+  font-weight: bold;
+  font-size: large;
+}
+
+.storeDetails table tr:last-child td:last-child {
+  color: #cd7406;
+}
+
+
+/* Description */

@@ -1,11 +1,11 @@
 export const productStatus = ["published", "not published", "restricted"];
 export const storeDetailsHeader = [
-  { id: "storeName", name: "Store Name" },
-  { id: "stockQty", name: "Stock Qty" },
-  { id: "unit", name: "Unit" },
-  { id: "positionX", name: "Position-X" },
-  { id: "positionY", name: "Position-Y" },
-  { id: "thresholdCount", name: "Threshold Count" },
+  { id: "storeName", name: "Store Name", color: "#000" },
+  { id: "stockQty", name: "Stock Quantity", color: "#6118b5" },
+  { id: "unit", name: "Unit", color: "#558888" },
+  { id: "positionX", name: "Position-X", color: "#558888" },
+  { id: "positionY", name: "Position-Y", color: "#558888" },
+  { id: "thresholdCount", name: "Threshold Count", color: " #cd7406" },
 ];
 export const priceQuantityRange = ["1 - 4", "5 - 9", "10 - 20", "  > 20"];
 
