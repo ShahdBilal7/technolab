@@ -7,7 +7,7 @@ import axios from "axios";
 import BASE_URL from "../../Config";
 const StoreSection = ({
   register,
-  formState,
+  errors,
   setValue,
   handleKeyPress,
   isUpdatepage,
@@ -17,7 +17,6 @@ const StoreSection = ({
   reset,
 }) => {
   const userInfo = useSelector(user);
-  const { errors } = formState;
   const [showMoveQtyForm, setShowMoveQtyForm] = useState(false);
   const handleMoveQtyFormShow = () => setShowMoveQtyForm(true);
   const handleMoveQtyFormClose = () => setShowMoveQtyForm(false);

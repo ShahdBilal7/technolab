@@ -1,6 +1,5 @@
 import DropZone from "./DropZone";
-const ImagesSection = ({ register, setValue, formState, handleKeyPress }) => {
-  const { errors } = formState;
+const ImagesSection = ({ register, setValue, errors, handleKeyPress }) => {
   return (
     <div>
       <div className="headline">

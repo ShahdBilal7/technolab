@@ -19,21 +19,21 @@ export const Stores = [
 export const storeDetailsData = [
   {
     storeName: Stores[0],
-    stockQty: 0,
+    stockQty: 5,
     thresholdCount: 0,
     unit: "",
     position: { x: 0, y: 0 },
   },
   {
     storeName: Stores[1],
-    stockQty: 0,
+    stockQty: 6,
     thresholdCount: 0,
     unit: "",
     position: { x: 0, y: 0 },
   },
   {
     storeName: Stores[2],
-    stockQty: 0,
+    stockQty: 3,
     thresholdCount: 0,
     unit: "",
     position: { x: 0, y: 0 },

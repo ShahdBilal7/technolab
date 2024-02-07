@@ -14,7 +14,7 @@ const Editor = ({ control, name }) => {
       <Controller
         name={name}
         control={control}
-        defaultValue="" // Set your default value here
+        defaultValue=" " // Set your default value here
         render={({ field }) => (
           <JoditEditor
             value={field.value}

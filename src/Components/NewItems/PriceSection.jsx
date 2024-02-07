@@ -1,6 +1,5 @@
 import { priceQuantityRange } from "./constants.js";
-const PriceSection = ({ register, formState, handleKeyPress }) => {
-  const { errors } = formState;
+const PriceSection = ({ register, errors, handleKeyPress }) => {
   return (
     <div>
       <div className="headline">

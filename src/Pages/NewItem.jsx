@@ -8,16 +8,27 @@ import ImagesSection from "../Components/NewItems/ImagesSection";
 import StoreSection from "../Components/NewItems/StoreSection";
 import DescriptionSection from "../Components/NewItems/DescriptionSection";
 import { useParams, useSelector, isLoginUser } from "../Constants";
+import validationSchema from "../Components/NewItems/validationSchema";
+import { yupResolver } from "@hookform/resolvers/yup";
 const NewItem = ({ isUpdatepage }) => {
   const { id } = useParams();
   const isLogin = true;
   // *****************************************
-  const { register, handleSubmit, setValue, control, formState, reset, watch } =
-    useForm({
-      defaultValues: {
-        productStatus: productStatus[0],
-      },
-    });
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    control,
+    formState: { errors },
+    reset,
+    watch,
+  } = useForm({
+    defaultValues: {
+      productStatus: productStatus[0],
+    },
+    resolver: yupResolver(validationSchema),
+    mode: "onChange",
+  });
   const onSubmit = (data) => {
     console.log("Form data:", data);
   };
@@ -34,25 +45,26 @@ const NewItem = ({ isUpdatepage }) => {
           <form onSubmit={handleSubmit(onSubmit)}>
             <GeneralSection
               register={register}
-              formState={formState}
+              errors={errors}
+              control={control}
               setValue={setValue}
               handleKeyPress={handleKeyPress}
             />
             <PriceSection
               register={register}
-              formState={formState}
+              errors={errors}
               handleKeyPress={handleKeyPress}
             />
             <ImagesSection
               register={register}
-              formState={formState}
+              errors={errors}
               setValue={setValue}
               handleKeyPress={handleKeyPress}
             />
 
             <StoreSection
               register={register}
-              formState={formState}
+              errors={errors}
               setValue={setValue}
               handleKeyPress={handleKeyPress}
               control={control}

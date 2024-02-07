@@ -2,8 +2,9 @@ import { productStatus } from "./constants.js";
 import { categories } from "../../Constants.js";
 import Select from "react-select";
 import "./NewItems.css";
-const GeneralSection = ({ register, formState, setValue, handleKeyPress }) => {
-  const { errors } = formState;
+import { useState } from "react";
+const GeneralSection = ({ register, errors, setValue, handleKeyPress }) => {
+  const [errorSub, setErrorSub] = useState(false);
   const productStatusOption = productStatus.map((status, index) => ({
     value: index,
     label: status,
@@ -14,6 +15,8 @@ const GeneralSection = ({ register, formState, setValue, handleKeyPress }) => {
       subcategory: option.label,
       category: option.category,
     }));
+
+    setErrorSub(selectedSubcategories < 1);
     setValue("subcategories", selectedSubcategories);
   };
   const handleProductStatusChange = (selectedOption) => {
@@ -39,6 +42,7 @@ const GeneralSection = ({ register, formState, setValue, handleKeyPress }) => {
             {errors.productName?.message}
           </p>
         </div>
+
         <div className="col-md-4 mb-4 form-group">
           <label className="form-label" htmlFor="productStatus">
             Product state
@@ -75,9 +79,6 @@ const GeneralSection = ({ register, formState, setValue, handleKeyPress }) => {
             {...register("productSecondBarcode")}
             onKeyPress={handleKeyPress}
           />
-          <p className="text-danger error-message">
-            {errors.productSecondBarcode?.message}
-          </p>
         </div>
         <div className="col-md-6 mb-4 form-group subcategories ">
           <label className="form-label" htmlFor="subcategories">
@@ -102,9 +103,11 @@ const GeneralSection = ({ register, formState, setValue, handleKeyPress }) => {
             placeholder="Select Subcategories"
             onKeyPress={handleKeyPress}
           />
-          <p className="text-danger error-message">
-            {errors.subcategories?.message}
-          </p>
+          {errorSub && (
+            <p className="text-danger error-message">
+              * Please select at least one category.
+            </p>
+          )}
         </div>
         <div className="col-md-6 mb-4 form-group">
           <label className=" form-label " htmlFor="productAvailabilityDate">
@@ -119,9 +122,6 @@ const GeneralSection = ({ register, formState, setValue, handleKeyPress }) => {
             {...register("productAvailabilityDate")}
             onKeyPress={handleKeyPress}
           />
-          <p className="text-danger error-message">
-            {errors.productAvailabilityDate?.message}
-          </p>
         </div>
       </div>
     </div>
