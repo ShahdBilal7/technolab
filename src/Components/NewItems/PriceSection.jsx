@@ -1,5 +1,18 @@
+import { useState } from "react";
 import { priceQuantityRange } from "./constants.js";
-const PriceSection = ({ register, errors, handleKeyPress }) => {
+import { Controller } from "react-hook-form";
+const PriceSection = ({
+  register,
+  setError,
+  errors,
+  control,
+  setValue,
+  handleKeyPress,
+}) => {
+  const handlePriceChange = (index, value) => {
+    setValue(`price${index}`, value || 0);
+  };
+
   return (
     <div>
       <div className="headline">
@@ -30,17 +43,35 @@ const PriceSection = ({ register, errors, handleKeyPress }) => {
                   <tr key={index}>
                     <td> {rowData}</td>
                     <td>
-                      <input
-                        min="0"
+                      <Controller
+                        name={`price${index}`}
+                        control={control}
                         defaultValue={0}
-                        step="0.1"
-                        className="quantity-group"
-                        type="number"
-                        {...register(`price${index + 1}`)}
-                        onKeyPress={handleKeyPress}
+                        render={({ field }) => (
+                          <input
+                            {...field}
+                            className="quantity-group"
+                            type="number"
+                            min={0}
+                            step={0.01}
+                            onChange={(e) => {
+                              const value = parseFloat(e.target.value);
+                              handlePriceChange(index, value);
+                            }}
+                            onKeyPress={handleKeyPress}
+                            onBlur={(e) => {
+                              // Perform your action here when the user moves out
+                              const value = parseFloat(e.target.value).toFixed(
+                                2
+                              );
+                              handlePriceChange(index, value);
+                            }}
+                          />
+                        )}
                       />
-                      <p style={{ textAlign: "left" }} className="text-danger">
-                        {errors[`price${index + 1}`]?.message}
+
+                      <p style={{ fontSize: "14px" }} className="text-danger">
+                        {errors[`price${index}`]?.message}
                       </p>
                     </td>
                   </tr>

@@ -3,8 +3,13 @@ import { categories } from "../../Constants.js";
 import Select from "react-select";
 import "./NewItems.css";
 import { useState } from "react";
-const GeneralSection = ({ register, errors, setValue, handleKeyPress }) => {
-  const [errorSub, setErrorSub] = useState(false);
+const GeneralSection = ({
+  register,
+  setError,
+  errors,
+  setValue,
+  handleKeyPress,
+}) => {
   const productStatusOption = productStatus.map((status, index) => ({
     value: index,
     label: status,
@@ -16,7 +21,14 @@ const GeneralSection = ({ register, errors, setValue, handleKeyPress }) => {
       category: option.category,
     }));
 
-    setErrorSub(selectedSubcategories < 1);
+    if (selectedSubcategories.length < 1) {
+      setError("subcategories", {
+        type: "manual",
+        message: "* Please select at least one category.",
+      });
+    } else {
+      setError("subcategories", null);
+    }
     setValue("subcategories", selectedSubcategories);
   };
   const handleProductStatusChange = (selectedOption) => {
@@ -103,11 +115,10 @@ const GeneralSection = ({ register, errors, setValue, handleKeyPress }) => {
             placeholder="Select Subcategories"
             onKeyPress={handleKeyPress}
           />
-          {errorSub && (
-            <p className="text-danger error-message">
-              * Please select at least one category.
-            </p>
-          )}
+
+          <p className="text-danger error-message">
+            {errors.subcategories?.message}
+          </p>
         </div>
         <div className="col-md-6 mb-4 form-group">
           <label className=" form-label " htmlFor="productAvailabilityDate">
