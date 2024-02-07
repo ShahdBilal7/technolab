@@ -1,27 +1,28 @@
-import React, { useState } from "react";
-import "jodit";
+import React from "react";
+import { Controller } from "react-hook-form";
 import JoditEditor from "jodit-react";
 
-const Editor = () => {
-  const [data, setData] = useState("");
-
+const Editor = ({ control, name }) => {
   const editorConfig = {
     uploader: {
-      insertImageAsBase64URI: true
+      insertImageAsBase64URI: true,
     },
-    
-  };
-
-  const handleEditorChange = (value) => {
-    setData(value);
   };
 
   return (
     <div>
-      <JoditEditor
-        value={data}
-        config={editorConfig}
-        onChange={handleEditorChange}
+      <Controller
+        name={name}
+        control={control}
+        defaultValue="" // Set your default value here
+        render={({ field }) => (
+          <JoditEditor
+            value={field.value}
+            config={editorConfig}
+            onBlur={() => field.onBlur()} // important for validation
+            onChange={(value) => field.onChange(value)}
+          />
+        )}
       />
     </div>
   );

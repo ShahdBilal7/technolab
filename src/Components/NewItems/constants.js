@@ -5,7 +5,7 @@ export const storeDetailsHeader = [
   { id: "unit", name: "Unit", color: "#558888" },
   { id: "positionX", name: "Position-X", color: "#558888" },
   { id: "positionY", name: "Position-Y", color: "#558888" },
-  { id: "thresholdCount", name: "Threshold Count", color: " #cd7406" },
+  { id: "thresholdCount", name: "Threshold Count", color: "#cd7406" },
 ];
 export const priceQuantityRange = ["1 - 4", "5 - 9", "10 - 20", "  > 20"];
 

@@ -28,6 +28,7 @@
     "export-from-json": "^1.7.4",
     "formik": "^2.4.5",
     "html2canvas": "^1.4.1",
+    "jodit": "^4.0.6",
     "jodit-react": "^4.0.9",
     "react": "^18.2.0",
     "react-bootstrap": "^2.9.2",
