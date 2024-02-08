@@ -130,29 +130,45 @@ const StoreSection = ({
                         defaultValue={rowData[header.id]}
                         render={({ field }) =>
                           header.id !== "storeName" ? (
-                            <input
-                              {...field}
-                              className="form-control quantity-group"
-                              style={{ margin: "auto" }}
-                              id={`stores[${index}].${header.id}`}
-                              type={
-                                header.id === "stockQty" ||
-                                header.id === "thresholdCount"
-                                  ? "number"
-                                  : "text"
-                              }
-                              min={
-                                header.id === "stockQty" ||
-                                header.id === "thresholdCount"
-                                  ? "0"
-                                  : ""
-                              }
-                              onWheel={(e) => e.currentTarget.blur()}
-                              readOnly={
-                                isUpdatepage && header.id === "stockQty"
-                              }
-                              onKeyPress={handleKeyPress}
-                            />
+                            <>
+                              <input
+                                {...field}
+                                className="form-control quantity-group"
+                                style={{ margin: "auto" }}
+                                id={`stores[${index}].${header.id}`}
+                                type={
+                                  header.id === "stockQty" ||
+                                  header.id === "thresholdCount"
+                                    ? "number"
+                                    : "text"
+                                }
+                                min={
+                                  header.id === "stockQty" ||
+                                  header.id === "thresholdCount"
+                                    ? "0"
+                                    : ""
+                                }
+                                onWheel={(e) => e.currentTarget.blur()}
+                                readOnly={
+                                  isUpdatepage && header.id === "stockQty"
+                                }
+                                onKeyPress={handleKeyPress}
+                              />
+                              {errors?.itemStoreDetailsList?.[index]?.[
+                                header.id
+                              ] && (
+                                <p
+                                  className="text-danger"
+                                  style={{ fontSize: "13px" }}
+                                >
+                                  {
+                                    errors.itemStoreDetailsList[index][
+                                      header.id
+                                    ].message
+                                  }
+                                </p>
+                              )}
+                            </>
                           ) : (
                             rowData[header.id]
                           )

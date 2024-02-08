@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { priceQuantityRange } from "./constants.js";
 import { Controller } from "react-hook-form";
 const PriceSection = ({
@@ -7,10 +7,26 @@ const PriceSection = ({
   errors,
   control,
   setValue,
+  watch,
   handleKeyPress,
 }) => {
   const handlePriceChange = (index, value) => {
-    setValue(`price${index}`, value || 0);
+    for (let i = index; i < 4; i++) {
+      setValue(`price${i}`, value || 0);
+    }
+  };
+
+  const saleEndDate = watch("saleEndDate");
+  const handlePriceAfterDiscountChange = (e) => {
+    const value = e.target.value;
+    if (value > 0 && !saleEndDate) {
+      setError("saleEndDate", {
+        type: "manual",
+        message: "* Sale End Date is required",
+      });
+    } else {
+      setError("saleEndDate", null);
+    }
   };
 
   return (
@@ -53,19 +69,11 @@ const PriceSection = ({
                             className="quantity-group"
                             type="number"
                             min={0}
-                            step={0.01}
                             onChange={(e) => {
                               const value = parseFloat(e.target.value);
                               handlePriceChange(index, value);
                             }}
                             onKeyPress={handleKeyPress}
-                            onBlur={(e) => {
-                              // Perform your action here when the user moves out
-                              const value = parseFloat(e.target.value).toFixed(
-                                2
-                              );
-                              handlePriceChange(index, value);
-                            }}
                           />
                         )}
                       />
@@ -97,7 +105,9 @@ const PriceSection = ({
                 onWheel={(e) => e.currentTarget.blur()}
                 {...register("priceAfterDiscount")}
                 onKeyPress={handleKeyPress}
+                onChange={handlePriceAfterDiscountChange}
               />
+
               <p className="text-danger error-message">
                 {errors.priceAfterDiscount?.message}
               </p>
@@ -110,6 +120,7 @@ const PriceSection = ({
                 className="form-control"
                 id="saleEndDate"
                 type="date"
+                placeholder="MM/DD/YYYY"
                 min={new Date().toISOString().slice(0, 10)}
                 {...register("saleEndDate")}
                 onKeyPress={handleKeyPress}
