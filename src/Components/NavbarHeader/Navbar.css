@@ -10,16 +10,21 @@ header {
 
 .navbar {
   gap: 30px;
+}
 
+.NavbarHeader .logo {
+  border: 2px solid #eee;
 }
 
 .navbar-toggler:focus {
   box-shadow: 0 0 0 2px !important;
   color: var(--main-color);
 }
-.navTwo{
+
+.navTwo {
   align-items: center;
 }
+
 .navbar-nav {
   gap: 30px;
   font-size: 17px;
@@ -54,6 +59,7 @@ header {
   align-items: center;
   gap: 10px;
 }
+
 .nav-login .link {
   color: var(--main-color) !important;
   font-size: 20px;
@@ -61,16 +67,19 @@ header {
 }
 
 .nav-login .link:hover {
-color: var(--dark-color) !important;
+  color: var(--dark-color) !important;
 }
+
 .cart-count {
   display: inline-block;
   position: relative;
   cursor: pointer;
 }
-.icon-cart{
-font-size: 25px;
+
+.icon-cart {
+  font-size: 25px;
 }
+
 .cart-count .count {
   position: absolute;
   top: -8px;
@@ -86,25 +95,29 @@ font-size: 25px;
   color: white;
   font-weight: bold;
 }
-.show .navbar-nav{
-gap:10px !important;
+
+.show .navbar-nav {
+  gap: 10px !important;
 }
-.show .nav-login{
+
+.show .nav-login {
   margin-top: 15px;
 }
 
 
 /* End Navbar */
 /* Medium  */
- @media (max-width: 1200px ) {
-  .navbar .logo .info{
+@media (max-width: 1200px) {
+  .navbar .logo .info {
     display: none;
   }
+
   .navbar {
     gap: 20px;
   }
+
   .navbar-nav {
-    gap:10px;
+    gap: 10px;
   }
 
 

@@ -2,8 +2,15 @@ import ProductCard from "../ProductCard/ProductCard";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "./ElasticCarousel.css"
-const ElasticCarousel = ({ slidesToShow = 5, heading, products, color, rowCount = 1, flagSale = true }) => {
+import "./ElasticCarousel.css";
+const ElasticCarousel = ({
+  slidesToShow = 5,
+  heading,
+  products,
+  color,
+  rowCount = 1,
+  flagSale = true,
+}) => {
   const settings = {
     dots: false,
     infinite: true,
@@ -19,20 +26,19 @@ const ElasticCarousel = ({ slidesToShow = 5, heading, products, color, rowCount 
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
-        }
+        },
       },
       {
         breakpoint: 768,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-        }
+        },
       },
-
-    ]
+    ],
   };
   return (
-    <section className="ElasticCarousel" style={{ backgroundColor:color }}>
+    <section className="ElasticCarousel" style={{ backgroundColor: color }}>
       <div className="main-heading">
         <h2>{heading}</h2>
       </div>
@@ -46,8 +52,7 @@ const ElasticCarousel = ({ slidesToShow = 5, heading, products, color, rowCount 
         </Slider>
       </div>
     </section>
+  );
+};
 
-  )
-}
-
-export default ElasticCarousel
+export default ElasticCarousel;

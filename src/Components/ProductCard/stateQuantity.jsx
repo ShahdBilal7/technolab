@@ -1,15 +1,53 @@
-import { out, inn, retired, few, useDispatch, openStateModal } from "../../Constants";
+import {
+  out,
+  inn,
+  retired,
+  few,
+  useDispatch,
+  openStateModal,
+} from "../../Constants";
 const StateQuantity = ({ product }) => {
   const dispatch = useDispatch();
   return (
-    <div className="state" title={product.isRetired ? "retired" : product.quantity === 0 ? "out of stock" : product.quantity <= 35 ? `few in stock` : "in stock"}>
-      <div onClick={() => dispatch(openStateModal())} className={`stock ${product.isRetired ? "retired" : product.quantity === 0 ? "outStock" : product.quantity <= 35 ? "fewInStock" : "inStock"}`}>
-        <img className="quantity" src={
-          product.isRetired ? retired :
-            product.quantity === 0 ? out :
-              product.quantity <= 35 ? few : inn} alt="quantity" />
+    <div
+      className="state"
+      title={
+        product.retire
+          ? "retired"
+          : product.totalQuantity === 0
+          ? "out of stock"
+          : product.totalQuantity <= product.totalThreshold
+          ? `few in stock`
+          : "in stock"
+      }
+    >
+      <div
+        onClick={() => dispatch(openStateModal())}
+        className={`stock ${
+          product.retire
+            ? "retired"
+            : product.totalQuantity === 0
+            ? "outStock"
+            : product.totalQuantity <= product.totalThreshold
+            ? "fewInStock"
+            : "inStock"
+        }`}
+      >
+        <img
+          className="quantity"
+          src={
+            product.retire
+              ? retired
+              : product.totalQuantity === 0
+              ? out
+              : product.totalQuantity <= product.totalThreshold
+              ? few
+              : inn
+          }
+          alt="quantity"
+        />
       </div>
-      <span>{product.category}</span>
+      <span>{product?.subcategories[0].category}</span>
     </div>
   );
 };

@@ -11,13 +11,19 @@ const Cart = () => {
   return (
     <div className="container">
       <div className="pt-4 cart-head">
-        <Breadcrumb Category="Home" CategoryLink="/" SubCategory="Shop" SubCategoryLink="/products" Data="Cart" />
+        <Breadcrumb
+          Category="Home"
+          CategoryLink="/"
+          SubCategory="Shop"
+          SubCategoryLink="/products"
+          Data="Cart"
+        />
         <div>
           <PngFile />
           <JsonFile />
         </div>
       </div>
-      <section id="capture" className="cart row " >
+      <section id="capture" className="cart row ">
         <div className="col-lg-9 my-4">
           <TableCart />
         </div>
@@ -25,7 +31,10 @@ const Cart = () => {
           <OrderSummary />
         </div>
       </section>
-      <section className="row mb-5 mt-2" style={{ border: "solid 1px #e6e6e6" }}>
+      <section
+        className="row mb-5 mt-2"
+        style={{ border: "solid 1px #e6e6e6" }}
+      >
         <br />
         <div dir="rtl" className="col-md-6 ">
           <h4 className="head">وسيلة الشحن :</h4>

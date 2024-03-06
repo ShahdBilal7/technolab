@@ -1,6 +1,7 @@
-import { categories, productStatus } from "../../Constants.js";
+import { productStatus, categories } from "../../Constants.js";
 import Select from "react-select";
-import "./NewItems.css";
+import "./NewKits.css";
+import "../NewItems/NewItems.css";
 const GeneralSection = ({
   register,
   setError,
@@ -30,7 +31,7 @@ const GeneralSection = ({
     setValue("subcategories", selectedSubcategories);
   };
   const handleProductStatusChange = (selectedOption) => {
-    setValue("status", selectedOption.label);
+    setValue("kitStatus", selectedOption.label);
   };
   return (
     <div>
@@ -39,52 +40,52 @@ const GeneralSection = ({
       </div>
       <div className="row generalInformation">
         <div className="col-md-8 mb-4 form-group">
-          <label className="form-label" htmlFor="name">
-            Product Name:
+          <label className="form-label" htmlFor="kitName">
+            Kit Name:
           </label>
           <input
             className="form-control"
-            id="name"
-            {...register("name")}
+            id="kitName"
+            {...register("kitName")}
             onKeyPress={handleKeyPress}
           />
-          <p className="text-danger error-message">{errors.name?.message}</p>
+          <p className="text-danger error-message">{errors.kitName?.message}</p>
         </div>
 
         <div className="col-md-4 mb-4 form-group">
-          <label className="form-label" htmlFor="status">
-            Product status
+          <label className="form-label" htmlFor="kitStatus">
+            Kit status
           </label>
           <Select
             className="custom-select"
             options={productStatusOption}
             defaultValue={productStatusOption[0]}
-            {...register("status")}
+            {...register("kitStatus")}
             onChange={handleProductStatusChange}
             onKeyPress={handleKeyPress}
           />
         </div>
         <div className="col-md-6 mb-4 form-group">
-          <label className="form-label" htmlFor="barcode">
+          <label className="form-label" htmlFor="kitBarcode">
             Main Barcode
           </label>
           <input
             style={{ backgroundColor: "#eee" }}
             className="form-control"
-            id="barcode"
-            {...register("barcode")}
+            id="kitBarcode"
+            {...register("kitBarcode")}
             readOnly
             onKeyPress={handleKeyPress}
           />
         </div>
         <div className="col-md-6 mb-4 form-group">
-          <label className="form-label" htmlFor="secondBarcode">
+          <label className="form-label" htmlFor="kitSecondBarcode">
             Secondary Barcode:
           </label>
           <input
             className="form-control"
-            id="secondBarcode"
-            {...register("secondBarcode")}
+            id="kitSecondBarcode"
+            {...register("kitSecondBarcode")}
             onKeyPress={handleKeyPress}
           />
         </div>
@@ -115,32 +116,6 @@ const GeneralSection = ({
           <p className="text-danger error-message">
             {errors.subcategories?.message}
           </p>
-        </div>
-        <div className="col-md-6 mb-4 form-group">
-          <label className=" form-label " htmlFor="availabilityDate">
-            Product availability date
-          </label>
-          <em> if the product not available</em>
-          <input
-            className="form-control"
-            type="date"
-            id="availabilityDate"
-            min={new Date().toISOString().slice(0, 10)}
-            {...register("availabilityDate")}
-            onKeyPress={handleKeyPress}
-          />
-        </div>
-        <div className="col-lg-6 mb-4 form-group">
-          <div className="form-control hide">
-            <label htmlFor="Retire">Retired Product </label>
-            <input
-              id="retire"
-              className="custom mx-2"
-              type="checkbox"
-              {...register("retire")}
-              onKeyPress={handleKeyPress}
-            />
-          </div>
         </div>
       </div>
     </div>

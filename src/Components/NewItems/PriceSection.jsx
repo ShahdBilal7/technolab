@@ -1,6 +1,9 @@
-import { useEffect, useState } from "react";
-import { priceQuantityRange } from "./constants.js";
-import { Controller } from "react-hook-form";
+import {
+  priceQuantityRange,
+  useEffect,
+  useState,
+  Controller,
+} from "../../Constants.js";
 const PriceSection = ({
   register,
   setError,
@@ -92,24 +95,24 @@ const PriceSection = ({
           <h5>Discount Price</h5>
           <div className="saleSection row ">
             <div className="form-group">
-              <label className="form-label " htmlFor="priceAfterDiscount">
+              <label className="form-label " htmlFor="discountPrice">
                 Price After Discount
               </label>
               <input
                 className="form-control"
-                id="priceAfterDiscount"
+                id="discountPrice"
                 type="number"
                 defaultValue={null}
                 min="0"
                 step="0.1"
                 onWheel={(e) => e.currentTarget.blur()}
-                {...register("priceAfterDiscount")}
+                {...register("discountPrice")}
                 onKeyPress={handleKeyPress}
                 onChange={handlePriceAfterDiscountChange}
               />
 
               <p className="text-danger error-message">
-                {errors.priceAfterDiscount?.message}
+                {errors.discountPrice?.message}
               </p>
             </div>
             <div className="form-group">

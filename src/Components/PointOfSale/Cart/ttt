@@ -1,0 +1,480 @@
+const handleAddToCart = (item) => {
+  const defaultStore = item?.itemStoreDetailsList[0];
+  const existingItem = listOfItems.find(
+    (cartItem) =>
+      cartItem.id === item.id && cartItem.storeName === defaultStore?.storeName
+  );
+  const selectedStockQty = defaultStore?.stockQty || 0;
+
+  const totalQty = item?.itemStoreDetailsList?.reduce(
+    (totalQty, store) => totalQty + (store?.stockQty || 0),
+    0
+  );
+
+  if (existingItem) {
+    if (existingItem.qty + 1 <= selectedStockQty) {
+      setListOfItems(
+        listOfItems.map((cartItem) =>
+          cartItem.id === item.id &&
+          cartItem.storeName === defaultStore?.storeName
+            ? {
+                ...cartItem,
+                qty: cartItem.qty + 1,
+              }
+            : cartItem
+        )
+      );
+    } else {
+      toast.warning(
+        `The store ${defaultStore?.storeName} contain ${selectedStockQty} items as a max quantity, try to select another store`
+      );
+    }
+  } else {
+    if (totalQty) {
+      const insertIndex = listOfItems.findIndex(
+        (cartItem) => cartItem.id === item.id
+      );
+      const itemToAdd = {
+        ...item,
+        qty: selectedStockQty >= 1 ? 1 : 0,
+        storeName: defaultStore?.storeName,
+        orderPrice:
+          listOfItems[insertIndex]?.orderPrice ||
+          item?.discountPrice ||
+          item?.price,
+      };
+      if (insertIndex !== -1) {
+        setListOfItems((prevItems) => [
+          ...prevItems.slice(0, insertIndex + 1),
+          itemToAdd,
+          ...prevItems.slice(insertIndex + 1),
+        ]);
+      } else {
+        setListOfItems((prevItems) => [...prevItems, itemToAdd]);
+      }
+    } else {
+      toast.warning("This item is out of stock");
+    }
+  }
+};
+
+import React, { useState, useEffect } from "react";
+import { ReactComponent as DeleteIcon } from "../Icons/delete.svg";
+import LogoImage from "../../assests/tech-logo.png";
+import { IMAGES_API } from "../../Config";
+import { Stores, OrderStatus } from "./constants";
+import "./index.css";
+import { useForm, Controller } from "react-hook-form";
+import axios from "axios";
+import API_BASE_URL from "../../Config";
+import { ToastContainer, toast } from "react-toastify";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import ConfirmModal from "../Transactions/ConfirmModal";
+const Cart = ({ listOfItems, setListOfItems, allItemsRef }) => {
+  const TAX = 0.16;
+  const [includeTax, setIncludeTax] = useState(false);
+  const [totalPrice, setTotalPrice] = useState();
+  const [totalPriceWithTax, setTotalPriceWithTax] = useState();
+  const [totalTax, setTotalTax] = useState();
+  const [cartItems, setCartItems] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [disabledStates, setDisabledStates] = useState([false]);
+  const [itemToDelete, setItemToDelete] = useState(null);
+  const schema = yup.object().shape({
+    customerName: yup.string().required("customer name is required."),
+  });
+
+  const {
+    register,
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+  const handleRemoveItem = (itemId, storeName) => {
+    const updatedListOfItems = listOfItems.filter(
+      (item) => !(item.id === itemId && item?.storeName === storeName)
+    );
+    setListOfItems(updatedListOfItems);
+    const updatedCartItems = updatedListOfItems.map((item) => ({
+      ...item,
+      subtotal: (item.discountPrice || item.price) * item.qty,
+      storeName: item?.storeName,
+    }));
+    setCartItems(updatedCartItems);
+  };
+  const handleConfirmOperation = async () => {
+    setShowModal(false);
+    await handleRemoveItem(itemToDelete.id, itemToDelete?.storeName);
+  };
+  const handleDelete = (item) => {
+    const itemToDelete = listOfItems?.find(
+      (transaction) =>
+        transaction.id === item?.id &&
+        transaction?.storeName === item?.storeName
+    );
+    setItemToDelete(itemToDelete);
+    setShowModal(true);
+  };
+
+  const handleQtyChange = (index, newQty, selectedStoreName) => {
+    const selectedItem = cartItems[index]?.itemStoreDetailsList?.find(
+      (item) => item.storeName === selectedStoreName
+    );
+    const maxQty = selectedItem.stockQty;
+    const updatedCartItems = [...cartItems];
+    const updatedDisabledStates = [...disabledStates]; // Copy the array
+
+    if (newQty <= maxQty) {
+      updatedDisabledStates[index] = false; // Enable the button
+      updatedCartItems[index].qty = newQty;
+      updatedCartItems[index].subtotal =
+        (updatedCartItems[index].orderPrice ||
+          updatedCartItems[index].discountPrice ||
+          updatedCartItems[index].price) * newQty;
+    } else {
+      updatedDisabledStates[index] = true; // Disable the button
+      updatedCartItems[index].qty = maxQty;
+      toast.warning(
+        `The store ${selectedStoreName} contains ${maxQty} items as a max quantity, try to select another store`
+      );
+    }
+
+    setDisabledStates(updatedDisabledStates);
+    setCartItems(updatedCartItems);
+    setListOfItems(updatedCartItems);
+  };
+  const handleOrderPriceChange = (index, newOrderPrice) => {
+    const updatedCartItems = [...cartItems];
+    updatedCartItems[index].orderPrice = newOrderPrice;
+    updatedCartItems[index].subtotal =
+      newOrderPrice * updatedCartItems[index].qty;
+    setCartItems(updatedCartItems);
+    setListOfItems(updatedCartItems);
+  };
+  const handleStatusChange = (index, newStatus) => {
+    const updatedCartItems = [...cartItems];
+    const updatedDisabledStates = [...disabledStates];
+    updatedDisabledStates[index] = false;
+    const selectedItem = cartItems[index]?.itemStoreDetailsList?.find(
+      (item) => item.storeName === newStatus
+    );
+    if (updatedCartItems[index].qty > selectedItem?.stockQty) {
+      updatedCartItems[index].qty = selectedItem?.stockQty;
+      handleQtyChange(index, selectedItem?.stockQty, newStatus);
+      updatedDisabledStates[index] = true;
+      toast.warning(
+        `This store ${selectedItem?.storeName} has ${selectedItem?.stockQty} items as a max quantity`
+      );
+    }
+    updatedCartItems[index].storeName = newStatus;
+    setCartItems(updatedCartItems);
+    setListOfItems(updatedCartItems);
+    setDisabledStates(updatedDisabledStates);
+  };
+  const handleTaxCheckboxChange = () => {
+    setIncludeTax(!includeTax);
+  };
+  const updateTotalPrice = () => {
+    let totalPrice = 0;
+    cartItems.forEach((item) => {
+      totalPrice += item.subtotal;
+    });
+    let totalPriceTax = totalPrice;
+    totalPriceTax += includeTax ? totalPriceTax * TAX : 0;
+    setTotalTax((totalPrice * TAX)?.toFixed(2));
+    setTotalPrice(totalPrice?.toFixed(2));
+    setTotalPriceWithTax(totalPriceTax?.toFixed(2));
+  };
+  useEffect(() => {
+    const updatedCartItems = listOfItems.map((item) => ({
+      ...item,
+      subtotal:
+        item?.orderPrice * item?.qty ||
+        (item.discountPrice || item.price) * item.qty,
+      storeName: item?.storeName,
+      orderPrice: item?.orderPrice || item?.discountPrice || item?.price,
+    }));
+    setCartItems(updatedCartItems);
+  }, [listOfItems]);
+
+  useEffect(() => {
+    updateTotalPrice();
+  }, [cartItems, includeTax]);
+
+  const onSubmit = async (data) => {
+    const hasZeroQuantity = cartItems.some((item) => item?.qty === 0);
+    if (hasZeroQuantity) {
+      toast.error("Quantity must be greater than 0 for all items.");
+      return;
+    }
+    let originalPrice = 0;
+    cartItems.forEach((item) => {
+      originalPrice += item?.price * item?.qty;
+    });
+    originalPrice += includeTax ? originalPrice * TAX : 0;
+    const itemsInInvoiceDtoList = cartItems.map((item) => ({
+      itemId: item?.id,
+      itemName: item?.productName,
+      quantity: item?.qty,
+      storeName: item?.storeName,
+      originalPrice: item?.price,
+      paidPrice: item?.orderPrice || item?.discountPrice || item?.price,
+    }));
+    const transactionData = {
+      isTaxIncluded: includeTax,
+      note: data?.notes,
+      customerName: data?.customerName,
+      paymentStatus: data?.OrderStatus,
+      totalOriginalPrice: originalPrice,
+      totalPaidPrice: totalPriceWithTax,
+      itemsInInvoiceDtoList,
+    };
+    try {
+      const response = await axios.post(
+        `${API_BASE_URL}/transaction/newTransaction`,
+        transactionData,
+        {
+          withCredentials: true,
+        }
+      );
+      if (response?.data?.status === "success") {
+        toast.success(response.data.message);
+        setListOfItems([]);
+        allItemsRef.current.onSubmit();
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
+  return (
+    <div>
+      <ToastContainer />
+      <table className="table table-borderless">
+        <thead>
+          <tr>
+            <th className="table-header">Image</th>
+            <th className="table-header d-flex justify-content-center">
+              Store
+            </th>
+            <th className="table-header">Product&nbsp;Name</th>
+            <th className="table-header">Price/Discount</th>
+            <th className="table-header">Order&nbsp;Price</th>
+            <th className="table-header d-flex justify-content-center">Qty</th>
+            <th className="table-header">Subtotal</th>
+            <th className="table-header">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {cartItems.map((item, index) => (
+            <tr key={index}>
+              <td>
+                <img
+                  src={
+                    item?.imageName
+                      ? `${IMAGES_API}/${item?.imageName}`
+                      : LogoImage
+                  }
+                  alt={item?.imageName}
+                  width="50"
+                />
+              </td>
+              <td>
+                <select
+                  className="custom-select stores-input"
+                  value={item.storeName}
+                  onChange={(e) => handleStatusChange(index, e.target.value)}
+                >
+                  {Stores?.map((option, index) => (
+                    <option value={option} key={index}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              </td>
+              <td>
+                <div className="name-wrapper text-start">
+                  {item.productName}
+                </div>
+              </td>
+              <td>
+                <span
+                  className={`price-text me-2 ${
+                    item.discountPrice ? "discount-price" : "original-price"
+                  }`}
+                >
+                  ₪{item.price}
+                </span>
+                {item.discountPrice && (
+                  <span className="price-text original-price">
+                    ₪{item.discountPrice}
+                  </span>
+                )}
+              </td>
+              <td>
+                <input
+                  className="form-control order-price"
+                  defaultValue={item?.orderPrice || ""}
+                  value={item?.orderPrice}
+                  onChange={(e) =>
+                    handleOrderPriceChange(index, e.target.value)
+                  }
+                />
+              </td>
+              <td>
+                <div className="d-flex align-items-center">
+                  <button
+                    className="d-flex align-items-center justify-content-center text-white quantity-button"
+                    onClick={() => {
+                      if (item?.qty > 1)
+                        handleQtyChange(index, item.qty - 1, item?.storeName);
+                    }}
+                  >
+                    -
+                  </button>
+                  <input
+                    className="form-control qty-input"
+                    value={item?.qty}
+                    onChange={(e) =>
+                      handleQtyChange(index, e.target.value, item?.storeName)
+                    }
+                  />
+                  <button
+                    className={`d-flex align-items-center justify-content-center text-white quantity-button ${
+                      disabledStates[index] ? "qty-disabled" : ""
+                    }`}
+                    onClick={() =>
+                      handleQtyChange(index, item.qty + 1, item?.storeName)
+                    }
+                    disabled={disabledStates[index]}
+                  >
+                    +
+                  </button>
+                </div>
+              </td>
+              <td>₪{item.subtotal?.toFixed(2)}</td>
+              <td>
+                <button
+                  onClick={() => handleDelete(item)}
+                  className="btn btn-danger"
+                >
+                  <DeleteIcon />
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <hr className="divider" />
+      <div className="d-flex justify-content-between align-items-start">
+        <div>
+          <label className="d-flex align-items-center check-box-wrapper">
+            <input
+              type="checkbox"
+              checked={includeTax}
+              onChange={handleTaxCheckboxChange}
+              className="tax-box me-2"
+            />
+            <div className="total-text">Include Tax</div>
+          </label>
+        </div>
+        <div className="d-flex flex-column">
+          {includeTax && (
+            <>
+              <div className="d-flex justify-content-between mb-3">
+                <div className="me-3 total-text">Total Without:</div>
+                <div>₪ {totalPrice}</div>
+              </div>
+              <div className="d-flex justify-content-between mb-2">
+                <div className="me-3 total-text">Tax:</div>
+                <div>₪ {totalTax}</div>
+              </div>
+              <hr className="divider" />
+            </>
+          )}
+          <div className="d-flex justify-content-between">
+            <div className="me-3 total-text">Total:</div>
+            <div className="total-text">₪ {totalPriceWithTax}</div>
+          </div>
+        </div>
+      </div>
+      <div className="mt-5">
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="form-group row mb-3">
+            <label className="col-sm-2 col-form-label" htmlFor="customerName">
+              Customer Name:
+            </label>
+            <div className="col-sm-10">
+              <input
+                className="form-control"
+                name="customerName"
+                id="customerName"
+                {...register("customerName")}
+              />
+              <p className="text-danger error-message mt-1">
+                {errors.customerName?.message}
+              </p>
+            </div>
+          </div>
+          <div className="form-group row mb-3">
+            <label htmlFor="status" className="col-sm-2 col-form-label">
+              Order status:
+            </label>
+            <div className="col-sm-10">
+              <Controller
+                name="OrderStatus"
+                id="OrderStatus"
+                control={control}
+                defaultValue={OrderStatus[0]}
+                render={({ field }) => (
+                  <select className="custom-select" {...field}>
+                    {OrderStatus?.map((option, index) => (
+                      <option value={option} key={index}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+                )}
+              />
+            </div>
+          </div>
+          <div className="form-group row mb-5">
+            <label className="col-sm-2 col-form-label" htmlFor="notes">
+              Notes:
+            </label>
+            <div className="col-sm-10">
+              <textarea
+                className="form-control"
+                id="notes"
+                {...register("notes")}
+              />
+            </div>
+          </div>
+          <div className="d-flex justify-content-end">
+            <button
+              type="submit"
+              className="btn btn-primary px-5"
+              disabled={Object.keys(errors).length > 0}
+            >
+              Checkout
+            </button>
+          </div>
+        </form>
+        <ConfirmModal
+          show={showModal}
+          onClose={() => setShowModal(false)}
+          onConfirm={() => handleConfirmOperation()}
+          operation="delete"
+        />
+      </div>
+    </div>
+  );
+};
+
+export default Cart;

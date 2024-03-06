@@ -1,11 +1,14 @@
-import React, { useState } from "react";
-import { Modal, Form } from "react-bootstrap";
-import { useForm, Controller } from "react-hook-form";
-import { Stores } from "./constants.js";
+import { ToastContainer, toast } from "react-toastify";
+import {
+  Stores,
+  Modal,
+  Form,
+  useState,
+  useForm,
+  Controller,
+} from "../../Constants";
 import BASE_URL from "../../Config";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
-
 const MoveQtyForm = ({
   show,
   handleClose,
@@ -25,11 +28,11 @@ const MoveQtyForm = ({
     );
 
     if (quantity > 0) {
-      if (quantity <= selectedItem?.stockQty) {
+      if (quantity <= selectedItem?.qty) {
         setError("");
       } else {
         setError(
-          `* The Source Store have ${selectedItem?.stockQty} item as a max quantity`
+          `* The Source Store have ${selectedItem?.qty} item as a max quantity`
         );
       }
     } else {

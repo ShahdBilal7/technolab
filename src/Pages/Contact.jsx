@@ -1,4 +1,4 @@
-import { contactInfo,FontAwesomeIcon } from "../Constants.js";
+import { contactInfo, FontAwesomeIcon } from "../Constants.js";
 const Contact = () => {
   return (
     <div className="container contact">
@@ -6,15 +6,17 @@ const Contact = () => {
         <div className="headline">
           <h2>Contact Us</h2>
         </div>
-        <div className="col-md-6 mb-5" >
+        <div className="col-md-6 mb-5">
           <div className="d-flex flex-column gap-4 ">
             {contactInfo.map((info, index) => (
-              <i key={index} className="d-flex gap-3 link" >
+              <i key={index} className="d-flex gap-3 link">
                 <FontAwesomeIcon className="icon" icon={info.icon} />
                 {info.value}
               </i>
             ))}
-            <br /><br /><br />
+            <br />
+            <br />
+            <br />
           </div>
         </div>
         <div className="col-md-6 mb-5">
@@ -23,13 +25,12 @@ const Contact = () => {
             allowFullScreen=""
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            title="Google Maps">
-          </iframe>
+            title="Google Maps"
+          ></iframe>
         </div>
       </div>
-
     </div>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;

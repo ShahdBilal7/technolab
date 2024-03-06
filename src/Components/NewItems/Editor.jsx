@@ -1,5 +1,4 @@
-import React from "react";
-import { Controller } from "react-hook-form";
+import { Controller } from "../../Constants.js";
 import JoditEditor from "jodit-react";
 
 const Editor = ({ control, name }) => {

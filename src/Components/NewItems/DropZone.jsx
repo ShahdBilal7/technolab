@@ -1,6 +1,10 @@
-import React, { useEffect, useCallback, useState } from "react";
+import {
+  useEffect,
+  useCallback,
+  useState,
+  FontAwesomeIcon,
+} from "../../Constants.js";
 import { useDropzone } from "react-dropzone";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const DropZone = ({ tit, multiple, register, setValue, handleKeyPress }) => {
   const [file, setFile] = useState(null); // For single file
   const [files, setFiles] = useState([]); // For multiple files
@@ -13,6 +17,7 @@ const DropZone = ({ tit, multiple, register, setValue, handleKeyPress }) => {
       if (!multiple) {
         if (acceptedFiles.length > 0) {
           const acceptedFile = acceptedFiles[0];
+          console.log(acceptedFile);
           setFile(
             Object.assign(acceptedFile, {
               preview: URL.createObjectURL(acceptedFile),

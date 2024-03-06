@@ -1,4 +1,10 @@
-import {  FontAwesomeIcon, NavLink, Link, navLinks,contactInfo} from "../../Constants.js";
+import {
+  FontAwesomeIcon,
+  NavLink,
+  Link,
+  navLinks,
+  contactInfo,
+} from "../../Constants.js";
 import Logo from "../Logo.jsx";
 import "./Footer.css";
 const Footer = () => {
@@ -23,19 +29,30 @@ const Footer = () => {
                 <h4 className="mb-4">Quick links</h4>
                 <div className="d-flex flex-column justify-content-start">
                   {navLinks.slice(0, 4).map((link, index) => (
-                    <NavLink key={index} className="link mb-2" activeclassname="active" to={link.path}>
+                    <NavLink
+                      key={index}
+                      className="link mb-2"
+                      activeclassname="active"
+                      to={link.path}
+                    >
                       <FontAwesomeIcon icon="fa-angle-right" /> {link.label}
                     </NavLink>
                   ))}
                 </div>
-
               </div>
               <div className="col-md-4 mb-5">
                 <h4 className="mb-4">Contact</h4>
                 <div className="d-flex flex-column justify-content-start">
-                  <Link target="_blank" className="link mb-2" to="https://maps.app.goo.gl/gUbdUivdbw7VoLGq9" > <FontAwesomeIcon icon="fa-map-location-dot" /> Go to map</Link>
+                  <Link
+                    target="_blank"
+                    className="link mb-2"
+                    to="https://maps.app.goo.gl/gUbdUivdbw7VoLGq9"
+                  >
+                    {" "}
+                    <FontAwesomeIcon icon="fa-map-location-dot" /> Go to map
+                  </Link>
                   {contactInfo.slice(0, -1).map((info, index) => (
-                    <i key={index} className="link mb-2" >
+                    <i key={index} className="link mb-2">
                       <FontAwesomeIcon icon={info.icon} />
                       {info.value}
                     </i>
@@ -45,10 +62,29 @@ const Footer = () => {
               <div className="col-md-4 mb-5">
                 <h4 className=" mb-4">Follow Us</h4>
                 <div className="d-flex gap-3 ">
-                  <Link className="link" to="https://www.facebook.com/technolab.electronics" target="_blank" > <FontAwesomeIcon className="icon fac" icon={['fab', 'facebook']} /></Link>
-                  <FontAwesomeIcon className="icon what" icon={['fab', 'whatsapp']} />
-                  <FontAwesomeIcon className="icon yout" icon={['fab', 'youtube']} />
-                  <FontAwesomeIcon className="icon inst" icon={['fab', 'instagram']} />
+                  <Link
+                    className="link"
+                    to="https://www.facebook.com/technolab.electronics"
+                    target="_blank"
+                  >
+                    {" "}
+                    <FontAwesomeIcon
+                      className="icon fac"
+                      icon={["fab", "facebook"]}
+                    />
+                  </Link>
+                  <FontAwesomeIcon
+                    className="icon what"
+                    icon={["fab", "whatsapp"]}
+                  />
+                  <FontAwesomeIcon
+                    className="icon yout"
+                    icon={["fab", "youtube"]}
+                  />
+                  <FontAwesomeIcon
+                    className="icon inst"
+                    icon={["fab", "instagram"]}
+                  />
                 </div>
               </div>
             </div>

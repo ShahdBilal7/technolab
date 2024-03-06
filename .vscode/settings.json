@@ -35,5 +35,8 @@
   ],
   "dart.flutterTestAdditionalArgs": [
     "--no-sound-null-safety"
+  ],
+  "cSpell.words": [
+    "Availabe"
   ]
 }

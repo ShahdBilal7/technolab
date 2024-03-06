@@ -1,17 +1,18 @@
 /* Start Search */
-.searchOut{
+.searchOut {
   background-color: var(--second-color);
 }
+
 p {
   margin: 0 !important;
-} 
+}
 
 .search {
   display: flex;
   align-items: center;
   gap: 30px;
-  padding: 20px;
-
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .search .categories {
@@ -96,8 +97,9 @@ p {
   .search .categories {
     width: unset;
   }
-  .search{
-    gap:5px;
+
+  .search {
+    gap: 5px;
   }
 
 }

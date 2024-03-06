@@ -1,4 +1,10 @@
-import { useSelector, useDispatch,Link,ChangeQuantityCart, removeFromCart } from "../../Constants";
+import {
+  useSelector,
+  useDispatch,
+  Link,
+  ChangeQuantityCart,
+  removeFromCart,
+} from "../../Constants";
 import StateQuantity from "../ProductCard/stateQuantity";
 
 const TableCart = () => {
@@ -40,40 +46,45 @@ const TableCart = () => {
                   />
                 </td>
                 <td>
+                  <div className="productsTd">
+                    <p> {cartItem.name}</p>
+                    <StateQuantity product={cartItem} />
+                  </div>
 
-                <div className="productsTd">
-              <p>  {cartItem.name}</p>
-                <StateQuantity product={cartItem} />
-                </div>
-
-                <div className="features "> 
-          {cartItem?.onSale && <div className=" sale">SALE</div>}
-          {cartItem?.onNew && <div className=" new">New</div>}
-          {cartItem?.restricted && <div className=" restricted">Restricted</div>}
-          {cartItem?.quantity === 0 && <div className="label oos">Out of stock</div>}
-          {cartItem?.isRetired && <div className="label retired">Retired</div>}
-          </div>
-                
-                </td>
-                <td>  {(cartItem.price || cartItem.salePrice) && (
-                  <div className="d-flex justify-content-center flex-column gap-1">
-                
-                    {cartItem.salePrice && (
-                      <span className="price-text ">
-                        {cartItem.salePrice}₪
-                      </span>
-                    )} 
-                       {cartItem.price && (
-                      <span
-                        className={`price-text me-2 ${
-                          cartItem.salePrice ? "discount-price" : ""
-                        }`}
-                      >
-                        {cartItem.price}₪
-                      </span>
+                  <div className="features ">
+                    {cartItem?.onSale && <div className=" sale">SALE</div>}
+                    {cartItem?.onNew && <div className=" new">New</div>}
+                    {cartItem?.restricted && (
+                      <div className=" restricted">Restricted</div>
                     )}
+                    {cartItem?.quantity === 0 && (
+                      <div className="label oos">Out of stock</div>
+                    )}
+                    {cartItem?.isRetired && (
+                      <div className="label retired">Retired</div>
+                    )}
+                  </div>
+                </td>
+                <td>
+                  {(cartItem.price || cartItem.salePrice) && (
+                    <div className="d-flex justify-content-center flex-column gap-1">
+                      {cartItem.salePrice && (
+                        <span className="price-text ">
+                          {cartItem.salePrice}₪
+                        </span>
+                      )}
+                      {cartItem.price && (
+                        <span
+                          className={`price-text me-2 ${
+                            cartItem.salePrice ? "discount-price" : ""
+                          }`}
+                        >
+                          {cartItem.price}₪
+                        </span>
+                      )}
                     </div>
-                )}</td>
+                  )}
+                </td>
                 <td>
                   <input
                     className="quantity-group"
@@ -91,10 +102,12 @@ const TableCart = () => {
                     type="number"
                   />
                 </td>
-                <td>{(cartItem.topPrice * cartItem.cartQuantity).toFixed(2)}₪</td>
+                <td>
+                  {(cartItem.topPrice * cartItem.cartQuantity).toFixed(2)}₪
+                </td>
                 <td>
                   <button
-                    className="btn-remove"
+                    className="btn-remove "
                     onClick={() => dispatch(removeFromCart(cartItem))}
                   >
                     REMOVE

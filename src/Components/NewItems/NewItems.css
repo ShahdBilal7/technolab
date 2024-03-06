@@ -12,17 +12,6 @@
   margin: 0;
 }
 
-.newItem .btn.btn-secondary {
-  background-color: #fff;
-  border: 2px solid var(--main-color);
-  color: var(--main-color);
-  font-weight: bold;
-}
-
-.newItem .btn.btn-secondary:hover {
-  background-color: var(--main-color);
-  color: #fff;
-}
 
 .newItem .hide {
   display: flex;

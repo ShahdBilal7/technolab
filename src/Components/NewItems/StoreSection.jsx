@@ -1,8 +1,13 @@
-import React from "react";
-import { storeDetailsHeader, storeDetailsData } from "./constants.js";
 import MoveQtyForm from "./MoveQtyForm";
-import { useSelector, user, useState, useEffect } from "../../Constants.js";
-import { Controller } from "react-hook-form";
+import {
+  storeDetailsHeader,
+  storeDetailsData,
+  useSelector,
+  user,
+  useState,
+  useEffect,
+  Controller,
+} from "../../Constants.js";
 import axios from "axios";
 import BASE_URL from "../../Config";
 const StoreSection = ({
@@ -25,12 +30,10 @@ const StoreSection = ({
   const [tableHeader, setTableHeader] = useState(storeDetailsHeader);
   const [storesDetails, setStoresDetails] = useState(storeDetailsData);
   const stockQtyValues = watch(
-    storesDetails?.map((_, index) => `itemStoreDetailsList[${index}].stockQty`)
+    storesDetails?.map((_, index) => `storeDetails[${index}].qty`)
   );
   const ThresholdValues = watch(
-    storesDetails?.map(
-      (_, index) => `itemStoreDetailsList[${index}].thresholdCount`
-    )
+    storesDetails?.map((_, index) => `storeDetails[${index}].threshold`)
   );
   const fetchItemById = async (itemId) => {
     try {
@@ -41,7 +44,7 @@ const StoreSection = ({
 
       if (response?.data?.status === "success") {
         reset({
-          itemStoreDetailsList: response?.data?.message?.itemStoreDetailsList,
+          storeDetails: response?.data?.message?.storeDetails,
         });
       }
     } catch (error) {
@@ -125,11 +128,11 @@ const StoreSection = ({
                       </div>
                     ) : (
                       <Controller
-                        name={`itemStoreDetailsList[${index}].${header.id}`}
+                        name={`storeDetails[${index}].${header.id}`}
                         control={control}
                         defaultValue={rowData[header.id]}
                         render={({ field }) =>
-                          header.id !== "storeName" ? (
+                          header.id !== "name" ? (
                             <>
                               <input
                                 {...field}
@@ -137,34 +140,29 @@ const StoreSection = ({
                                 style={{ margin: "auto" }}
                                 id={`stores[${index}].${header.id}`}
                                 type={
-                                  header.id === "stockQty" ||
-                                  header.id === "thresholdCount"
+                                  header.id === "qty" ||
+                                  header.id === "threshold"
                                     ? "number"
                                     : "text"
                                 }
                                 min={
-                                  header.id === "stockQty" ||
-                                  header.id === "thresholdCount"
+                                  header.id === "qty" ||
+                                  header.id === "threshold"
                                     ? "0"
                                     : ""
                                 }
                                 onWheel={(e) => e.currentTarget.blur()}
-                                readOnly={
-                                  isUpdatepage && header.id === "stockQty"
-                                }
+                                readOnly={isUpdatepage && header.id === "qty"}
                                 onKeyPress={handleKeyPress}
                               />
-                              {errors?.itemStoreDetailsList?.[index]?.[
-                                header.id
-                              ] && (
+                              {errors?.storeDetails?.[index]?.[header.id] && (
                                 <p
                                   className="text-danger"
                                   style={{ fontSize: "13px" }}
                                 >
                                   {
-                                    errors.itemStoreDetailsList[index][
-                                      header.id
-                                    ].message
+                                    errors.storeDetails[index][header.id]
+                                      .message
                                   }
                                 </p>
                               )}

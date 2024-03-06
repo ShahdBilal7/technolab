@@ -7,22 +7,20 @@ const ImagesSection = ({ register, setValue, errors, handleKeyPress }) => {
       </div>
       <div className="row imageSection">
         <div className="col-xl-6  mb-4 form-group">
-          <label className="form-label" htmlFor="productBarcode">
+          <label className="form-label" htmlFor="image">
             Main Image
           </label>
           <DropZone
             tit="Drag & drop Main product Image here"
             multiple={false}
-            register={register("mainImage")} // Register the mainImage input
+            register={register("image")} // Register the mainImage input
             handleKeyPress={handleKeyPress}
             setValue={setValue}
           />
-          <p className="text-danger error-message">
-            {errors.mainImage?.message}
-          </p>
+          <p className="text-danger error-message">{errors.image?.message}</p>
         </div>
         <div className="col-xl-6  mb-4 form-group">
-          <label className="form-label" htmlFor="productBarcode">
+          <label className="form-label" htmlFor="secondaryImages">
             secondary Images
           </label>
           <DropZone

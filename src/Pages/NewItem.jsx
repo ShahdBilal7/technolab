@@ -1,13 +1,17 @@
 import { useForm } from "react-hook-form";
 import { ToastContainer } from "react-toastify";
-import { productStatus } from "../Components/NewItems/constants";
 import Error404 from "./Error404";
 import GeneralSection from "../Components/NewItems/GeneralSection";
 import PriceSection from "../Components/NewItems/PriceSection";
 import ImagesSection from "../Components/NewItems/ImagesSection";
 import StoreSection from "../Components/NewItems/StoreSection";
 import DescriptionSection from "../Components/NewItems/DescriptionSection";
-import { useParams, useSelector, isLoginUser } from "../Constants";
+import {
+  useParams,
+  useSelector,
+  isLoginUser,
+  productStatus,
+} from "../Constants";
 import validationSchema from "../Components/NewItems/validationSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useEffect } from "react";
@@ -26,10 +30,10 @@ const NewItem = ({ isUpdatepage }) => {
     watch,
   } = useForm({
     defaultValues: {
-      productStatus: productStatus[0],
+      status: productStatus[0],
       subcategories: [],
     },
-    resolver: yupResolver(validationSchema),
+    // resolver: yupResolver(validationSchema),
     mode: "all",
   });
   const validatePrices = () => {
@@ -89,23 +93,23 @@ const NewItem = ({ isUpdatepage }) => {
 
   const validateStokQty = () => {
     for (let i = 0; i < 4; i++) {
-      const stockQty = parseFloat(watch(`itemStoreDetailsList[${i}].stockQty`));
+      const stockQty = parseFloat(watch(`itemStoreDetailsList[${i}].qty`));
       const unit = watch(`itemStoreDetailsList[${i}].unit`);
-      const positionX = watch(`itemStoreDetailsList[${i}].positionX`);
-      const positionY = watch(`itemStoreDetailsList[${i}].positionY`);
+      const x = watch(`itemStoreDetailsList[${i}].x`);
+      const y = watch(`itemStoreDetailsList[${i}].y`);
       console.log(stockQty);
-      if (stockQty > 0 && (!unit || !positionX || !positionY)) {
-        setError(`itemStoreDetailsList[${i}].unit`, {
+      if (stockQty > 0 && (!unit || !x || !y)) {
+        setError(`storeDetails[${i}].unit`, {
           type: "manual",
           message: "* Unit is required ",
         });
 
-        setError(`itemStoreDetailsList[${i}].positionX`, {
+        setError(`storeDetails[${i}].x`, {
           type: "manual",
           message: "* Position-X is required  ",
         });
 
-        setError(`itemStoreDetailsList[${i}].positionY`, {
+        setError(`storeDetails[${i}].y`, {
           type: "manual",
           message: "* Position-Y is required ",
         });
@@ -117,10 +121,6 @@ const NewItem = ({ isUpdatepage }) => {
   };
 
   const onSubmit = (data) => {
-    if (!data["mainImage"]) {
-      data["mainImage"] = "../assets/logo.png";
-    }
-
     const updatedData = validateDiscountPrices(data, setValue);
 
     if (validatePrices(data) && validateStokQty() && handleEndDate(data)) {
@@ -175,7 +175,13 @@ const NewItem = ({ isUpdatepage }) => {
               reset={reset}
             />
 
-            <DescriptionSection control={control} />
+            <DescriptionSection
+              control={control}
+              register={register}
+              errors={errors}
+              setValue={setValue}
+              handleKeyPress={handleKeyPress}
+            />
             <button type="submit" className="submit mb-4">
               SAVE
             </button>
