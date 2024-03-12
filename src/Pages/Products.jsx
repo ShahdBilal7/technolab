@@ -34,7 +34,7 @@ const Product = () => {
         <div className=" filter">
           <div className=" categories-list coll">
             <h3>Categories</h3>
-            {true ? (
+            {loading ? (
               <div className="d-flex justify-content-center">
                 <ReactLoading
                   type={"spin"}
