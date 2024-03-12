@@ -1,13 +1,25 @@
 import {
-  categories,
   useState,
   products,
   FontAwesomeIcon,
   ProductCard,
   Dropdown,
+  useDispatch,
+  useSelector,
   DropdownButton,
+  useEffect,
 } from "../Constants";
+import ReactLoading from "react-loading";
+import { selectCategories, fetchCategories } from "../store/categoriesSlice";
 const Product = () => {
+  const dispatch = useDispatch();
+  const categories = useSelector(selectCategories);
+  const { loading, error } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    dispatch(fetchCategories());
+  }, [dispatch]);
+
   const [openSubcategories, setOpenSubcategories] = useState({});
   const handleCategoryClick = (categoryName) => {
     setOpenSubcategories((prevOpenSubcategories) => ({
@@ -18,33 +30,44 @@ const Product = () => {
 
   return (
     <div className="products container">
-      <div className="  products-page">
+      <div className="products-page">
         <div className=" filter">
           <div className=" categories-list coll">
             <h3>Categories</h3>
-            <ul>
-              {categories.map((category, index) => (
-                <li key={index} className="mb-4">
-                  <h6
-                    className="cat"
-                    onClick={() => handleCategoryClick(category.name)}
-                  >
-                    {category.name + " "}
-                    <FontAwesomeIcon icon="fa-solid fa-chevron-down" />
-                  </h6>
-                  {openSubcategories[category.name] && (
-                    <ul>
-                      {category.subcategories.map((subcategory, index) => (
-                        <label key={index} htmlFor={subcategory}>
-                          <input type="checkbox" id={subcategory} />
-                          <span className="lab">{subcategory} </span>
-                        </label>
-                      ))}
-                    </ul>
-                  )}
-                </li>
-              ))}
-            </ul>
+            {true ? (
+              <div className="d-flex justify-content-center">
+                <ReactLoading
+                  type={"spin"}
+                  color={"var(--main-color)"}
+                  height={"30%"}
+                  width={"30%"}
+                />
+              </div>
+            ) : (
+              <ul>
+                {categories.map((category, index) => (
+                  <li key={index} className="mb-4">
+                    <h6
+                      className="cat"
+                      onClick={() => handleCategoryClick(category.name)}
+                    >
+                      {category.name + " "}
+                      <FontAwesomeIcon icon="fa-solid fa-chevron-down" />
+                    </h6>
+                    {openSubcategories[category.name] && (
+                      <ul>
+                        {category.subcategories.map((subcategory, index) => (
+                          <label key={index} htmlFor={subcategory}>
+                            <input type="checkbox" id={subcategory} />
+                            <span className="lab">{subcategory} </span>
+                          </label>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         </div>
         <div className=" products-list coll">

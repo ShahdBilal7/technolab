@@ -1,8 +1,9 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import BASE_URL from '../Config';
+import BASE_URL from "../Config";
+
 export const loginUser = createAsyncThunk(
-  'user/loginUser',
+  "user/loginUser",
   async (userCredentials) => {
     const request = await axios.post(`${BASE_URL}/login`, userCredentials, {
       withCredentials: true,
@@ -10,20 +11,19 @@ export const loginUser = createAsyncThunk(
     const response = await request.data;
     return response;
   }
-
 );
 const userSlice = createSlice({
-  name: 'user',
+  name: "user",
   initialState: {
-    isLogin:false,
+    isLogin: false,
     loading: false,
     user: null,
-    error: null
+    error: null,
   },
   reducers: {
     setIsLogIn: (state, action) => {
       state.isLogin = action.payload;
-    }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -41,17 +41,15 @@ const userSlice = createSlice({
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;
         state.user = null;
-        if (action.error.message === 'Request failed with status code 401') {
-          state.error = 'Login failed. Please check your credentials.';
-        }
-        else {
+        if (action.error.message === "Request failed with status code 401") {
+          state.error = "Login failed. Please check your credentials.";
+        } else {
           state.error = action.error.message;
         }
-      })
-  }
-
+      });
+  },
 });
 export const { setIsLogIn } = userSlice.actions;
-export const isLoginUser =(state) => state.user.isLogin;
-export const user =(state) => state.user.user;
+export const isLoginUser = (state) => state.user.isLogin;
+export const user = (state) => state.user.user;
 export default userSlice.reducer;

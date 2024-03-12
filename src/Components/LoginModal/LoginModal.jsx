@@ -1,6 +1,4 @@
-import { useNavigate } from "react-router-dom";
 import {
-  isLogin,
   loginUser,
   setIsLogIn,
   logoImage,
@@ -24,7 +22,6 @@ const LoginModal = () => {
   const showModal = useSelector(showLoginModal);
   const describe = useSelector(describeLoginModal);
   const { loading, error } = useSelector((state) => state.user);
-  const navigate = useNavigate();
 
   const handlePasswordToggle = () => setPasswordVisible(!passwordVisible);
 
@@ -111,7 +108,6 @@ const LoginModal = () => {
           <p className="reg">
             No account?
             <Link className="lin" onClick={handleClose} to="/register">
-              {" "}
               Register
             </Link>
           </p>
